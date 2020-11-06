@@ -1,0 +1,47 @@
+        ɒ	odd     AA D
+        Æ	at	AE T
+        ʌ	hut	HH AH T
+        ɔ	ought	AO T
+        Á	cow	K AW
+        Í	hide	HH AY D
+        B 	be	B IY
+        Ç	cheese	CH IY Z
+        D 	dee	D IY
+        Ð	thee	DH IY
+        ɛ	Ed	EH D
+        ®	hurt	HH ER T
+        É	ate	EY T
+        F 	fee	F IY
+        G 	green	G R IY N
+        X	he	HH IY
+        I	it	IH T
+        Ï	eat	IY T
+        J	gee	JH IY
+        K 	key	K IY
+        L 	lee	L IY
+        M 	me	M IY
+        N 	knee	N IY
+        Ñ	ping	P IH NG
+        Ö	oat	OW T
+        µ	toy	T OY
+        P 	pee	P IY
+        R 	read	R IY D
+        S 	sea	S IY
+        ʃ	she	SH IY
+        T 	tea	T IY
+        θ	theta	TH EY T AH
+        U	hood	HH UH D
+        Ú	two	T UW
+        V 	vee	V IY
+        W 	we	W IY
+        Y 	yield	Y IY L D
+        Z 	zee	Z IY
+        ʒ	seizure	S IY ZH ER
+			
+		Ý	SIMPLY  S IH1 M P L IY0
+		ə	GIVEN  G IH1 V AH0 N
+		3	FUR  F ER1
+
+        ћ  for voiced "ed"
+        ђ  for unvoiced "ed"
+        ɣ  fox /end of word "x"/
