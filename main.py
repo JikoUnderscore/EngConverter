@@ -9,7 +9,7 @@ import os
 
 
 
-def zaseci(f):
+def zaseci(f):    # run time test
     from time import time
     def wrp(*args, **kwargs):
         start = time()
