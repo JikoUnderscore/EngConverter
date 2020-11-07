@@ -8,8 +8,7 @@ from datetime import datetime
 import os
 
 
-
-def zaseci(f):    # run time test
+def zaseci(f):
     from time import time
     def wrp(*args, **kwargs):
         start = time()
@@ -128,8 +127,6 @@ class PrevodGovor:
             # mw.textbox2.insert(0.0, err)
             kraj += f" \n ERROR: {err}."
             return kraj
-
-
 
     @zaseci
     def prevod2(self, *args):
