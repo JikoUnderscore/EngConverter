@@ -40,7 +40,7 @@ class PrevodGovor:
             with open('data/fonemi.txt', "r", encoding='utf-8') as file2:
                 recnik_out = dict(enumerate(file2.read().split()))
 
-            punctuation = '''"'!@#$%^&*(){}[]|._-`/?:;\,~ \n'''
+            punctuation = '''"'!@#█$%^&*(){}[]|._-`/?:;\,~ \n'''
 
             spisyk_ot_dumi = re.findall(r"[\w']+|\W", str(pyrvicen_tekst))
 
@@ -65,61 +65,12 @@ class PrevodGovor:
                             fw.writelines(set(ff))
                         kraj += '█' + word + '█'
                     else:
-                        # from checkboxes import chw
-                        # if chw.nsp19.get() == 1:
-                        #     print('no skip')
-                        #     def dobble_ss(each_word):  # TODO: dovyrshi koda za duma zavyrsvasti s 's' da se udvoi
-                        #
-                        #     #     if word.endswith('se') or word.endswith('ce') or word.endswith('ss') or word.endswith('ses')\
-                        #     #             or word.endswith('se1') or word.endswith('ce1') or word.endswith('ss1') or word.endswith('ses1')\
-                        #     #             or word.endswith('se2') or word.endswith('ce2') or word.endswith('ss2') or word.endswith('ses2')\
-                        #     #             or word.endswith('se3') or word.endswith('ce3') or word.endswith('ss3') or word.endswith('ses3')\
-                        #     #             or word.endswith('se4') or word.endswith('ce4') or word.endswith('ss4') or word.endswith('ses4'):
-                        #     #         if each_word.endswith('S'):
-                        #     #             if '/' in each_word:
-                        #     #                 raz = each_word.split('/')
-                        #     #                 print(each_word)
-                        #     #                 print('add S')
-                        #     #                 return f"{raz[0]}S/{raz[1]}S"
-                        #     #             else:   # ÆNTÝSɛNS/ÆNTÍSɛNS
-                        #     #                 return each_word+'S'
-                        #     #         elif 'S' in each_word:
-                        #     #             emp = ""
-                        #     #             nloop = 0
-                        #     #             if '/' in each_word:
-                        #     #                 print(each_word, 's in word')
-                        #     #                 spd = each_word.split('/')
-                        #     #                 for dmn in spd:
-                        #     #                     spl = dmn.split('S')
-                        #     #
-                        #     #                     phx = spl[0] + 'S'
-                        #     #                     def get_key(val):
-                        #     #                         for key, value in recnik_out.items():
-                        #     #                              if val == value:
-                        #     #                                  return key
-                        #     #                     phxx = get_key(phx)
-                        #     #                     chek = recnik_out.get(phxx)
-                        #     #                     if chek is not None:
-                        #     #                         print(str(chek))
-                        #     #                         emp += chek + 'S' + spl[1]
-                        #     #                         nloop += 1
-                        #     #                         if nloop < len(spd):
-                        #     #                             emp += '/'
-                        #     #                 return emp
-                        #     #             else:
-                        #     #                 ghjk = each_word.split('s') # seamstresses -- shit is not working
-                        #     #                 for eve in ghjk:
-                        #     #
-                        #     #                 return
-                        #     #         else:
-                        #     #             print('no add')
-                        #     #             return each_word
-                        #     #     else:
-                        #     #         return each_word
-                        #     kraj += dobble_ss(each_word)
-                        # else:
-                        #     print('skip')
-
+                        from checkboxes import chw
+                        if chw.nsp19.get() == 1:
+                            print('checked')
+                            kraj += each_word
+                        else:
+                            print('not checked')
                             kraj += each_word
 
             return kraj
