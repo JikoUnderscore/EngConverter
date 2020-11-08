@@ -35,11 +35,15 @@ class PrevodGovor:
             pyrvicen_tekst = mw.ent_txt.get("0.0", 'end-1c').lower()
 
             with open('data/dumi.txt', "r", encoding='utf-8') as file:
-                recnik = {k: v for v, k in enumerate(file.read().split())}
+                spisyk_v = file.read().split()
+                # recnik = {k: v for v, k in enumerate(file.read().split())}
+
 
             with open('data/fonemi.txt', "r", encoding='utf-8') as file2:
-                recnik_out = dict(enumerate(file2.read().split()))
+                spisyk_vyn = file2.read().split()
+                # recnik_out = dict(enumerate(file2.read().split()))
 
+            recnik = dict(zip(spisyk_v, spisyk_vyn))
             punctuation = '''"'!@#█$%^&*(){}[]|._-`/?:;\,~ \n'''
 
             spisyk_ot_dumi = re.findall(r"[\w']+|\W", str(pyrvicen_tekst))
@@ -52,8 +56,8 @@ class PrevodGovor:
                 if word in punctuation:
                     kraj += word
                 else:
-                    wordnumber = (recnik.get(word))
-                    each_word = (recnik_out.get(wordnumber))
+                    each_word = (recnik.get(word))
+                    # each_word = (recnik_out.get(wordnumber))
                     if each_word is None:
                         ss = ""
                         ss += word + '\n'
