@@ -68,7 +68,29 @@ class PrevodGovor:
                         from checkboxes import chw
                         if chw.nsp19.get() == 1:
                             print('checked')
-                            kraj += each_word
+                            z = bool(re.compile(r"(se(s1$|s2$|s3$|$|s))|(ss$)|(ce$)").findall(word))
+                            zs = bool(each_word.endswith('S'))
+
+                            if z and zs is True:
+                                print('in')
+                                kraj += each_word + 'S'
+                            elif z is True:
+                                if '/' in each_word:
+                                    print('/in2', each_word)
+                                    spl = each_word.split('/')
+                                    for index, wrd in enumerate(spl, start=1):  # XɔRSəZ/XɔRSIZ
+                                        print(index)
+                                        newstr = wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
+                                        if index < len(spl):
+                                            kraj += newstr + '/'
+                                        else:
+                                            kraj += newstr
+                                else:
+                                    print('in2', each_word)
+                                    kraj += each_word
+                            else:
+                                print('out')
+                                kraj += each_word
                         else:
                             print('not checked')
                             kraj += each_word
