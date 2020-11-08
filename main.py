@@ -66,6 +66,7 @@ class PrevodGovor:
                         kraj += '█' + word + '█'
                     else:
                         from checkboxes import chw
+                                                        # TODO: dovyrshi koda za dumi zavyrsvasti s 's' da se upravi
                         if chw.nsp19.get() == 1:
                             print('checked')
                             z = bool(re.compile(r"(se(s1$|s2$|s3$|$|s))|(ss$)|(ce$)").findall(word))
