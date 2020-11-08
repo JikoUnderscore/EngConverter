@@ -66,10 +66,10 @@ class PrevodGovor:
                         kraj += '█' + word + '█'
                     else:
                         from checkboxes import chw
-                                                        # TODO: dovyrshi koda za dumi zavyrsvasti s 's' da se upravi
+                                                        # TODO: kombinacija ot dve duni dava problem
                         if chw.nsp19.get() == 1:
                             print('checked')
-                            z = bool(re.compile(r"(se(s1$|s2$|s3$|$|s))|(ss$)|(ce$)").findall(word))
+                            z = bool(re.compile(r"(s(e$|es$|es1$|es2$|es3$|es4$|ed$|ing$))|(ss($|es$|es1$|es2$|es3$|es4$|d$|ing$))|(c(e$|es$|es1$|es2$|es3$|es4$|ed$|ing$))").findall(word))
                             zs = bool(each_word.endswith('S'))
 
                             if z and zs is True:
@@ -81,14 +81,16 @@ class PrevodGovor:
                                     spl = each_word.split('/')
                                     for index, wrd in enumerate(spl, start=1):  # XɔRSəZ/XɔRSIZ
                                         print(index)
-                                        newstr = wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
+                                        adwrd = wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                         if index < len(spl):
-                                            kraj += newstr + '/'
+                                            kraj += adwrd + '/'
                                         else:
-                                            kraj += newstr
+                                            kraj += adwrd
                                 else:
+                                    adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                     print('in2', each_word)
-                                    kraj += each_word
+
+                                    kraj += adwrd
                             else:
                                 print('out')
                                 kraj += each_word
