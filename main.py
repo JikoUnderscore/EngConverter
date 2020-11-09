@@ -38,7 +38,6 @@ class PrevodGovor:
                 spisyk_v = file.read().split()
                 # recnik = {k: v for v, k in enumerate(file.read().split())}
 
-
             with open('data/fonemi.txt', "r", encoding='utf-8') as file2:
                 spisyk_vyn = file2.read().split()
                 # recnik_out = dict(enumerate(file2.read().split()))
@@ -73,7 +72,7 @@ class PrevodGovor:
                                                         # TODO: kombinacija ot dve duni dava problem
                         if chw.nsp19.get() == 1:
                             print('checked')
-                            z = bool(re.compile(r"(s(e$|es$|es1$|es2$|es3$|es4$|ed$|ing$))|(ss($|es$|es1$|es2$|es3$|es4$|d$|ing$))|(c(e$|es$|es1$|es2$|es3$|es4$|ed$|ing$))").findall(word))
+                            z = bool(re.compile(r"(s(e$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(word))
                             zs = bool(each_word.endswith('S'))
 
                             if z and zs is True:
@@ -83,7 +82,7 @@ class PrevodGovor:
                                 if '/' in each_word:
                                     print('/in2', each_word)
                                     spl = each_word.split('/')
-                                    for index, wrd in enumerate(spl, start=1):  # XɔRSəZ/XɔRSIZ
+                                    for index, wrd in enumerate(spl, start=1):
                                         print(index)
                                         adwrd = wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                         if index < len(spl):
@@ -95,9 +94,11 @@ class PrevodGovor:
                                     print('in2', each_word)
 
                                     kraj += adwrd
-                            else:
+                            else:  # coincide
+                                adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
+
                                 print('out')
-                                kraj += each_word
+                                kraj += adwrd
                         else:
                             print('not checked')
                             kraj += each_word
