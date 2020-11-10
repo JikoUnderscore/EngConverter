@@ -241,50 +241,33 @@
 #
 #
 # win.mainloop()
-
-import pickle
-
-def zaseci(f):
-    from time import time
-    def wrp(*args, **kwargs):
-        start = time()
-        rf = f(*args, **kwargs)
-        total = time() - start
-        print("RUN TIME:", total)
-        return rf
-    return wrp
-
-with open('data/dumi.txt', "r", encoding='utf-8') as file:
-    spisyk_v = file.read().split()
-    # recnik = {k: v for v, k in enumerate(file.read().split())}
-
-with open('data/fonemi.txt', "r", encoding='utf-8') as file2:
-    spisyk_vyn = file2.read().split()
-    # recnik_out = dict(enumerate(file2.read().split()))
-
-recnik = dict(zip(spisyk_v, spisyk_vyn))
-
-
-recnik_abc = {'a':{}, 'b':{},'c':{},'d':{},'e':{},'f':{},'g':{},'h':{},'i':{},'j':{},'k':{},'l':{},'m':{},'n':{},'o':{},
-              'p':{},'q':{},'r':{},'s':{},'t':{},'u':{},'v':{},'w':{},'x':{},'y':{},'z':{}}
-
-
-# for key in recnik_abc.keys():
-#     for k, v in recnik.items():
-#         if k.startswith(key):
-#             recnik_abc[key][k] = v
-
-
 #
-# with open('file TEST recnik.txt', 'w', encoding='utf-8') as fajl:
-#     for kk,vv in recnik_abc.items():
-#         fajl.write(f"{kk} > {vv}\n")
-
-# with open('test.pkl', 'wb') as kl:
-#     pickle.dump(recnik_abc, kl)
+# import pickle
+#
+# with open('data/dumi.txt', "r", encoding='utf-8') as file:
+#     spisyk_v = file.read().split()
+#     # recnik = {k: v for v, k in enumerate(file.read().split())}
+#
+# with open('data/fonemi.txt', "r", encoding='utf-8') as file2:
+#     spisyk_vyn = file2.read().split()
+#     # recnik_out = dict(enumerate(file2.read().split()))
+#
+# recnik = dict(zip(spisyk_v, spisyk_vyn))
+#
+#
+# recnik_abc = {'a':{}, 'b':{},'c':{},'d':{},'e':{},'f':{},'g':{},'h':{},'i':{},'j':{},'k':{},'l':{},'m':{},'n':{},'o':{},
+#               'p':{},'q':{},'r':{},'s':{},'t':{},'u':{},'v':{},'w':{},'x':{},'y':{},'z':{}}
+#
+#
+# # for key in recnik_abc.keys():
+# #     for k, v in recnik.items():
+# #         if k.startswith(key):
+# #             recnik_abc[key][k] = v
+#
 #
 
-with open('test.pkl', 'rb') as klr:
-    newkl = pickle.load(klr)
+def principal_period(s, f):
+    i = s.find(f)
+    return print(bool(i))
 
-print(newkl)
+principal_period('horse','z')
