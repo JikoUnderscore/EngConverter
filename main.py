@@ -61,19 +61,22 @@ class PrevodGovor:
                     each_word = recnik_abc[word[0]].get(word)
 
                     # each_word = (recnik_out.get(wordnumber))
-                    if each_word is None:
+                    if each_word is None and mw.ddump.get() == 0:
+                        kraj += '█' + word + '█'
+                    elif each_word is None and mw.ddump.get() == 1:
                         ss = ""
                         ss += word + '\n'
                         with open("MISSING_WORDS/word_dump.txt", "a+") as f:
                             f.write(ss)
 
                         with open("MISSING_WORDS/missing_word_list.txt", "w") as fw:
-                            ff = open("MISSING_WORDS/word_dump.txt", "r")
+                            ff = open("MISSING_WORDS/word_dump.txt", "r+")
                             fw.writelines(set(ff))
+                            ff.truncate(0)
+                            ff.close()
                         kraj += '█' + word + '█'
                     else:
                         from checkboxes import chw
-
                         if chw.nsp19.get() == 1:
                             print('checked')
                             z = bool(re.compile(r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(word))
@@ -97,7 +100,7 @@ class PrevodGovor:
                                             kraj += adwrd + '/'
                                         else:
                                             kraj += adwrd
-                                elif szs[0] + 'S' in recnik_abc[word[0]].values() and szs[1] in recnik_abc[szs[1][0].lower()].values():
+                                elif szs[0] + 'S' in recnik_abc[word[0]].values(): #  and szs[1] in recnik_abc[szs[1][0].lower()].values()
                                     print('in recnik in1', szs[1][0])
                                     adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                     fowrd = adwrd.replace("S", "SS", 1)
@@ -137,9 +140,9 @@ class PrevodGovor:
 
             return kraj
         except Exception as err:
-            # mw.textbox2.insert(0.0, err)
-            kraj += f" \n ERROR: {err}."
-            return kraj
+            mw.textbox2.insert(0.0, err)
+            # kraj += f" \n ERROR: {err}."
+            # return kraj
 
     @zaseci
     def prevod2(self, *args):
@@ -288,6 +291,7 @@ class MenuBar:
         # menubar.add_cascade(label="View", menu=View)
 
         Manage = Menu(menubar, tearoff=0)
+        Manage.add_checkbutton(label='Save not found words', var=rodi.ddump)
         Manage.add_command(label='Update dump number !!!', command=rodi.dump_filen_update)
         Manage.add_command(label='Open dump file...', command=rodi.otvori_dump_file)
         Manage.add_separator()
@@ -828,6 +832,7 @@ class MainWindow:
         self.window = window
         self.r_d = IntVar()
         self.ccc = IntVar()
+        self.ddump = IntVar()
         self.sinc_gh = IntVar()
         font_specs = ("ubuntu", 14, "bold")
 
@@ -934,7 +939,7 @@ class MainWindow:
         subpc.Popen(["Notepad.exe", "MISSING_WORDS/missing_word_list.txt"])
 
     def dump_filen_update(self):
-        with open("MISSING_WORDS/word_dump.txt", "r") as llc:
+        with open("MISSING_WORDS/missing_word_list.txt", "r") as llc:
             c = len(list(llc))
             self.dump.config(text=f"Dump file size is {c} lines long")
 
