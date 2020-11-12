@@ -326,11 +326,10 @@ class MenuBar:
         mjasto = os.path.abspath(os.curdir)
         os.startfile(f"{mjasto}\\data\\saved")
 
-    def seva_now(self, e):
+    def seva_now(self):
         from checkboxes import chw
         tm = str(datetime.now().strftime("%Y-%m-%d h%H%M%S"))
         fajl_ime = "data/saved/saved at %s.dat" % tm
-        print(e)
         with open(fajl_ime, "w", encoding='utf-8') as s:
             s.write(str(chw.ch1()) + ' ')
             s.write(str(chw.n1.get()) + '\n')

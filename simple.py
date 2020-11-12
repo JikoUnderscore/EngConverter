@@ -243,14 +243,14 @@
 # win.mainloop()
 #
 # import pickle
-#
-# with open('data/dumi.txt', "r", encoding='utf-8') as file:
-#     spisyk_v = file.read().split()
-#     # recnik = {k: v for v, k in enumerate(file.read().split())}
-#
-# with open('data/fonemi.txt', "r", encoding='utf-8') as file2:
-#     spisyk_vyn = file2.read().split()
-#     # recnik_out = dict(enumerate(file2.read().split()))
+
+with open('data/dumi.txt', "r", encoding='utf-8') as file:
+    spisyk_v = file.read().split()
+    # recnik = {k: v for v, k in enumerate(file.read().split())}
+
+with open('data/fonemi.txt', "r", encoding='utf-8') as file2:
+    spisyk_vyn = file2.read().split()
+    # recnik_out = dict(enumerate(file2.read().split()))
 #
 # recnik = dict(zip(spisyk_v, spisyk_vyn))
 #
@@ -266,8 +266,65 @@
 #
 #
 
-def principal_period(s, f):
-    i = s.find(f)
-    return print(bool(i))
+class HashTable():
+    def __init__(self):
+        self.MAX = 141917
+        self.arr = [[] for i in range(self.MAX)]
 
-principal_period('horse','z')
+    def get_hash(self, key):
+        h = 0
+        for char in str(key):
+            h += ord(char)
+        return h % self.MAX
+
+    def __setitem__(self, key, value):
+        h = self.get_hash(key)
+        found = False
+        for idx, element in enumerate(self.arr[h]):
+            if len(element) == 2 and element[0] == key:
+                self.arr[h][idx] = (key, value)
+                found = True
+                break
+        if not found:
+            self.arr[h].append((key, value))
+
+    def __getitem__(self, key):
+        h = self.get_hash(key)
+        for element in self.arr[h]:
+            if element[0] == key:
+                return element[1]
+
+
+
+tt = HashTable()
+
+# # tt['cat'] = 'кат'
+#
+# for intex,it in enumerate(spisyk_v):
+#     tt[it] = spisyk_vyn[intex]
+#
+# #
+# #
+# # print(tt['bartelt'])
+# # print(tt['cbs'])
+#
+# from tqdm import tqdm
+# with open('dumi hash2.txt', "w+", encoding='utf-8') as fpl:
+#     for it in tqdm(tt.arr):
+#         fpl.write(f"{it}\n")
+
+# def get_hash(key):
+#     h = 0
+#     for char in str(key):
+#         h += ord(char)
+#     return h % 141917
+#from tqdm import tqdm
+#
+# with open('dumi hash.txt', "w+") as fpl:
+#     for it in tqdm(list(map(get_hash, spisyk_v))):
+#         fpl.write(f"{it}\n")
+
+
+# with open('dumi hash.txt', "r") as fpl2:
+#     print(len(set(fpl2)))
+
