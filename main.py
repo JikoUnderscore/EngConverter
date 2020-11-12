@@ -78,39 +78,29 @@ class PrevodGovor:
                     else:
                         from checkboxes import chw
                         if chw.nsp19.get() == 1:
-                            print('checked')
                             z = bool(re.compile(r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(word))
                             zs = bool(each_word.endswith('S'))
                             zz = bool(each_word.count('S') >= 2)
-
                             if z and zs is True and zz is False:
                                 kraj += each_word + 'S'
-
                             elif z and zs is True:
-                                print('in1')
                                 szs = each_word.split('S', 1)
-
-                                if '/' in each_word:   #  crosspiece # TODO: kombinacija ot dve duni dava problem
-                                    print('/in1', each_word)
+                                if '/' in each_word:
                                     spl = each_word.split('/')
                                     for index, wrd in enumerate(spl, start=1):
-                                        print(index)
                                         adwrd = wrd+'S'
                                         if index < len(spl):
                                             kraj += adwrd + '/'
                                         else:
                                             kraj += adwrd
-                                elif szs[0] + 'S' in recnik_abc[word[0]].values(): #  and szs[1] in recnik_abc[szs[1][0].lower()].values()
-                                    print('in recnik in1', szs[1][0])
+                                elif szs[0] + 'S' in recnik_abc[word[0]].values():
                                     adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                     fowrd = adwrd.replace("S", "SS", 1)
                                     kraj += fowrd
                                 else:
                                     kraj += each_word + 'S'
-
                             elif z is True:
                                 if '/' in each_word:
-                                    print('/in2', each_word)
                                     spl = each_word.split('/')
                                     for index, wrd in enumerate(spl, start=1):
                                         print(index)
@@ -121,21 +111,15 @@ class PrevodGovor:
                                             kraj += adwrd
                                 else:
                                     adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
-                                    print('in2', each_word)
-
                                     kraj += adwrd
-
                             else:
-                                print('out')
                                 szs = each_word.split('S', 1)
                                 if szs[0]+'S' in recnik_abc[word[0]].values():
                                     adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                     kraj += adwrd
                                 else:
                                     kraj += each_word
-
                         else:
-                            # print('not checked')
                             kraj += each_word
 
             return kraj
