@@ -212,7 +212,8 @@ class PrevodGovor:
             p41005 = re.sub(r"ћ", chw.sp_edd(), p41004)
 
                 # TODO: " 's " da se izpisva v prevoda, i da moze da se promenja. Zamestvane v fajla ili nov kod
-                # TODO: "ss,se,ce," v kraja da dumata da se oromenjat v "ss"
+
+                #  "ss,se,ce," v kraja da dumata da se oromenjat v "ss"
 
             nummmm = mw.remove_dash()
             regex = r"(\w+)(/(\w+))(/(\w+)/)((\w+))|(\w+)(/(\w+))(/(\w+))|(\w+)(/(\w+))"
@@ -286,7 +287,7 @@ class MenuBar:
 
         somenu = Menu(menubar, tearoff=0)
         somenu.add_command(label="Do nothing...", command=rodi.mnoff)
-        somenu.add_command(label="color", command=rodi.izberi_color)
+        somenu.add_command(label="Change background color", command=rodi.izberi_color)
         menubar.add_cascade(label="So...", menu=somenu)
 
         elp = Menu(menubar, tearoff=0)
@@ -831,34 +832,46 @@ class MainWindow:
         self.cetvyrti_red = Frame(window, bg=self.f_i)    # , bg='yellow'
         self.cetvyrti_red.pack(fill=X, side=TOP)
 
-        Label(self.pyrvi_red, text="Enter Text Below:", font=font_specs, bg=self.f_i).pack(expand=True, side=LEFT, anchor=SE)
+        self.tl = Label(self.pyrvi_red, text="Enter Text Below:", font=font_specs, bg=self.f_i)
+        self.tl.pack(expand=True, side=LEFT, anchor=SE)
         self.b1 = Button(self.pyrvi_red, state=NORMAL, text="Enter!", command=pr.prevod2, height=1, width=8, font=("Times New Roman", 16, "bold"), bg=self.f_i)
         self.b1.pack(expand=True, side=LEFT)
 
-        Label(self.pyrvi_red, text="Output Text Below:", font=font_specs, bg=self.f_i).pack(expand=True, side=LEFT, anchor=SW)
+        self.tr = Label(self.pyrvi_red, text="Output Text Below:", font=font_specs, bg=self.f_i)
+        self.tr.pack(expand=True, side=LEFT, anchor=SW)
 
         self.ent_txt = Text(self.vtori_red, undo=True, wrap=WORD)    # ,  width=78, height=24,
         self.ent_txt.pack(expand=True, side=LEFT, anchor=E)
         self.scr_br = Scrollbar(self.vtori_red, orient="vertical")
         self.scr_br.pack(side=LEFT, fill=Y)
-        Button(master=self.ent_txt, text='SPEAK!', command=pr.govorene, image=self.img2, bg=self.f_i).place(relx=0.956, rely=0.926)
+        self.spkbt = Button(master=self.ent_txt, text='SPEAK!', command=pr.govorene, image=self.img2, bg=self.f_i)
+        self.spkbt.place(relx=0.956, rely=0.926)
         self.textbox2 = Text(self.vtori_red, wrap=WORD)
         self.textbox2.pack(expand=True, side=LEFT, anchor=W)
 
-        Label(self.treti_red, text="word1/word2/word3/word4", bg=self.f_i).grid(row=1, column=5, columnspan=4)
-        Label(self.treti_red, text="Apply choses word to all words with dashes!", bg=self.f_i).grid(row=1, column=0, columnspan=2)
-        Label(self.treti_red, text="default", bg=self.f_i).grid(row=2, column=0, sticky=E)
-        Radiobutton(self.treti_red, var=self.r_d, value=0, bg=self.f_i).grid(row=2, column=1, sticky=W)
-        Radiobutton(self.treti_red, var=self.r_d, value=3, bg=self.f_i).grid(row=2, column=5)
-        Radiobutton(self.treti_red, var=self.r_d, value=2, bg=self.f_i).grid(row=2, column=6)
-        Radiobutton(self.treti_red, var=self.r_d, value=1, bg=self.f_i).grid(row=2, column=8)
-        Radiobutton(self.treti_red, var=self.r_d, value=4, bg=self.f_i).grid(row=2, column=7)
+        self.dop1 = Label(self.treti_red, text="word1/word2/word3/word4", bg=self.f_i)
+        self.dop1.grid(row=1, column=5, columnspan=4)
+        self.dop2 = Label(self.treti_red, text="Apply choses word to all words with dashes!", bg=self.f_i)
+        self.dop2.grid(row=1, column=0, columnspan=2)
+        self.dop3 = Label(self.treti_red, text="default", bg=self.f_i)
+        self.dop3.grid(row=2, column=0, sticky=E)
+        self.rbb1 = Radiobutton(self.treti_red, var=self.r_d, value=0, bg=self.f_i)
+        self.rbb1.grid(row=2, column=1, sticky=W)
+        self.rbb2 = Radiobutton(self.treti_red, var=self.r_d, value=3, bg=self.f_i)
+        self.rbb2.grid(row=2, column=5)
+        self.rbb3 = Radiobutton(self.treti_red, var=self.r_d, value=2, bg=self.f_i)
+        self.rbb3.grid(row=2, column=6)
+        self.rbb4 = Radiobutton(self.treti_red, var=self.r_d, value=1, bg=self.f_i)
+        self.rbb4.grid(row=2, column=8)
+        self.rbb5 = Radiobutton(self.treti_red, var=self.r_d, value=4, bg=self.f_i)
+        self.rbb5.grid(row=2, column=7)
         self.v_dump = StringVar()
         self.dump = Label(self.treti_red, text="Dump:(number)   //Manage -> Update dump count//", bg=self.f_i)
         self.dump.grid(row=1, column=20, sticky=E, padx=200)
 
         # Label(self.cetvyrti_red, text="Raw Text Below:").pack(side=LEFT)
-        Button(self.cetvyrti_red, text="Show raw text!", command=lambda: [self.textboxraw.delete(0.0, END), self.textboxraw.insert(0.0, pr.prevod())], bg=self.f_i).pack(side=LEFT)
+        self.btr = Button(self.cetvyrti_red, text="Show raw text!", command=lambda: [self.textboxraw.delete(0.0, END), self.textboxraw.insert(0.0, pr.prevod())], bg=self.f_i)
+        self.btr.pack(side=LEFT)
         self.textboxraw = Text(self.cetvyrti_red, width=50, height=2, wrap=WORD)
         self.textboxraw.pack(side=LEFT)
         from checkboxes import ruw
@@ -887,11 +900,28 @@ class MainWindow:
     def izberi_color(self):
         fonnen_cvjat = colorchooser.askcolor()[1]
         print(fonnen_cvjat)
+        self.f_i = fonnen_cvjat
         self.window.configure(bg=f"{fonnen_cvjat}")
         self.pyrvi_red.configure(bg=f"{fonnen_cvjat}")
         self.vtori_red.configure(bg=f"{fonnen_cvjat}")
         self.treti_red.configure(bg=f"{fonnen_cvjat}")
         self.cetvyrti_red.configure(bg=f"{fonnen_cvjat}")
+        self.tl.configure(bg=f"{fonnen_cvjat}")
+        self.b1.configure(bg=f"{fonnen_cvjat}")
+        self.tr.configure(bg=f"{fonnen_cvjat}")
+        self.dop1.configure(bg=f"{fonnen_cvjat}")
+        self.dop2.configure(bg=f"{fonnen_cvjat}")
+        self.dop3.configure(bg=f"{fonnen_cvjat}")
+        self.rbb1.configure(bg=f"{fonnen_cvjat}")
+        self.rbb2.configure(bg=f"{fonnen_cvjat}")
+        self.rbb3.configure(bg=f"{fonnen_cvjat}")
+        self.rbb4.configure(bg=f"{fonnen_cvjat}")
+        self.rbb5.configure(bg=f"{fonnen_cvjat}")
+        self.dump.configure(bg=f"{fonnen_cvjat}")
+        self.btr.configure(bg=f"{fonnen_cvjat}")
+        self.cbt.configure(bg=f"{fonnen_cvjat}")
+        self.lnta.configure(bg=f"{fonnen_cvjat}")
+        self.spkbt.configure(bg=f"{fonnen_cvjat}")
 
     def tgl_btn(self):
         from checkboxes import ruw
@@ -911,7 +941,7 @@ class MainWindow:
             self.ent_txt.bind('<Return>', pr.prevod2)
             # self.b1.config(state=NORMAL)
             self.lnta["text"] = 'Welcome to text converter 9000 - AUTOMATIC CONVERTER IS DISABLED'
-            self.lnta["bg"] = '#606060'
+            self.lnta["bg"] = self.f_i
             print('not runnig')
 
     def remove_dash(self):

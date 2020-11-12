@@ -858,7 +858,10 @@ class Rule_window(Chechboxes):
             novprozorec.bind('<Escape>', lambda e: novprozorec.destroy())
             novprozorec.focus()
             novprozorec.iconbitmap('data/ico/icon2.ico')
-            self.pod_proz = Frame(novprozorec, bg='white', height=20, width=800) #
+
+            f_i = "#606060"
+            novprozorec['bg'] = f_i
+            self.pod_proz = Frame(novprozorec, bg=f_i, height=20, width=800)
             self.pod_proz.grid(row=21, column=0, columnspan=30)
             self.sysht = Label(self.pod_proz, text='0')
             self.sysht.pack() #place() # relx=0, rely=0
@@ -866,16 +869,16 @@ class Rule_window(Chechboxes):
 
             big_font = font.Font(family="Cooper Black", size="12", weight="normal")
 
-            spec_btn = Button(novprozorec, command=self.runmerun, text='EXPAND RULES', font=big_font)
+            spec_btn = Button(novprozorec, command=self.runmerun, text='EXPAND RULES', font=big_font, bg=f_i)
             spec_btn.grid(row=20, column=10, columnspan=3)
             # spec_btn.place(height=30, width=110, anchor=S, relx=0.50, rely=0.99)
 
-            sel_ckt = Button(novprozorec, text='select only filled in', command=self.select_fillin)
+            sel_ckt = Button(novprozorec, text='select only filled in', command=self.select_fillin, bg=f_i)
             sel_ckt.grid(row=18, column=17, columnspan=10)
-            selec_btn = Button(novprozorec, text="select all", command=self.select_all, height=1, width=9, font=big_font, bd=5)
+            selec_btn = Button(novprozorec, text="select all", command=self.select_all, height=1, width=9, font=big_font, bd=5, bg=f_i)
             selec_btn.grid(row=19, column=17, columnspan=10)
             deselec_btn = Button(novprozorec, text="deselect all", command=self.deselect_all, height=1, width=9, font=big_font,
-                                 bd=5)
+                                 bd=5, bg=f_i)
             deselec_btn.grid(row=20, column=17, columnspan=10)
 
             nula = 0
@@ -888,210 +891,210 @@ class Rule_window(Chechboxes):
             e_w = 3  # entry_width
 
             # ------------------ Vowel sounds - short -----------------------------------------
-            Label(novprozorec, text='Short vowels', font=big_font).grid(row=0, column=10)   # TODO: s 'TAB' da se mesti migastijyt kursor
-            Label(novprozorec, text='"a" as in AT').grid(row=1, column=10)
+            Label(novprozorec, text='Short vowels', font=big_font, bg=f_i).grid(row=0, column=10)   # TODO: s 'TAB' da se mesti migastijyt kursor
+            Label(novprozorec, text='"a" as in AT', bg=f_i).grid(row=1, column=10)
             Entry(novprozorec, textvariable=self.t2, width=e_w).grid(row=1, column=11)
-            Checkbutton(novprozorec, var=self.n2).grid(row=1, column=12)
+            Checkbutton(novprozorec, var=self.n2, bg=f_i).grid(row=1, column=12)
 
-            Label(novprozorec, text='"e" as in ED').grid(row=2, column=10)
+            Label(novprozorec, text='"e" as in ED', bg=f_i).grid(row=2, column=10)
             Entry(novprozorec, textvariable=self.t11, width=e_w).grid(row=2, column=11)
-            Checkbutton(novprozorec, var=self.n11).grid(row=2, column=12)
+            Checkbutton(novprozorec, var=self.n11, bg=f_i).grid(row=2, column=12)
 
-            Label(novprozorec, text='"i" as in IT').grid(row=3, column=10)
+            Label(novprozorec, text='"i" as in IT', bg=f_i).grid(row=3, column=10)
             Entry(novprozorec, textvariable=self.t17, width=e_w).grid(row=3, column=11)
-            Checkbutton(novprozorec, var=self.n17).grid(row=3, column=12)
+            Checkbutton(novprozorec, var=self.n17, bg=f_i).grid(row=3, column=12)
 
-            Label(novprozorec, text='"o" as in ODD').grid(row=4, column=10)
+            Label(novprozorec, text='"o" as in ODD', bg=f_i).grid(row=4, column=10)
             Entry(novprozorec, textvariable=self.t1, width=e_w).grid(row=4, column=11)
-            Checkbutton(novprozorec, var=self.n1).grid(row=4, column=12)
+            Checkbutton(novprozorec, var=self.n1, bg=f_i).grid(row=4, column=12)
 
-            Label(novprozorec, text='"u" as in HUT').grid(row=5, column=10)
+            Label(novprozorec, text='"u" as in HUT', bg=f_i).grid(row=5, column=10)
             Entry(novprozorec, textvariable=self.t3, width=e_w).grid(row=5, column=11)
-            Checkbutton(novprozorec, var=self.n3).grid(row=5, column=12)
+            Checkbutton(novprozorec, var=self.n3, bg=f_i).grid(row=5, column=12)
 
             # ------------------ Vowel sounds - long -----------------------------------------
 
-            Label(novprozorec, text='Long vowels', font=big_font).grid(row=6, column=10)
-            Label(novprozorec, text='"ay" as in MAY').grid(row=7, column=10)
+            Label(novprozorec, text='Long vowels', font=big_font, bg=f_i).grid(row=6, column=10)
+            Label(novprozorec, text='"ay" as in MAY', bg=f_i).grid(row=7, column=10)
             Entry(novprozorec, textvariable=self.t13, width=e_w).grid(row=7, column=11)
-            Checkbutton(novprozorec, var=self.n13).grid(row=7, column=12)
+            Checkbutton(novprozorec, var=self.n13, bg=f_i).grid(row=7, column=12)
 
-            Label(novprozorec, text='"ai" as in MAID').grid(row=7, column=13)
+            Label(novprozorec, text='"ai" as in MAID', bg=f_i).grid(row=7, column=13)
             Entry(novprozorec, textvariable=self.t1301, width=e_w).grid(row=7, column=14)
-            Checkbutton(novprozorec, var=self.n1301).grid(row=7, column=15)
+            Checkbutton(novprozorec, var=self.n1301, bg=f_i).grid(row=7, column=15)
 
-            Label(novprozorec, text='"ea" as in EAT').grid(row=8, column=10)
+            Label(novprozorec, text='"ea" as in EAT', bg=f_i).grid(row=8, column=10)
             Entry(novprozorec, textvariable=self.t18, width=e_w).grid(row=8, column=11)
-            Checkbutton(novprozorec, var=self.n18).grid(row=8, column=12)
+            Checkbutton(novprozorec, var=self.n18, bg=f_i).grid(row=8, column=12)
 
-            Label(novprozorec, text='"i" as in HIDE').grid(row=9, column=10)
+            Label(novprozorec, text='"i" as in HIDE', bg=f_i).grid(row=9, column=10)
             Entry(novprozorec, textvariable=self.t6, width=e_w).grid(row=9, column=11)
-            Checkbutton(novprozorec, var=self.n6).grid(row=9, column=12)
+            Checkbutton(novprozorec, var=self.n6, bg=f_i).grid(row=9, column=12)
 
-            Label(novprozorec, text='"oa" as in FLOAT').grid(row=10, column=10)
+            Label(novprozorec, text='"oa" as in FLOAT', bg=f_i).grid(row=10, column=10)
             Entry(novprozorec, textvariable=self.t25, width=e_w).grid(row=10, column=11)
-            Checkbutton(novprozorec, var=self.n25).grid(row=10, column=12)
+            Checkbutton(novprozorec, var=self.n25, bg=f_i).grid(row=10, column=12)
 
-            Label(novprozorec, text='"wo" as in TWO').grid(row=11, column=10)
+            Label(novprozorec, text='"oo" as in TOO', bg=f_i).grid(row=11, column=10)
             Entry(novprozorec, textvariable=self.t34, width=e_w).grid(row=11, column=11)
-            Checkbutton(novprozorec, var=self.n34).grid(row=11, column=12)
+            Checkbutton(novprozorec, var=self.n34, bg=f_i).grid(row=11, column=12)
 
-            Label(novprozorec, text='"oy" as in TOY').grid(row=12, column=10)
+            Label(novprozorec, text='"oy" as in TOY', bg=f_i).grid(row=12, column=10)
             Entry(novprozorec, textvariable=self.t26, width=e_w).grid(row=12, column=11)
-            Checkbutton(novprozorec, var=self.n26).grid(row=12, column=12)
+            Checkbutton(novprozorec, var=self.n26, bg=f_i).grid(row=12, column=12)
 
-            Label(novprozorec, text='"oi" as in OIL').grid(row=12, column=13)
+            Label(novprozorec, text='"oi" as in OIL', bg=f_i).grid(row=12, column=13)
             Entry(novprozorec, textvariable=self.t2601, width=e_w).grid(row=12, column=14)
-            Checkbutton(novprozorec, var=self.n2601).grid(row=12, column=15)
+            Checkbutton(novprozorec, var=self.n2601, bg=f_i).grid(row=12, column=15)
 
-            Label(novprozorec, text='"ough" as in OUGHT').grid(row=13, column=10)
+            Label(novprozorec, text='"ough" as in OUGHT', bg=f_i).grid(row=13, column=10)
             Entry(novprozorec, textvariable=self.t4, width=e_w).grid(row=13, column=11)
-            Checkbutton(novprozorec, var=self.n4).grid(row=13, column=12)
+            Checkbutton(novprozorec, var=self.n4, bg=f_i).grid(row=13, column=12)
 
-            Label(novprozorec, text='"ow" as in COW').grid(row=14, column=10)
+            Label(novprozorec, text='"ow" as in COW', bg=f_i).grid(row=14, column=10)
             Entry(novprozorec, textvariable=self.t5, width=e_w).grid(row=14, column=11)
-            Checkbutton(novprozorec, var=self.n5).grid(row=14, column=12)
+            Checkbutton(novprozorec, var=self.n5, bg=f_i).grid(row=14, column=12)
 
-            Label(novprozorec, text='"e" as in GIVEN').grid(row=1, column=13)
+            Label(novprozorec, text='"e" as in GIVEN', bg=f_i).grid(row=1, column=13)
             Entry(novprozorec, textvariable=self.t41, width=e_w).grid(row=1, column=14)
-            Checkbutton(novprozorec, var=self.n41).grid(row=1, column=15)
+            Checkbutton(novprozorec, var=self.n41, bg=f_i).grid(row=1, column=15)
 
-            Label(novprozorec, text='"oo" as in HOOD').grid(row=2, column=13)
+            Label(novprozorec, text='"oo" as in HOOD', bg=f_i).grid(row=2, column=13)
             Entry(novprozorec, textvariable=self.t33, width=e_w).grid(row=2, column=14)
-            Checkbutton(novprozorec, var=self.n33).grid(row=2, column=15)
+            Checkbutton(novprozorec, var=self.n33, bg=f_i).grid(row=2, column=15)
 
-            Label(novprozorec, text='"y" as in SIMPLY').grid(row=3, column=13)
+            Label(novprozorec, text='"y" as in SIMPLY', bg=f_i).grid(row=3, column=13)
             Entry(novprozorec, textvariable=self.t40, width=e_w).grid(row=3, column=14)
-            Checkbutton(novprozorec, var=self.n40).grid(row=3, column=15)
+            Checkbutton(novprozorec, var=self.n40, bg=f_i).grid(row=3, column=15)
 
             # ------------------ Rhotic vowels -----------------------------------------
 
-            Label(novprozorec, text='Rhotic vowels', font=big_font).grid(row=0, column=16)
-            Label(novprozorec, text='"air" as in HAIR').grid(row=1, column=16)
+            Label(novprozorec, text='Rhotic vowels', font=big_font, bg=f_i).grid(row=0, column=16)
+            Label(novprozorec, text='"air" as in HAIR', bg=f_i).grid(row=1, column=16)
             Entry(novprozorec, textvariable=self.tr1, width=e_w).grid(row=1, column=17)
-            Checkbutton(novprozorec, var=self.nr1).grid(row=1, column=18)
+            Checkbutton(novprozorec, var=self.nr1, bg=f_i).grid(row=1, column=18)
 
-            Label(novprozorec, text='"ar" as in HARD').grid(row=2, column=16)
+            Label(novprozorec, text='"ar" as in HARD', bg=f_i).grid(row=2, column=16)
             Entry(novprozorec, textvariable=self.tr2, width=e_w).grid(row=2, column=17)
-            Checkbutton(novprozorec, var=self.nr2).grid(row=2, column=18)
+            Checkbutton(novprozorec, var=self.nr2, bg=f_i).grid(row=2, column=18)
 
-            Label(novprozorec, text='"eer" as in BEER').grid(row=3, column=16)
+            Label(novprozorec, text='"eer" as in BEER', bg=f_i).grid(row=3, column=16)
             Entry(novprozorec, textvariable=self.tr3, width=e_w).grid(row=3, column=17)
-            Checkbutton(novprozorec, var=self.nr3).grid(row=3, column=18)
+            Checkbutton(novprozorec, var=self.nr3, bg=f_i).grid(row=3, column=18)
 
-            Label(novprozorec, text='"or" as in FORD').grid(row=4, column=16)
+            Label(novprozorec, text='"or" as in FORD', bg=f_i).grid(row=4, column=16)
             Entry(novprozorec, textvariable=self.tr4, width=e_w).grid(row=4, column=17)
-            Checkbutton(novprozorec, var=self.nr4).grid(row=4, column=18)
+            Checkbutton(novprozorec, var=self.nr4, bg=f_i).grid(row=4, column=18)
 
-            Label(novprozorec, text='"er" stressed').grid(row=5, column=16)
+            Label(novprozorec, text='"er" stressed', bg=f_i).grid(row=5, column=16)
             Entry(novprozorec, textvariable=self.t12, width=e_w).grid(row=5, column=17)
-            Checkbutton(novprozorec, var=self.n12).grid(row=5, column=18)
+            Checkbutton(novprozorec, var=self.n12, bg=f_i).grid(row=5, column=18)
 
-            Label(novprozorec, text='"er" unstressed').grid(row=6, column=16)
+            Label(novprozorec, text='"er" unstressed', bg=f_i).grid(row=6, column=16)
             Entry(novprozorec, textvariable=self.t42, width=e_w).grid(row=6, column=17)
-            Checkbutton(novprozorec, var=self.n42).grid(row=6, column=18)
+            Checkbutton(novprozorec, var=self.n42, bg=f_i).grid(row=6, column=18)
 
             # ------------------ Consonant sounds -----------------------------------------
 
-            Label(novprozorec, text='Consonant', font=big_font).grid(row=0, column=0)
-            Label(novprozorec, text='"b" as in BE').grid(row=1, column=nula)
+            Label(novprozorec, text='Consonant', font=big_font, bg=f_i).grid(row=0, column=0)
+            Label(novprozorec, text='"b" as in BE', bg=f_i).grid(row=1, column=nula)
             Entry(novprozorec, textvariable=self.t7, width=e_w).grid(row=1, column=edno)
-            Checkbutton(novprozorec, var=self.n7).grid(row=1, column=dve)
+            Checkbutton(novprozorec, var=self.n7, bg=f_i).grid(row=1, column=dve)
 
-            Label(novprozorec, text='"ch" as in CHEESE').grid(row=2, column=nula)
+            Label(novprozorec, text='"ch" as in CHEESE', bg=f_i).grid(row=2, column=nula)
             Entry(novprozorec, textvariable=self.t8, width=e_w).grid(row=2, column=edno)
-            Checkbutton(novprozorec, var=self.n8).grid(row=2, column=dve)
+            Checkbutton(novprozorec, var=self.n8, bg=f_i).grid(row=2, column=dve)
 
-            Label(novprozorec, text='"d" as in DEE').grid(row=3, column=nula)
+            Label(novprozorec, text='"d" as in DEE', bg=f_i).grid(row=3, column=nula)
             Entry(novprozorec, textvariable=self.t9, width=e_w).grid(row=3, column=edno)
-            Checkbutton(novprozorec, var=self.n9).grid(row=3, column=dve)
+            Checkbutton(novprozorec, var=self.n9, bg=f_i).grid(row=3, column=dve)
 
-            Label(novprozorec, text='"f" as in FEE').grid(row=4, column=nula)
+            Label(novprozorec, text='"f" as in FEE', bg=f_i).grid(row=4, column=nula)
             Entry(novprozorec, textvariable=self.t14, width=e_w).grid(row=4, column=edno)
-            Checkbutton(novprozorec, var=self.n14).grid(row=4, column=dve)
+            Checkbutton(novprozorec, var=self.n14, bg=f_i).grid(row=4, column=dve)
 
-            Label(novprozorec, text='"g" as in GREEN').grid(row=5, column=nula)
+            Label(novprozorec, text='"g" as in GREEN', bg=f_i).grid(row=5, column=nula)
             Entry(novprozorec, textvariable=self.t15, width=e_w).grid(row=5, column=edno)
-            Checkbutton(novprozorec, var=self.n15).grid(row=5, column=dve)
+            Checkbutton(novprozorec, var=self.n15, bg=f_i).grid(row=5, column=dve)
 
-            Label(novprozorec, text='"h" as in HE').grid(row=6, column=nula)
+            Label(novprozorec, text='"h" as in HE', bg=f_i).grid(row=6, column=nula)
             Entry(novprozorec, textvariable=self.t16, width=e_w).grid(row=6, column=edno)
-            Checkbutton(novprozorec, var=self.n16).grid(row=6, column=dve)
+            Checkbutton(novprozorec, var=self.n16, bg=f_i).grid(row=6, column=dve)
 
-            Label(novprozorec, text='"j" as in JAM').grid(row=7, column=nula)
+            Label(novprozorec, text='"j" as in JAM', bg=f_i).grid(row=7, column=nula)
             Entry(novprozorec, textvariable=self.t19, width=e_w).grid(row=7, column=edno)
-            Checkbutton(novprozorec, var=self.n19).grid(row=7, column=dve)
+            Checkbutton(novprozorec, var=self.n19, bg=f_i).grid(row=7, column=dve)
 
-            Label(novprozorec, text='"k" as in KEY').grid(row=8, column=0)
+            Label(novprozorec, text='"k" as in KEY', bg=f_i).grid(row=8, column=0)
             Entry(novprozorec, textvariable=self.t20, width=e_w).grid(row=8, column=1)
-            Checkbutton(novprozorec, var=self.n20).grid(row=8, column=2)
+            Checkbutton(novprozorec, var=self.n20, bg=f_i).grid(row=8, column=2)
 
-            Label(novprozorec, text='"l" as in LEE').grid(row=9, column=0)
+            Label(novprozorec, text='"l" as in LEE', bg=f_i).grid(row=9, column=0)
             Entry(novprozorec, textvariable=self.t21, width=e_w).grid(row=9, column=1)
-            Checkbutton(novprozorec, var=self.n21).grid(row=9, column=2)
+            Checkbutton(novprozorec, var=self.n21, bg=f_i).grid(row=9, column=2)
 
-            Label(novprozorec, text='"m" as in ME').grid(row=10, column=0)
+            Label(novprozorec, text='"m" as in ME', bg=f_i).grid(row=10, column=0)
             Entry(novprozorec, textvariable=self.t22, width=e_w).grid(row=10, column=1)
-            Checkbutton(novprozorec, var=self.n22).grid(row=10, column=2)
+            Checkbutton(novprozorec, var=self.n22, bg=f_i).grid(row=10, column=2)
 
-            Label(novprozorec, text='"n" as in NICE').grid(row=11, column=0)
+            Label(novprozorec, text='"n" as in NICE', bg=f_i).grid(row=11, column=0)
             Entry(novprozorec, textvariable=self.t23, width=e_w).grid(row=11, column=1)
-            Checkbutton(novprozorec, var=self.n23).grid(row=11, column=2)
+            Checkbutton(novprozorec, var=self.n23, bg=f_i).grid(row=11, column=2)
 
-            Label(novprozorec, text='"ng" as in PING').grid(row=12, column=0)
+            Label(novprozorec, text='"ng" as in PING', bg=f_i).grid(row=12, column=0)
             Entry(novprozorec, textvariable=self.t24, width=e_w).grid(row=12, column=1)
-            Checkbutton(novprozorec, var=self.n24).grid(row=12, column=2)
+            Checkbutton(novprozorec, var=self.n24, bg=f_i).grid(row=12, column=2)
 
-            Label(novprozorec, text='"p" as in PEE').grid(row=13, column=0)
+            Label(novprozorec, text='"p" as in PEE', bg=f_i).grid(row=13, column=0)
             Entry(novprozorec, textvariable=self.t27, width=e_w).grid(row=13, column=1)
-            Checkbutton(novprozorec, var=self.n27).grid(row=13, column=2)
+            Checkbutton(novprozorec, var=self.n27, bg=f_i).grid(row=13, column=2)
 
-            Label(novprozorec, text='"r" as in READ').grid(row=14, column=0)
+            Label(novprozorec, text='"r" as in READ', bg=f_i).grid(row=14, column=0)
             Entry(novprozorec, textvariable=self.t28, width=e_w).grid(row=14, column=1)
-            Checkbutton(novprozorec, var=self.n28).grid(row=14, column=2)
+            Checkbutton(novprozorec, var=self.n28, bg=f_i).grid(row=14, column=2)
 
-            Label(novprozorec, text='"s" as in SEA').grid(row=15, column=0)
+            Label(novprozorec, text='"s" as in SEA', bg=f_i).grid(row=15, column=0)
             Entry(novprozorec, textvariable=self.t29, width=e_w).grid(row=15, column=1)
-            Checkbutton(novprozorec, var=self.n29).grid(row=15, column=2)
+            Checkbutton(novprozorec, var=self.n29, bg=f_i).grid(row=15, column=2)
 
-            Label(novprozorec, text='"sh" as in SHE').grid(row=1, column=tri)
+            Label(novprozorec, text='"sh" as in SHE', bg=f_i).grid(row=1, column=tri)
             Entry(novprozorec, textvariable=self.t30, width=e_w).grid(row=1, column=cetiri)
-            Checkbutton(novprozorec, var=self.n30).grid(row=1, column=pet)
+            Checkbutton(novprozorec, var=self.n30, bg=f_i).grid(row=1, column=pet)
 
-            Label(novprozorec, text='"t" as in TEA').grid(row=2, column=tri)
+            Label(novprozorec, text='"t" as in TEA', bg=f_i).grid(row=2, column=tri)
             Entry(novprozorec, textvariable=self.t31, width=e_w).grid(row=2, column=cetiri)
-            Checkbutton(novprozorec, var=self.n31).grid(row=2, column=pet)
+            Checkbutton(novprozorec, var=self.n31, bg=f_i).grid(row=2, column=pet)
 
-            Label(novprozorec, text='"th" as in THAT').grid(row=3, column=tri)
+            Label(novprozorec, text='"th" as in THAT', bg=f_i).grid(row=3, column=tri)
             Entry(novprozorec, textvariable=self.t32, width=e_w).grid(row=3, column=cetiri)
-            Checkbutton(novprozorec, var=self.n32).grid(row=3, column=pet)
+            Checkbutton(novprozorec, var=self.n32, bg=f_i).grid(row=3, column=pet)
 
-            Label(novprozorec, text='"th" as in THIN').grid(row=4, column=tri)
+            Label(novprozorec, text='"th" as in THIN', bg=f_i).grid(row=4, column=tri)
             Entry(novprozorec, textvariable=self.t10, width=e_w).grid(row=4, column=cetiri)
-            Checkbutton(novprozorec, var=self.n10).grid(row=4, column=pet)
+            Checkbutton(novprozorec, var=self.n10, bg=f_i).grid(row=4, column=pet)
 
-            Label(novprozorec, text='"v" as in VEE').grid(row=5, column=tri)
+            Label(novprozorec, text='"v" as in VEE', bg=f_i).grid(row=5, column=tri)
             Entry(novprozorec, textvariable=self.t35, width=e_w).grid(row=5, column=cetiri)
-            Checkbutton(novprozorec, var=self.n35).grid(row=5, column=pet)
+            Checkbutton(novprozorec, var=self.n35, bg=f_i).grid(row=5, column=pet)
 
-            Label(novprozorec, text='"w" as in WE').grid(row=6, column=tri)
+            Label(novprozorec, text='"w" as in WE', bg=f_i).grid(row=6, column=tri)
             Entry(novprozorec, textvariable=self.t36, width=e_w).grid(row=6, column=cetiri)
-            Checkbutton(novprozorec, var=self.n36).grid(row=6, column=pet)
+            Checkbutton(novprozorec, var=self.n36, bg=f_i).grid(row=6, column=pet)
 
-            Label(novprozorec, text='"y" as in YIELD').grid(row=7, column=tri)
+            Label(novprozorec, text='"y" as in YIELD', bg=f_i).grid(row=7, column=tri)
             Entry(novprozorec, textvariable=self.t37, width=e_w).grid(row=7, column=cetiri)
-            Checkbutton(novprozorec, var=self.n37).grid(row=7, column=pet)
+            Checkbutton(novprozorec, var=self.n37, bg=f_i).grid(row=7, column=pet)
 
-            Label(novprozorec, text='"z" as in ZEE').grid(row=8, column=tri)
+            Label(novprozorec, text='"z" as in ZEE', bg=f_i).grid(row=8, column=tri)
             Entry(novprozorec, textvariable=self.t38, width=e_w).grid(row=8, column=cetiri)
-            Checkbutton(novprozorec, var=self.n38).grid(row=8, column=pet)
+            Checkbutton(novprozorec, var=self.n38, bg=f_i).grid(row=8, column=pet)
 
-            Label(novprozorec, text='"z" as in SEIZURE').grid(row=9, column=tri)
+            Label(novprozorec, text='"z" as in SEIZURE', bg=f_i).grid(row=9, column=tri)
             Entry(novprozorec, textvariable=self.t39, width=e_w).grid(row=9, column=cetiri)
-            Checkbutton(novprozorec, var=self.n39).grid(row=9, column=pet)
+            Checkbutton(novprozorec, var=self.n39, bg=f_i).grid(row=9, column=pet)
 
             # Label(novprozorec).grid(row=19, column=0)
-            Checkbutton(novprozorec, var=self.nsp19, text="doble the 's' at the end of words").grid(row=19, column=0, columnspan=3)
+            Checkbutton(novprozorec, var=self.nsp19, text="doble the 's' at the end of words", bg=f_i).grid(row=19, column=0, columnspan=3)
             novprozorec.resizable(height=0, width=0)
             # menubarnov = Menu(novprozorec)
             # editmenu = Menu(menubarnov, tearoff=0)
@@ -1119,10 +1122,11 @@ class Rule_window(Chechboxes):
             specialni_pravila.focus()
             specialni_pravila.iconbitmap('data/ico/icon2.ico')
             specialni_pravila.bind('<Escape>', lambda e: specialni_pravila.destroy())
+            f_i = "#606060"
 
             self.expandrules(specialni_pravila)
 
-            Button(specialni_pravila, height=1, width=19, text='CLOSE', command=self.close_popout_window).\
+            Button(specialni_pravila, height=1, width=19, text='CLOSE', command=self.close_popout_window, bg=f_i).\
                 place(relx=0, rely=0) #grid(row=0, column=0, sticky=NW)
             specialni_pravila.resizable(height=0, width=0)
 
@@ -1142,7 +1146,8 @@ class Rule_window(Chechboxes):
 
     @staticmethod
     def expandrules(xx):
-        row_one = Frame(xx)
+        f_i = "#606060"
+        row_one = Frame(xx, bg=f_i)
         row_one.pack()
         e_w = 3  # entry_width
         def izkoci_pop():
@@ -1155,84 +1160,84 @@ class Rule_window(Chechboxes):
             xx.config(height=20, width=800)
             ruw.sysht.config(text='0')
 
-        Button(row_one, text='POPOUT', command=izkoci_pop).grid(row=0, column=0)
-        Button(row_one, text='Close', command=zatvori_pop).grid(row=0, column=0, sticky=W)
+        Button(row_one, text='POPOUT', command=izkoci_pop, bg=f_i).grid(row=0, column=0)
+        Button(row_one, text='Close', command=zatvori_pop, bg=f_i).grid(row=0, column=0, sticky=W)
 
-        Label(row_one, text='CHAGE "qu-" to').grid(row=1, column=0)
+        Label(row_one, text='CHAGE "qu-" to', bg=f_i).grid(row=1, column=0)
         Entry(row_one, textvar=chw.tsp1, width=e_w).grid(row=1, column=1)
-        Checkbutton(row_one, var=chw.nsp1).grid(row=1, column=2)
+        Checkbutton(row_one, var=chw.nsp1, bg=f_i).grid(row=1, column=2)
 
-        Label(row_one, text='CHAGE "-nk" to').grid(row=1, column=3)
+        Label(row_one, text='CHAGE "-nk" to', bg=f_i).grid(row=1, column=3)
         Entry(row_one, textvar=chw.tsp2, width=e_w).grid(row=1, column=4)
-        Checkbutton(row_one, var=chw.nsp2).grid(row=1, column=5)
+        Checkbutton(row_one, var=chw.nsp2, bg=f_i).grid(row=1, column=5)
 
-        Label(row_one, text='CHAGE "-o" as in ago to').grid(row=1, column=6)
+        Label(row_one, text='CHAGE "-o" as in ago to', bg=f_i).grid(row=1, column=6)
         Entry(row_one, textvar=chw.tsp3, width=e_w).grid(row=1, column=7)
-        Checkbutton(row_one, var=chw.nsp3).grid(row=1, column=8)
+        Checkbutton(row_one, var=chw.nsp3, bg=f_i).grid(row=1, column=8)
 
-        Label(row_one, text='CHAGE "ou-" before "nd/nt/t"').grid(row=2, column=0)
+        Label(row_one, text='CHAGE "ou-" before "nd/nt/t"', bg=f_i).grid(row=2, column=0)
         Entry(row_one, textvariable=chw.tsp0, width=e_w).grid(row=2, column=1)
-        Checkbutton(row_one, var=chw.nsp0).grid(row=2, column=2)
+        Checkbutton(row_one, var=chw.nsp0, bg=f_i).grid(row=2, column=2)
 
-        Label(row_one, text='CHAGE "schwa"/ə/ in beginig to').grid(row=3, column=0)
+        Label(row_one, text='CHAGE "schwa"/ə/ in beginig to', bg=f_i).grid(row=3, column=0)
         Entry(row_one, textvar=chw.tsp10, width=e_w).grid(row=3, column=1)
-        Checkbutton(row_one, var=chw.nsp10).grid(row=3, column=2)
+        Checkbutton(row_one, var=chw.nsp10, bg=f_i).grid(row=3, column=2)
 
-        Label(row_one, text='/ə/ in the end(longer than 3 letters)').grid(row=4, column=0)
+        Label(row_one, text='/ə/ in the end(longer than 3 letters)', bg=f_i).grid(row=4, column=0)
         Entry(row_one, textvar=chw.tsp11, width=e_w).grid(row=4, column=1)
-        Checkbutton(row_one, var=chw.nsp11).grid(row=4, column=2)
+        Checkbutton(row_one, var=chw.nsp11, bg=f_i).grid(row=4, column=2)
 
-        Label(row_one, text='CHAGE "-еu(yoo)" to').grid(row=2, column=3)
+        Label(row_one, text='CHAGE "-еu(yoo)" to', bg=f_i).grid(row=2, column=3)
         Entry(row_one, textvar=chw.tsp4, width=e_w).grid(row=2, column=4)
-        Checkbutton(row_one, var=chw.nsp4).grid(row=2, column=5)
+        Checkbutton(row_one, var=chw.nsp4, bg=f_i).grid(row=2, column=5)
 
-        Label(row_one, text='CHAGE "k-" before "a,ə,o,u,ä,r,t,l" to').grid(row=2, column=6)
+        Label(row_one, text='CHAGE "k-" before "a,ə,o,u,ä,r,t,l" to', bg=f_i).grid(row=2, column=6)
         Entry(row_one, textvar=chw.tsp5, width=e_w).grid(row=2, column=7)
-        Checkbutton(row_one, var=chw.nsp5).grid(row=2, column=8)
+        Checkbutton(row_one, var=chw.nsp5, bg=f_i).grid(row=2, column=8)
 
-        Label(row_one, text='CHAGE "rr" in "marry" to').grid(row=3, column=3)
+        Label(row_one, text='CHAGE "rr" in "marry" to', bg=f_i).grid(row=3, column=3)
         Entry(row_one, textvar=chw.tsp8, width=e_w).grid(row=3, column=4)
-        Checkbutton(row_one, var=chw.nsp8).grid(row=3, column=5)
+        Checkbutton(row_one, var=chw.nsp8, bg=f_i).grid(row=3, column=5)
 
-        Label(row_one, text='CHAGE "x"/gz/ in "exact" to').grid(row=3, column=6)
+        Label(row_one, text='CHAGE "x"/gz/ in "exact" to', bg=f_i).grid(row=3, column=6)
         Entry(row_one, textvar=chw.tsp9, width=e_w).grid(row=3, column=7)
-        Checkbutton(row_one, var=chw.nsp9).grid(row=3, column=8)
+        Checkbutton(row_one, var=chw.nsp9, bg=f_i).grid(row=3, column=8)
 
-        Label(row_one, text='CHAGE -z plurals to').grid(row=4, column=3)
+        Label(row_one, text='CHAGE -z plurals to', bg=f_i).grid(row=4, column=3)
         Entry(row_one, textvar=chw.tsp13, width=e_w).grid(row=4, column=4)
-        Checkbutton(row_one, var=chw.nsp13).grid(row=4, column=5)
+        Checkbutton(row_one, var=chw.nsp13, bg=f_i).grid(row=4, column=5)
 
-        Label(row_one, text='CHAGE "tio" in "-tion" to').grid(row=5, column=3)
+        Label(row_one, text='CHAGE "tio" in "-tion" to', bg=f_i).grid(row=5, column=3)
         Entry(row_one, textvar=chw.tsp6, width=e_w).grid(row=5, column=4)
-        Checkbutton(row_one, var=chw.nsp6).grid(row=5, column=5)
+        Checkbutton(row_one, var=chw.nsp6, bg=f_i).grid(row=5, column=5)
 
-        Label(row_one, text='CHAGE "sio" in "-sion" to').grid(row=6, column=3)
+        Label(row_one, text='CHAGE "sio" in "-sion" to', bg=f_i).grid(row=6, column=3)
         Entry(row_one, textvar=chw.tsp7, width=e_w).grid(row=6, column=4)
-        Checkbutton(row_one, var=chw.nsp7).grid(row=6, column=5)
+        Checkbutton(row_one, var=chw.nsp7, bg=f_i).grid(row=6, column=5)
 
-        Label(row_one, text='CHAGE -x-/ks/ to').grid(row=4, column=6)
+        Label(row_one, text='CHAGE -x-/ks/ to', bg=f_i).grid(row=4, column=6)
         Entry(row_one, textvar=chw.tsp14, width=e_w).grid(row=4, column=7)
-        Checkbutton(row_one, var=chw.nsp14).grid(row=4, column=8)
+        Checkbutton(row_one, var=chw.nsp14, bg=f_i).grid(row=4, column=8)
 
-        Label(row_one, text='CHAGE -ed /voiced/ to').grid(row=6, column=0)
+        Label(row_one, text='CHAGE -ed /voiced/ to', bg=f_i).grid(row=6, column=0)
         Entry(row_one, textvar=chw.tsp15, width=e_w).grid(row=6, column=1)
-        Checkbutton(row_one, var=chw.nsp15).grid(row=6, column=2)
+        Checkbutton(row_one, var=chw.nsp15, bg=f_i).grid(row=6, column=2)
 
-        Label(row_one, text='CHAGE -ed /voiceless/ to').grid(row=5, column=0)
+        Label(row_one, text='CHAGE -ed /voiceless/ to', bg=f_i).grid(row=5, column=0)
         Entry(row_one, textvar=chw.tsp16, width=e_w).grid(row=5, column=1)
-        Checkbutton(row_one, var=chw.nsp16).grid(row=5, column=2)
+        Checkbutton(row_one, var=chw.nsp16, bg=f_i).grid(row=5, column=2)
 
-        Label(row_one, text='CHAGE -ed /vowle+voiced/ to').grid(row=7, column=0)
+        Label(row_one, text='CHAGE -ed /vowle+voiced/ to', bg=f_i).grid(row=7, column=0)
         Entry(row_one, textvar=chw.tsp17, width=e_w).grid(row=7, column=1)
-        Checkbutton(row_one, var=chw.nsp17).grid(row=7, column=2)
+        Checkbutton(row_one, var=chw.nsp17, bg=f_i).grid(row=7, column=2)
 
-        Label(row_one, text='CHAGE -x/ks/ to').grid(row=5, column=6)
+        Label(row_one, text='CHAGE -x/ks/ to', bg=f_i).grid(row=5, column=6)
         Entry(row_one, textvar=chw.tsp18, width=e_w).grid(row=5, column=7)
-        Checkbutton(row_one, var=chw.nsp18).grid(row=5, column=8)
+        Checkbutton(row_one, var=chw.nsp18, bg=f_i).grid(row=5, column=8)
 
-        Label(row_one, text='CHAGE "of" to').grid(row=6, column=6)
+        Label(row_one, text='CHAGE "of" to', bg=f_i).grid(row=6, column=6)
         Entry(row_one, textvar=chw.tsp12, width=e_w).grid(row=6, column=7)
-        Checkbutton(row_one, var=chw.nsp12).grid(row=6, column=8)
+        Checkbutton(row_one, var=chw.nsp12, bg=f_i).grid(row=6, column=8)
 
 
 
