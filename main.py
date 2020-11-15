@@ -70,17 +70,13 @@ class PrevodGovor:
                     # each_word = (recnik_out.get(wordnumber))
                     if each_word is None and mw.ddump.get() == 0:
                         kraj += '█' + word + '█'
-                    elif each_word is None and mw.ddump.get() == 1:   # TODO: ne zapazva ne namerenite dumi
-                        # ss = ""
-                        # ss +=
-                        with open("MISSING_WORDS/word_dump.txt", "a") as f:
-                            f.write(word + '\n')
+                    elif each_word is None and mw.ddump.get() == 1:
 
-                        with open("MISSING_WORDS/missing_word_list.txt", "a") as fw:
-                            ff = open("MISSING_WORDS/word_dump.txt", "r")
-                            fw.writelines(set(ff))
-                            ff.truncate(0)
-                            ff.close()
+                        with open("MISSING_WORDS/missing_word_list.txt", "a+") as fw:
+                            fw.seek(0)
+                            rewwrt = fw.read().split()
+                            if word not in rewwrt:
+                                fw.write(f"{word}\n")
                         kraj += '█' + word + '█'
                     else:
                         from checkboxes import chw
