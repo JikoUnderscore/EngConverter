@@ -19,6 +19,11 @@ def zaseci(f):
     return wrp
 
 class PrevodGovor:
+    nomera = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    punctuation = '''"'!@#█$%^&*(){}[]|._-`/?:;\,~ \n'''
+
+    with open('data/nester dict.pkl', "rb") as pkfl:
+        recnik_abc = pickle.load(pkfl)
 
     def govorene(self):
         speaker_number = 3
@@ -44,33 +49,35 @@ class PrevodGovor:
             #
             # recnik = dict(zip(spisyk_v, spisyk_vyn))
 
-            with open('data/nester dict.pkl', "rb") as pkfl:
-                recnik_abc = pickle.load(pkfl)
 
 
-            punctuation = '''"'!@#█$%^&*(){}[]|._-`/?:;\,~ \n'''
+
+
+
             spisyk_ot_dumi = re.findall(r"[\w']+|\W", str(pyrvicen_tekst))
             broj_dumi = int(len(spisyk_ot_dumi))
             for x in range(broj_dumi):
                 word = spisyk_ot_dumi[x]
                 # print(f'{word=}')
-                if word in punctuation:
+                if word in self.punctuation:
+                    kraj += word
+                elif  any(map(word.startswith, self.nomera)):
                     kraj += word
                 else:
                     # each_word = recnik.get(word)
-                    each_word = recnik_abc[word[0]].get(word)
+                    each_word = self.recnik_abc[word[0]].get(word)
 
                     # each_word = (recnik_out.get(wordnumber))
                     if each_word is None and mw.ddump.get() == 0:
                         kraj += '█' + word + '█'
-                    elif each_word is None and mw.ddump.get() == 1:
-                        ss = ""
-                        ss += word + '\n'
-                        with open("MISSING_WORDS/word_dump.txt", "a+") as f:
-                            f.write(ss)
+                    elif each_word is None and mw.ddump.get() == 1:   # TODO: ne zapazva ne namerenite dumi
+                        # ss = ""
+                        # ss +=
+                        with open("MISSING_WORDS/word_dump.txt", "a") as f:
+                            f.write(word + '\n')
 
-                        with open("MISSING_WORDS/missing_word_list.txt", "w") as fw:
-                            ff = open("MISSING_WORDS/word_dump.txt", "r+")
+                        with open("MISSING_WORDS/missing_word_list.txt", "a") as fw:
+                            ff = open("MISSING_WORDS/word_dump.txt", "r")
                             fw.writelines(set(ff))
                             ff.truncate(0)
                             ff.close()
@@ -93,7 +100,7 @@ class PrevodGovor:
                                             kraj += adwrd + '/'
                                         else:
                                             kraj += adwrd
-                                elif szs[0] + 'S' in recnik_abc[word[0]].values():
+                                elif szs[0] + 'S' in self.recnik_abc[word[0]].values():
                                     adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                     fowrd = adwrd.replace("S", "SS", 1)
                                     kraj += fowrd
@@ -114,7 +121,7 @@ class PrevodGovor:
                                     kraj += adwrd
                             else:
                                 szs = each_word.split('S', 1)
-                                if szs[0]+'S' in recnik_abc[word[0]].values():
+                                if szs[0]+'S' in self.recnik_abc[word[0]].values():
                                     adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                     kraj += adwrd
                                 else:
@@ -130,7 +137,7 @@ class PrevodGovor:
 
     @zaseci
     def prevod2(self, *args):
-
+        print(args)
         try:
 
             from checkboxes import chw
