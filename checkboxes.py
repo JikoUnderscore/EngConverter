@@ -15,9 +15,9 @@ class Chechboxes:
         (StringVar() for iiI in range(19))
     t40, t41, t42, tr1, tr2, tr3, tr4, t2601, tsp0 = (StringVar() for iiII in range(9))
 
-    tsp1, tsp2, tsp3, tsp4, tsp5, tsp6, tsp7, tsp8, tsp9, tsp10, tsp11, tsp12, tsp13, tsp14, tsp15, tsp16, tsp17, tsp18, tsp19  = \
+    tsp1, tsp2, tsp3, tsp4, tsp5, tsp6, tsp7, tsp8, tsp9, tsp10, tsp11, tsp12, tsp13, tsp14, tsp15, tsp16, tsp17, tsp18, tsp19 = \
         (StringVar() for psp in range(19))
-    nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19  = \
+    nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19 = \
         (IntVar() for ipsp in range(19))
 
     def ch1(self):
@@ -864,8 +864,7 @@ class Rule_window(Chechboxes):
             self.pod_proz = Frame(novprozorec, bg=f_i, height=20, width=800)
             self.pod_proz.grid(row=21, column=0, columnspan=30)
             self.sysht = Label(self.pod_proz, text='0')
-            self.sysht.pack() #place() # relx=0, rely=0
-
+            self.sysht.pack()  # place() # relx=0, rely=0
 
             big_font = font.Font(family="Cooper Black", size="12", weight="normal")
 
@@ -875,9 +874,11 @@ class Rule_window(Chechboxes):
 
             sel_ckt = Button(novprozorec, text='select only filled in', command=self.select_fillin, bg=f_i)
             sel_ckt.grid(row=18, column=17, columnspan=10)
-            selec_btn = Button(novprozorec, text="select all", command=self.select_all, height=1, width=9, font=big_font, bd=5, bg=f_i)
+            selec_btn = Button(novprozorec, text="select all", command=self.select_all, height=1, width=9,
+                               font=big_font, bd=5, bg=f_i)
             selec_btn.grid(row=19, column=17, columnspan=10)
-            deselec_btn = Button(novprozorec, text="deselect all", command=self.deselect_all, height=1, width=9, font=big_font,
+            deselec_btn = Button(novprozorec, text="deselect all", command=self.deselect_all, height=1, width=9,
+                                 font=big_font,
                                  bd=5, bg=f_i)
             deselec_btn.grid(row=20, column=17, columnspan=10)
 
@@ -891,7 +892,8 @@ class Rule_window(Chechboxes):
             e_w = 3  # entry_width
 
             # ------------------ Vowel sounds - short -----------------------------------------
-            Label(novprozorec, text='Short vowels', font=big_font, bg=f_i).grid(row=0, column=10)   # TODO: s 'TAB' da se mesti migastijyt kursor
+            Label(novprozorec, text='Short vowels', font=big_font, bg=f_i).grid(row=0, column=10)
+                                                                        # TODO: s 'TAB' da se mesti migastijyt kursor
             Label(novprozorec, text='"a" as in AT', bg=f_i).grid(row=1, column=10)
             Entry(novprozorec, textvariable=self.t2, width=e_w).grid(row=1, column=11)
             Checkbutton(novprozorec, var=self.n2, bg=f_i).grid(row=1, column=12)
@@ -1094,7 +1096,9 @@ class Rule_window(Chechboxes):
             Checkbutton(novprozorec, var=self.n39, bg=f_i).grid(row=9, column=pet)
 
             # Label(novprozorec).grid(row=19, column=0)
-            Checkbutton(novprozorec, var=self.nsp19, text="doble the 's' at the end of words", bg=f_i).grid(row=19, column=0, columnspan=3)
+            Checkbutton(novprozorec, var=self.nsp19, text="doble the 's' at the end of words", bg=f_i).grid(row=19,
+                                                                                                            column=0,
+                                                                                                            columnspan=3)
             novprozorec.resizable(height=0, width=0)
             # menubarnov = Menu(novprozorec)
             # editmenu = Menu(menubarnov, tearoff=0)
@@ -1126,8 +1130,8 @@ class Rule_window(Chechboxes):
 
             self.expandrules(specialni_pravila)
 
-            Button(specialni_pravila, height=1, width=19, text='CLOSE', command=self.close_popout_window, bg=f_i).\
-                place(relx=0, rely=0) #grid(row=0, column=0, sticky=NW)
+            Button(specialni_pravila, height=1, width=19, text='CLOSE', command=self.close_popout_window, bg=f_i). \
+                place(relx=0, rely=0)  # grid(row=0, column=0, sticky=NW)
             specialni_pravila.resizable(height=0, width=0)
 
     def close_popout_window(self):
@@ -1150,11 +1154,13 @@ class Rule_window(Chechboxes):
         row_one = Frame(xx, bg=f_i)
         row_one.pack()
         e_w = 3  # entry_width
+
         def izkoci_pop():
             ruw.spec()
             ruw.sysht.config(text='3')
             row_one.destroy()
             xx.config(height=20, width=800)
+
         def zatvori_pop():
             row_one.destroy()
             xx.config(height=20, width=800)
@@ -1238,7 +1244,6 @@ class Rule_window(Chechboxes):
         Label(row_one, text='CHAGE "of" to', bg=f_i).grid(row=6, column=6)
         Entry(row_one, textvar=chw.tsp12, width=e_w).grid(row=6, column=7)
         Checkbutton(row_one, var=chw.nsp12, bg=f_i).grid(row=6, column=8)
-
 
 
 chw = Chechboxes()

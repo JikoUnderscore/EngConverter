@@ -1,22 +1,26 @@
+import os
+import pickle
+import subprocess as subpc
+from datetime import datetime
+from threading import Timer
 from tkinter import *
 from tkinter import (messagebox, filedialog, colorchooser)
 import re
 import win32com.client as wc
-from threading import Timer
-import subprocess as subpc
-from datetime import datetime
-import os
-import pickle
+
 
 def zaseci(f):
     from time import time
+
     def wrp(*args, **kwargs):
         start = time()
         rf = f(*args, **kwargs)
         total = time() - start
         print("RUN TIME:", total)
         return rf
+
     return wrp
+
 
 class PrevodGovor:
     nomera = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
@@ -49,11 +53,6 @@ class PrevodGovor:
             #
             # recnik = dict(zip(spisyk_v, spisyk_vyn))
 
-
-
-
-
-
             spisyk_ot_dumi = re.findall(r"[\w']+|\W", str(pyrvicen_tekst))
             broj_dumi = int(len(spisyk_ot_dumi))
             for x in range(broj_dumi):
@@ -61,7 +60,7 @@ class PrevodGovor:
                 # print(f'{word=}')
                 if word in self.punctuation:
                     kraj += word
-                elif  any(map(word.startswith, self.nomera)):
+                elif any(map(word.startswith, self.nomera)):
                     kraj += word
                 else:
                     # each_word = recnik.get(word)
@@ -81,7 +80,9 @@ class PrevodGovor:
                     else:
                         from checkboxes import chw
                         if chw.nsp19.get() == 1:
-                            z = bool(re.compile(r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(word))
+                            z = bool(re.compile(
+                                r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(
+                                word))
                             zs = bool(each_word.endswith('S'))
                             zz = bool(each_word.count('S') >= 2)
                             if z and zs is True and zz is False:
@@ -91,7 +92,7 @@ class PrevodGovor:
                                 if '/' in each_word:
                                     spl = each_word.split('/')
                                     for index, wrd in enumerate(spl, start=1):
-                                        adwrd = wrd+'S'
+                                        adwrd = wrd + 'S'
                                         if index < len(spl):
                                             kraj += adwrd + '/'
                                         else:
@@ -117,7 +118,7 @@ class PrevodGovor:
                                     kraj += adwrd
                             else:
                                 szs = each_word.split('S', 1)
-                                if szs[0]+'S' in self.recnik_abc[word[0]].values():
+                                if szs[0] + 'S' in self.recnik_abc[word[0]].values():
                                     adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                     kraj += adwrd
                                 else:
@@ -161,8 +162,8 @@ class PrevodGovor:
             p11 = re.sub('ɛ', chw.ch11(), p10)
             p12 = re.sub('®', chw.ch12(), p11)
 
-            p13 = re.sub('(É)(\W)', fr"{chw.ch13()}\2", p12)
-            p1301 = re.sub('(É)(\w)', fr"{chw.ch1301()}\2", p13)
+            p13 = re.sub(r'(É)(\W)', fr"{chw.ch13()}\2", p12)
+            p1301 = re.sub(r'(É)(\w)', fr"{chw.ch1301()}\2", p13)
             p14 = re.sub('F', chw.ch14(), p1301)
             p15 = re.sub('G', chw.ch15(), p14)
             p16 = re.sub('X', chw.ch16(), p15)
@@ -214,9 +215,9 @@ class PrevodGovor:
             p41004 = re.sub(r"ђ", chw.sp_ett(), p41003)
             p41005 = re.sub(r"ћ", chw.sp_edd(), p41004)
 
-                # TODO: " 's " da se izpisva v prevoda, i da moze da se promenja. Zamestvane v fajla ili nov kod
+            # TODO: " 's " da se izpisva v prevoda, i da moze da se promenja. Zamestvane v fajla ili nov kod
 
-                #  "ss,se,ce," v kraja da dumata da se oromenjat v "ss"
+            #  "ss,se,ce," v kraja da dumata da se oromenjat v "ss"
 
             nummmm = mw.remove_dash()
             regex = r"(\w+)(/(\w+))(/(\w+)/)((\w+))|(\w+)(/(\w+))(/(\w+))|(\w+)(/(\w+))"
@@ -233,7 +234,7 @@ class PrevodGovor:
 
             # removing_extra_spaces = re.sub("([a-z]|[A-Z])\s([.,!?:;█])", r"\1\2", pl4)
 
-            end_text = re.sub("(^|[.\n?!])\s*([a-zA-Z])", lambda p: p.group(0).upper(), ogtext1)
+            end_text = re.sub(r"(^|[.\n?!])\s*([a-zA-Z])", lambda p: p.group(0).upper(), ogtext1)
 
             mw.textbox2.delete(0.0, END)
             mw.textbox2.insert(0.0, end_text)
@@ -255,7 +256,7 @@ class MenuBar:
         filemenu.add_command(label='Load rules as...', command=self.load_var)
         filemenu.add_separator()
         filemenu.add_command(label='Open...', command=rodi.open_new)
-        filemenu.add_command(label='Save output txt as...',)  # TODO: napravi koda tuka
+        filemenu.add_command(label='Save output txt as...')  # TODO: napravi koda tuka
         filemenu.add_separator()
         filemenu.add_command(label="Exit", command=lambda: root.destroy())
         menubar.add_cascade(label="File", menu=filemenu)
@@ -268,7 +269,7 @@ class MenuBar:
         editmenu.add_command(label="Paste", accelerator="Ctrl+V",
                              command=lambda: root.focus_get().event_generate('<<Paste>>'))
         editmenu.add_command(label="Select all", accelerator="Ctrl+A",
-                                     command=lambda: root.focus_get().tag_add("sel", "1.0", "end"))
+                             command=lambda: root.focus_get().tag_add("sel", "1.0", "end"))
         editmenu.add_separator()
         editmenu.add_command(label="Undo", accelerator="Ctrl+Z", command=rodi.ent_txt.edit_undo)
         editmenu.add_command(label="Redo", accelerator="Ctrl+Y", command=rodi.ent_txt.edit_redo)
@@ -278,15 +279,15 @@ class MenuBar:
         #
         # menubar.add_cascade(label="View", menu=View)
 
-        Manage = Menu(menubar, tearoff=0)
-        Manage.add_checkbutton(label='Save not found words', var=rodi.ddump)
-        Manage.add_command(label='Update dump number !!!', command=rodi.dump_filen_update)
-        Manage.add_command(label='Open dump file...', command=rodi.otvori_dump_file)
-        Manage.add_separator()
-        Manage.add_checkbutton(label='enable auto converter', var=rodi.ccc, command=self.ssttaartt)
-        Manage.add_separator()
-        Manage.add_checkbutton(label='Synchronize vertical scrolling', command=rodi.sinc_scroll, var=rodi.sinc_gh)
-        menubar.add_cascade(label="Options", menu=Manage)
+        manage = Menu(menubar, tearoff=0)
+        manage.add_checkbutton(label='Save not found words', var=rodi.ddump)
+        manage.add_command(label='Update dump number !!!', command=rodi.dump_filen_update)
+        manage.add_command(label='Open dump file...', command=rodi.otvori_dump_file)
+        manage.add_separator()
+        manage.add_checkbutton(label='enable auto converter', var=rodi.ccc, command=self.ssttaartt)
+        manage.add_separator()
+        manage.add_checkbutton(label='Synchronize vertical scrolling', command=rodi.sinc_scroll, var=rodi.sinc_gh)
+        menubar.add_cascade(label="Options", menu=manage)
 
         somenu = Menu(menubar, tearoff=0)
         somenu.add_command(label="Do nothing...", command=rodi.mnoff)
@@ -457,9 +458,9 @@ class MenuBar:
     def save_var(self):
         from checkboxes import chw
         sf = filedialog.asksaveasfilename(
-                initialfile="Untitle.dat",
-                defaultextension=".dat",
-                filetypes=[("All files", "*.*"),
+            initialfile="Untitle.dat",
+            defaultextension=".dat",
+            filetypes=[("All files", "*.*"),
                        ("Data files", "*.dat")])
         with open(sf, "w", encoding='utf-8') as s:
             s.write(str(chw.ch1()) + ' ')
@@ -603,8 +604,8 @@ class MenuBar:
             defaultextension=".dat",
             filetypes=[("All files", "*.*"),
                        ("Text files", "*.dat")])
-        with open(lf, "r", encoding='utf-8') as l:
-            ll = l.readlines()
+        with open(lf, "r", encoding='utf-8') as loadf:
+            ll = loadf.readlines()
             for i in range(0, len(ll)):
                 if i == 0:
                     chw.t1.set(ll[i].split()[0])
@@ -811,6 +812,7 @@ class MenuBar:
 
 class MainWindow:
     jj = 0
+
     def __init__(self, window):
         window.title("Text converter - INPROGRESS BUILD")
         window.geometry("1280x630+150+100")
@@ -826,24 +828,25 @@ class MainWindow:
         self.f_i = "#606060"
         window.config(bg=self.f_i)
 
-        self.pyrvi_red = Frame(window, bg=self.f_i)     #, bg='red'
+        self.pyrvi_red = Frame(window, bg=self.f_i)  # , bg='red'
         self.pyrvi_red.pack(fill=X, side=TOP)
-        self.vtori_red = Frame(window, bg=self.f_i)      #, bg='black'
+        self.vtori_red = Frame(window, bg=self.f_i)  # , bg='black'
         self.vtori_red.pack(fill=X, side=TOP)
-        self.treti_red = Frame(window, bg=self.f_i)     # , bg='blue'
+        self.treti_red = Frame(window, bg=self.f_i)  # , bg='blue'
         self.treti_red.pack(side=TOP)
-        self.cetvyrti_red = Frame(window, bg=self.f_i)    # , bg='yellow'
+        self.cetvyrti_red = Frame(window, bg=self.f_i)  # , bg='yellow'
         self.cetvyrti_red.pack(fill=X, side=TOP)
 
         self.tl = Label(self.pyrvi_red, text="Enter Text Below:", font=font_specs, bg=self.f_i)
         self.tl.pack(expand=True, side=LEFT, anchor=SE)
-        self.b1 = Button(self.pyrvi_red, state=NORMAL, text="Enter!", command=pr.prevod2, height=1, width=8, font=("Times New Roman", 16, "bold"), bg=self.f_i)
+        self.b1 = Button(self.pyrvi_red, state=NORMAL, text="Enter!", command=pr.prevod2, height=1, width=8,
+                         font=("Times New Roman", 16, "bold"), bg=self.f_i)
         self.b1.pack(expand=True, side=LEFT)
 
         self.tr = Label(self.pyrvi_red, text="Output Text Below:", font=font_specs, bg=self.f_i)
         self.tr.pack(expand=True, side=LEFT, anchor=SW)
 
-        self.ent_txt = Text(self.vtori_red, undo=True, wrap=WORD)    # ,  width=78, height=24,
+        self.ent_txt = Text(self.vtori_red, undo=True, wrap=WORD)  # ,  width=78, height=24,
         self.ent_txt.pack(expand=True, side=LEFT, anchor=E)
         self.scr_br = Scrollbar(self.vtori_red, orient="vertical")
         self.scr_br.pack(side=LEFT, fill=Y)
@@ -873,19 +876,27 @@ class MainWindow:
         self.dump.grid(row=1, column=20, sticky=E, padx=200)
 
         # Label(self.cetvyrti_red, text="Raw Text Below:").pack(side=LEFT)
-        self.btr = Button(self.cetvyrti_red, text="Show raw text!", command=lambda: [self.textboxraw.delete(0.0, END), self.textboxraw.insert(0.0, pr.prevod())], bg=self.f_i)
+        self.btr = Button(self.cetvyrti_red, text="Show raw text!",
+                          command=lambda: [self.textboxraw.delete(0.0, END), self.textboxraw.insert(0.0, pr.prevod())],
+                          bg=self.f_i)
         self.btr.pack(side=LEFT)
         self.textboxraw = Text(self.cetvyrti_red, width=50, height=2, wrap=WORD)
         self.textboxraw.pack(side=LEFT)
         from checkboxes import ruw
-        self.cbt = Button(self.cetvyrti_red, text="Open custom \n letters window!", command=lambda: [ruw.open_window(), self.tgl_btn()], font=("Times New Roman", 12, "bold"), bg=self.f_i)
+        self.cbt = Button(self.cetvyrti_red, text="Open custom \n letters window!",
+                          command=lambda: [ruw.open_window(), self.tgl_btn()], font=("Times New Roman", 12, "bold"),
+                          bg=self.f_i)
         self.cbt.pack(side=RIGHT)
 
         self.desen_buton = Menu(window, tearoff=False)
-        self.desen_buton.add_command(label="Cut", accelerator="Ctrl+X", command=lambda: root.focus_get().event_generate('<<Cut>>'))
-        self.desen_buton.add_command(label="Copy", accelerator="Ctrl+C", command=lambda: root.focus_get().event_generate('<<Copy>>'))
-        self.desen_buton.add_command(label="Paste", accelerator="Ctrl+V", command=lambda: root.focus_get().event_generate('<<Paste>>'))
-        self.desen_buton.add_command(label="Select all", accelerator="Ctrl+A", command=lambda: root.focus_get().tag_add("sel", "1.0", "end"))
+        self.desen_buton.add_command(label="Cut", accelerator="Ctrl+X",
+                                     command=lambda: root.focus_get().event_generate('<<Cut>>'))
+        self.desen_buton.add_command(label="Copy", accelerator="Ctrl+C",
+                                     command=lambda: root.focus_get().event_generate('<<Copy>>'))
+        self.desen_buton.add_command(label="Paste", accelerator="Ctrl+V",
+                                     command=lambda: root.focus_get().event_generate('<<Paste>>'))
+        self.desen_buton.add_command(label="Select all", accelerator="Ctrl+A",
+                                     command=lambda: root.focus_get().tag_add("sel", "1.0", "end"))
 
         self.ent_txt.bind('<Button-3>', self.desen_btn)
         self.textbox2.bind('<Button-3>', self.desen_btn)
@@ -971,13 +982,13 @@ class MainWindow:
             c += 1
 
     def open_new(self):
-        self.fname = filedialog.askopenfilename(
+        fname = filedialog.askopenfilename(
             defaultextension=".txt",
             filetypes=[("All files", "*.*"),
                        ("Text files", "*.txt")])
-        if self.fname:
+        if fname:
             self.ent_txt.delete(1.0, END)
-            with open(self.fname, "r") as f:
+            with open(fname, "r") as f:
                 self.ent_txt.insert(1.0, f.read())
 
     def sinc_scroll(self):
