@@ -21,6 +21,22 @@ def zaseci(f):
 
     return wrp
 
+def profile(fnc):
+    import cProfile, pstats, io
+
+    def iner(*args, **kwargs):
+        pr = cProfile.Profile()
+        pr.enable()
+        retval = fnc(*args, **kwargs)
+        pr.disable()
+        s = io.StringIO()
+        sortby = 'cumulative'
+        ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+        ps.print_stats()
+        print(s.getvalue())
+        return retval
+
+    return iner
 
 class PrevodGovor:
     nomera = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
@@ -29,6 +45,7 @@ class PrevodGovor:
     with open('data/nester dict.pkl', "rb") as pkfl:
         recnik_abc = pickle.load(pkfl)
 
+    @profile
     def govorene(self):
         speaker_number = 3
         spk = wc.Dispatch("SAPI.SpVoice")
@@ -57,16 +74,15 @@ class PrevodGovor:
             broj_dumi = int(len(spisyk_ot_dumi))
             for x in range(broj_dumi):
                 word = spisyk_ot_dumi[x]
-                # print(f'{word=}')
+                from checkboxes import chw
                 if word in self.punctuation:
                     kraj += word
                 elif any(map(word.startswith, self.nomera)):
                     kraj += word
+                elif chw.nsp20.get() == 1 and word in chw.excld():
+                        kraj += word
                 else:
-                    # each_word = recnik.get(word)
                     each_word = self.recnik_abc[word[0]].get(word)
-
-                    # each_word = (recnik_out.get(wordnumber))
                     if each_word is None and mw.ddump.get() == 0:
                         kraj += '█' + word + '█'
                     elif each_word is None and mw.ddump.get() == 1:
@@ -78,7 +94,6 @@ class PrevodGovor:
                                 fw.write(f"{word}\n")
                         kraj += '█' + word + '█'
                     else:
-                        from checkboxes import chw
                         if chw.nsp19.get() == 1:
                             z = bool(re.compile(
                                 r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(
@@ -210,8 +225,8 @@ class PrevodGovor:
             pl13 = re.sub(r'ɣ', chw.sp_x_end(), pl12)
 
             p41001 = re.sub('ə', chw.ch41(), pl13)
-            p41002 = re.sub(r'\büv\b', fr'{chw.sp_offme()}', p41001)
-            p41003 = re.sub(r"ʔћ", chw.sp_eedd(), p41002)
+            # p41002 = re.sub(fr"\b{chw.ch3()}{chw.ch35()}\b", fr'{chw.sp_offme()}', p41001)
+            p41003 = re.sub(r"ʔћ", chw.sp_eedd(), p41001)
             p41004 = re.sub(r"ђ", chw.sp_ett(), p41003)
             p41005 = re.sub(r"ћ", chw.sp_edd(), p41004)
 
@@ -602,8 +617,7 @@ class MenuBar:
         from checkboxes import chw
         lf = filedialog.askopenfilename(
             defaultextension=".dat",
-            filetypes=[("All files", "*.*"),
-                       ("Text files", "*.dat")])
+            filetypes=[("Data files", "*.dat")])
         with open(lf, "r", encoding='utf-8') as loadf:
             ll = loadf.readlines()
             for i in range(0, len(ll)):

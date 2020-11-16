@@ -15,10 +15,10 @@ class Chechboxes:
         (StringVar() for iiI in range(19))
     t40, t41, t42, tr1, tr2, tr3, tr4, t2601, tsp0 = (StringVar() for iiII in range(9))
 
-    tsp1, tsp2, tsp3, tsp4, tsp5, tsp6, tsp7, tsp8, tsp9, tsp10, tsp11, tsp12, tsp13, tsp14, tsp15, tsp16, tsp17, tsp18, tsp19 = \
-        (StringVar() for psp in range(19))
-    nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19 = \
-        (IntVar() for ipsp in range(19))
+    tsp1, tsp2, tsp3, tsp4, tsp5, tsp6, tsp7, tsp8, tsp9, tsp10, tsp11, tsp12, tsp13, tsp14, tsp15, tsp16, tsp17, tsp18, tsp19, tsp20 = \
+        (StringVar() for psp in range(20))
+    nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19, nsp20 = \
+        (IntVar() for ipsp in range(20))
 
     def ch1(self):
         if self.n1.get() == 1:
@@ -834,6 +834,14 @@ class Chechboxes:
             s = 'ks'
             return s
 
+    #   ------------------------- EXCLUDE -------------------------------------------------
+    def excld(self):
+
+        s = self.tsp20.get().lower()
+
+        return s.split()
+
+
 
 class Rule_window(Chechboxes):
 
@@ -1241,9 +1249,13 @@ class Rule_window(Chechboxes):
         Entry(row_one, textvar=chw.tsp18, width=e_w).grid(row=5, column=7)
         Checkbutton(row_one, var=chw.nsp18, bg=f_i).grid(row=5, column=8)
 
-        Label(row_one, text='CHAGE "of" to', bg=f_i).grid(row=6, column=6)
+        Label(row_one, text='......', bg=f_i).grid(row=6, column=6)
         Entry(row_one, textvar=chw.tsp12, width=e_w).grid(row=6, column=7)
         Checkbutton(row_one, var=chw.nsp12, bg=f_i).grid(row=6, column=8)
+
+        Label(row_one, text='ENTER excludet words', bg=f_i).grid(row=8, column=0)
+        Entry(row_one, textvar=chw.tsp20, width=35).grid(row=9, column=0, columnspan=3)
+        Checkbutton(row_one, var=chw.nsp20, bg=f_i).grid(row=8, column=1)
 
 
 chw = Chechboxes()
