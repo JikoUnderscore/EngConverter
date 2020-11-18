@@ -838,8 +838,8 @@ class Chechboxes:
     def excld(self):
 
         s = self.tsp20.get().lower()
-
-        return s.split()
+        ss = s.replace(', ', ' ').replace(',', ' ')
+        return ss.split()
 
 
 
