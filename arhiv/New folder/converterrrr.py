@@ -1,11 +1,11 @@
 from tqdm import tqdm
 import pickle
 
-with open('test/dumi.txt', "r", encoding='utf-8') as file:
+with open('test/NEWdumi.txt', "r", encoding='utf-8') as file:
     spisyk_v = file.read().split()
 
 
-with open('test/outfonemi.txt', "r", encoding='utf-8') as file2:
+with open('test/NEWfonemi.txt', "r", encoding='utf-8') as file2:
     spisyk_vyn = file2.read().split()
 
 

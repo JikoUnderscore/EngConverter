@@ -10,13 +10,17 @@ import win32com.client as wc
 
 
 def zaseci(f):
-    from time import time
+    # from time import time
+    from time import perf_counter
 
     def wrp(*args, **kwargs):
-        start = time()
+        # start2 = time()
+        start = perf_counter()
         rf = f(*args, **kwargs)
-        total = time() - start
+        # total2 = time() - start2
+        total = perf_counter() - start
         print("RUN TIME:", total)
+        # print(total2)
         return rf
 
     return wrp
@@ -130,6 +134,8 @@ class PrevodGovor:
                             else:
                                 adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                                 kraj += adwrd
+                        elif z is False and zs is True and zz is False or z is False and zs is False and zz is False:
+                            kraj += each_word
                         else:
                             szs = each_word.split('S', 1)
                             if szs[0] + 'S' in self.recnik_abc[word[0]].values():
@@ -166,7 +172,7 @@ class PrevodGovor:
             p2 = re.sub('Æ', chw.ch2(), p1)
             p3 = re.sub('ʌ', chw.ch3(), p2)
             p4 = re.sub('ɔ', chw.ch4(), p3)
-            p501 = re.sub('(Á)(NT|ND|T)', fr"{chw.sp_oundt()}\2", p4)
+            p501 = re.sub('(Á)(NT|ND|T|L)', fr"{chw.sp_oundt()}\2", p4)
             p5 = re.sub('Á', chw.ch5(), p501)
             p6 = re.sub('Í', chw.ch6(), p5)
             p7 = re.sub('B', chw.ch7(), p6)
@@ -176,8 +182,8 @@ class PrevodGovor:
             p11 = re.sub('ɛ', chw.ch11(), p10)
             p12 = re.sub('®', chw.ch12(), p11)
 
-            p13 = re.sub(r'(É)(\W)', fr"{chw.ch13()}\2", p12)
-            p1301 = re.sub(r'(É)(\w)', fr"{chw.ch1301()}\2", p13)
+            p13 = re.sub('É', chw.ch13(), p12)
+            p1301 = re.sub('È', chw.ch1301(), p13)
             p14 = re.sub('F', chw.ch14(), p1301)
             p15 = re.sub('G', chw.ch15(), p14)
             p16 = re.sub('X', chw.ch16(), p15)
@@ -190,8 +196,8 @@ class PrevodGovor:
             p23 = re.sub('N', chw.ch23(), p22)
             p24 = re.sub('Ñ', chw.ch24(), p23)
             p25 = re.sub('Ö', chw.ch25(), p24)
-            p26 = re.sub(r'(µ)(\W)', fr"{chw.ch26()}\2", p25)
-            p2601 = re.sub(r'(µ)(\w)', fr"{chw.ch2601()}\2", p26)
+            p26 = re.sub('λ', chw.ch26(), p25)
+            p2601 = re.sub('µ', chw.ch2601(), p26)
             p27 = re.sub('P', chw.ch27(), p2601)
             p28 = re.sub('R', chw.ch28(), p27)
             p29 = re.sub('S', chw.ch29(), p28)
@@ -214,13 +220,13 @@ class PrevodGovor:
             pl3 = re.sub(r'oa\b', fr"{chw.sp_ago()}", pl2)
             pl4 = re.sub(r'(\w)(yoo)', fr"\1{chw.sp_yoo()}", pl3)
             pl5 = re.sub(fr"({chw.ch20()})([a|əouärtl])", fr"{chw.sp_ka_ko_ku()}\2", pl4)
-            pl6 = re.sub(r'sh(\w)(.)\b', fr"{chw.sp_tion()}\2", pl5)
-            pl7 = re.sub(r'zh(\w)(.)\b', fr"{chw.sp_sion()}\2", pl6)
-            pl8 = re.sub(r'([əouwieya])r([əouwieya])', fr"\1{chw.sp_orro()}\2", pl7)
+            pl6 = re.sub(fr"{chw.ch30()}ə({chw.ch23()}\b)", fr"{chw.sp_tion()}\1", pl5)
+            pl7 = re.sub(fr"{chw.ch39()}ə({chw.ch23()}\b)", fr"{chw.sp_sion()}\1", pl6)
+            pl8 = re.sub(r'([əouwieya])r([əouwieya])', fr"\1{chw.sp_orro()}\2", pl7)  # TODO: 'rr' after short vowel when vowel sound is retained
             pl9 = re.sub(r'(gz)(\w)', fr"{chw.sp_egzx()}\2", pl8)
             pl10 = re.sub(r'\bə', fr"{chw.sp_a_bout()}", pl9)
             pl11 = re.sub(r'([a-z][a-z][a-z])(ə\b)', fr"\1{chw.sp_sof_a()}", pl10)
-            pl12 = re.sub(r'ks(\w)', fr'{chw.sp_kxs()}\1', pl11)
+            pl12 = re.sub(r'ks(\w)', fr'{chw.sp_kxs()}\1', pl11)                # TODO: exsit [exit]
             pl13 = re.sub(r'ɣ', chw.sp_x_end(), pl12)
 
             p41001 = re.sub('ə', chw.ch41(), pl13)
@@ -247,8 +253,17 @@ class PrevodGovor:
                 ogtext1 = re.sub(regex, r"\7\12\15", p41005)
 
             # removing_extra_spaces = re.sub("([a-z]|[A-Z])\s([.,!?:;█])", r"\1\2", pl4)
+            if chw.nsp21.get() == 1:
+                bsrule1 = re.sub(r"(ai(a|o|u|e|i))", r"a\2", ogtext1)
+                bsrule2 = re.sub(r"(ee(a|o|u|e|i))", r"e\2", bsrule1)
+                bsrule3 = re.sub(r"(ie(a|o|u|e|i))", r"i\2", bsrule2)
+                bsrule4 = re.sub(r"(oa(a|o|u|e|i))", r"o-\2", bsrule3)
+                bsrule5 = re.sub(r"(ue(a|o|u|e|i))", r"u\2", bsrule4)
+                ogtext1 = bsrule5
 
             end_text = re.sub(r"(^|[.\n?!])\s*([a-zA-Z])", lambda p: p.group(0).upper(), ogtext1)
+
+
 
             mw.textbox2.delete(0.0, END)
             mw.textbox2.insert(0.0, end_text)
@@ -283,7 +298,7 @@ class MenuBar:
         editmenu.add_command(label="Paste", accelerator="Ctrl+V",
                              command=lambda: root.focus_get().event_generate('<<Paste>>'))
         editmenu.add_command(label="Select all", accelerator="Ctrl+A",
-                             command=lambda: root.focus_get().tag_add("sel", "1.0", "end"))
+                             command=lambda: root.focus_get().event_generate('<<SelectAll>>'))
         editmenu.add_separator()
         editmenu.add_command(label="Undo", accelerator="Ctrl+Z", command=rodi.ent_txt.edit_undo)
         editmenu.add_command(label="Redo", accelerator="Ctrl+Y", command=rodi.ent_txt.edit_redo)
@@ -911,7 +926,7 @@ class MainWindow:
         self.textboxraw.pack(side=LEFT)
 
         self.cbt = Button(self.cetvyrti_red, text="Open custom \n letters window!",
-                          command=lambda: [self.otvori_nov_prozorec(), self.tgl_btn()], font=("Times New Roman", 12, "bold"),
+                          command=self.tgl_btn, font=("Times New Roman", 12, "bold"),
                           bg=self.f_i)
         self.cbt.pack(side=RIGHT)
 
@@ -935,9 +950,6 @@ class MainWindow:
         self.lnta.place(anchor=S, relx=0.50, rely=1, relwidth=1)
         self.menubar = MenuBar(self)
 
-    def otvori_nov_prozorec(self):
-        from checkboxes import ruw
-        ruw.open_window()
 
     def desen_btn(self, ev):
         self.desen_buton.tk_popup(ev.x_root, ev.y_root)
@@ -970,6 +982,7 @@ class MainWindow:
 
     def tgl_btn(self):
         from checkboxes import ruw
+        ruw.open_window()
         self.cbt.config(text='Toggle custom \n letters window!', command=ruw.toggle_window)
 
     def auto_prev(self):

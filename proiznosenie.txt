@@ -11,6 +11,7 @@
         ɛ	Ed	EH D
         ®	hurt	HH ER T
         É	ate	EY T
+		È   play
         F 	fee	F IY
         G 	green	G R IY N
         X	he	HH IY
@@ -23,7 +24,8 @@
         N 	knee	N IY
         Ñ	ping	P IH NG
         Ö	oat	OW T
-        µ	toy	T OY
+        µ 	boy	B OY
+		λ   toyshop
         P 	pee	P IY
         R 	read	R IY D
         S 	sea	S IY

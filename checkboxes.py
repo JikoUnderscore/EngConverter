@@ -1,6 +1,22 @@
 from tkinter import *
 from tkinter import font
 
+def profile(fnc):
+    import cProfile, pstats, io
+
+    def iner(*args, **kwargs):
+        pr = cProfile.Profile()
+        pr.enable()
+        retval = fnc(*args, **kwargs)
+        pr.disable()
+        s = io.StringIO()
+        sortby = 'cumtime'
+        ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+        ps.print_stats()
+        print(s.getvalue())
+        return retval
+
+    return iner
 
 class Chechboxes:
     n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n1301, n14, n15, n16, n17, n18, n19, n20 = \
@@ -14,11 +30,12 @@ class Chechboxes:
     t21, t22, t23, t24, t25, t26, t27, t28, t29, t30, t31, t32, t33, t34, t35, t36, t37, t38, t39 = \
         (StringVar() for iiI in range(19))
     t40, t41, t42, tr1, tr2, tr3, tr4, t2601, tsp0 = (StringVar() for iiII in range(9))
-
+                                                                        #DEAD                                            DEAD
     tsp1, tsp2, tsp3, tsp4, tsp5, tsp6, tsp7, tsp8, tsp9, tsp10, tsp11, tsp12, tsp13, tsp14, tsp15, tsp16, tsp17, tsp18, tsp19, tsp20 = \
         (StringVar() for psp in range(20))
-    nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19, nsp20 = \
-        (IntVar() for ipsp in range(20))
+                                                                        #DEAD
+    nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19, nsp20, nsp21 = \
+        (IntVar() for ipsp in range(21))
 
     def ch1(self):
         if self.n1.get() == 1:
@@ -121,7 +138,7 @@ class Chechboxes:
             c1 = self.t13.get()
             return c1
         else:
-            c2 = "ay"
+            c2 = "ai"
             return c2
 
     def ch1301(self):
@@ -129,7 +146,7 @@ class Chechboxes:
             c1 = self.t1301.get()
             return c1
         else:
-            c2 = "ai"
+            c2 = "ay"
             return c2
 
     def ch14(self):
@@ -777,7 +794,7 @@ class Chechboxes:
         else:
             s = 'ə'
             return s
-
+    # NOT USED
     def sp_offme(self):
         if self.nsp12.get() == 1:
             s = self.tsp12.get()
@@ -842,7 +859,6 @@ class Chechboxes:
         return ss.split()
 
 
-
 class Rule_window(Chechboxes):
 
     def toggle_window(self):
@@ -853,6 +869,7 @@ class Rule_window(Chechboxes):
         elif x == '1':
             novprozorec.destroy()
 
+    @profile
     def open_window(self):
         global novprozorec
 
@@ -925,11 +942,11 @@ class Rule_window(Chechboxes):
             # ------------------ Vowel sounds - long -----------------------------------------
 
             Label(novprozorec, text='Long vowels', font=big_font, bg=f_i).grid(row=6, column=10)
-            Label(novprozorec, text='"ay" as in MAY', bg=f_i).grid(row=7, column=10)
+            Label(novprozorec, text='"a" as in CATE', bg=f_i).grid(row=7, column=10)
             Entry(novprozorec, textvariable=self.t13, width=e_w).grid(row=7, column=11)
             Checkbutton(novprozorec, var=self.n13, bg=f_i).grid(row=7, column=12)
 
-            Label(novprozorec, text='"ai" as in MAID', bg=f_i).grid(row=7, column=13)
+            Label(novprozorec, text='"ay" as in PAYDAY', bg=f_i).grid(row=7, column=13)
             Entry(novprozorec, textvariable=self.t1301, width=e_w).grid(row=7, column=14)
             Checkbutton(novprozorec, var=self.n1301, bg=f_i).grid(row=7, column=15)
 
@@ -1104,9 +1121,6 @@ class Rule_window(Chechboxes):
             Checkbutton(novprozorec, var=self.n39, bg=f_i).grid(row=9, column=pet)
 
             # Label(novprozorec).grid(row=19, column=0)
-            Checkbutton(novprozorec, var=self.nsp19, text="doble the 's' at the end of words", bg=f_i).grid(row=19,
-                                                                                                            column=0,
-                                                                                                            columnspan=3)
             novprozorec.resizable(height=0, width=0)
             # menubarnov = Menu(novprozorec)
             # editmenu = Menu(menubarnov, tearoff=0)
@@ -1189,7 +1203,7 @@ class Rule_window(Chechboxes):
         Entry(row_one, textvar=chw.tsp3, width=e_w).grid(row=1, column=7)
         Checkbutton(row_one, var=chw.nsp3, bg=f_i).grid(row=1, column=8)
 
-        Label(row_one, text='CHAGE "ou-" before "nd/nt/t"', bg=f_i).grid(row=2, column=0)
+        Label(row_one, text='CHAGE "ou-" before "nd/nt/t/l"', bg=f_i).grid(row=2, column=0)
         Entry(row_one, textvariable=chw.tsp0, width=e_w).grid(row=2, column=1)
         Checkbutton(row_one, var=chw.nsp0, bg=f_i).grid(row=2, column=2)
 
@@ -1256,6 +1270,9 @@ class Rule_window(Chechboxes):
         Label(row_one, text='ENTER excludet words', bg=f_i).grid(row=8, column=0)
         Entry(row_one, textvar=chw.tsp20, width=35).grid(row=9, column=0, columnspan=3)
         Checkbutton(row_one, var=chw.nsp20, bg=f_i).grid(row=8, column=1)
+
+        Checkbutton(row_one, var=chw.nsp19, text="doble the 's' at the end of words/RichSpell/", bg=f_i).grid(row=10, column=0, columnspan=3)
+        Checkbutton(row_one, var=chw.nsp21, text="Long vowel rule/RichSpell/", bg=f_i).grid(row=11, column=0, columnspan=3)
 
 
 chw = Chechboxes()
