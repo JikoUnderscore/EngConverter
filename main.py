@@ -42,6 +42,7 @@ def profile(fnc):
 
     return iner
 
+# ne nuzen klas
 class PrevodGovor:
     nomera = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
     punctuation = '''"'!@#█$%^&*(){}[]|._-`/?:;\,~ \n'''
@@ -87,9 +88,11 @@ class PrevodGovor:
                         kraj += word
                 else:
                     each_word = self.recnik_abc[word[0]].get(word)
-                    if each_word is None and mw.ddump.get() == 0:
+                    if chw.nsp19.get() == 0 and each_word is not None:               # chw.nsp19.get() == 0 and mw.ddump.get() == 0 and
+                        kraj += each_word
+                    elif mw.ddump.get() == 0 and each_word is None:
                         kraj += '█' + word + '█'
-                    elif each_word is None and mw.ddump.get() == 1:
+                    elif mw.ddump.get() == 1 and each_word is None:
 
                         with open("MISSING_WORDS/missing_word_list.txt", "a+") as fw:
                             fw.seek(0)
@@ -97,54 +100,8 @@ class PrevodGovor:
                             if word not in rewwrt:
                                 fw.write(f"{word}\n")
                         kraj += '█' + word + '█'
-                    elif chw.nsp19.get() == 1:
-                        z = bool(re.compile(
-                            r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(
-                            word))
-                        zs = bool(each_word.endswith('S'))
-                        zz = bool(each_word.count('S') >= 2)
-                        if z and zs is True and zz is False:
-                            kraj += each_word + 'S'
-                        elif z and zs is True:
-                            szs = each_word.split('S', 1)
-                            if '/' in each_word:
-                                spl = each_word.split('/')
-                                for index, wrd in enumerate(spl, start=1):
-                                    adwrd = wrd + 'S'
-                                    if index < len(spl):
-                                        kraj += adwrd + '/'
-                                    else:
-                                        kraj += adwrd
-                            elif szs[0] + 'S' in self.recnik_abc[word[0]].values():
-                                adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
-                                fowrd = adwrd.replace("S", "SS", 1)
-                                kraj += fowrd
-                            else:
-                                kraj += each_word + 'S'
-                        elif z is True:
-                            if '/' in each_word:
-                                spl = each_word.split('/')
-                                for index, wrd in enumerate(spl, start=1):
-                                    print(index)
-                                    adwrd = wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
-                                    if index < len(spl):
-                                        kraj += adwrd + '/'
-                                    else:
-                                        kraj += adwrd
-                            else:
-                                adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
-                                kraj += adwrd
-                        elif z is False and zs is True and zz is False or z is False and zs is False and zz is False:
-                            kraj += each_word
-                        else:
-                            szs = each_word.split('S', 1)
-                            if szs[0] + 'S' in self.recnik_abc[word[0]].values():
-                                adwrd = each_word[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
-                                kraj += adwrd
-                            else:
-                                kraj += each_word
                     else:
-                        kraj += each_word
+                        kraj += self.add_ss(word, each_word)
 
             return kraj
         except Exception as err:
@@ -152,11 +109,72 @@ class PrevodGovor:
             # kraj += f" \n ERROR: {err}."
             # return kraj
 
+    def add_ss(self, wrd: str, e_wrd: str) -> str:
+        # from checkboxes import chw
+        # if e_wrd is None and mw.ddump.get() == 0:
+        #     return '█' + wrd + '█'
+        # elif e_wrd is None and mw.ddump.get() == 1:
+        #
+        #     with open("MISSING_WORDS/missing_word_list.txt", "a+") as fw:
+        #         fw.seek(0)
+        #         rewwrt = fw.read().split()
+        #         if wrd not in rewwrt:
+        #             fw.write(f"{wrd}\n")
+        #     return '█' + wrd + '█'
+        # if chw.nsp19.get() == 1:
+        # else:
+        #    return e_wrd
+        kj = ""
+        duma_ss_se_ce = bool(re.compile(
+            r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(
+            wrd))
+        foni_end_s = bool(e_wrd.endswith('S'))
+        foni_more_or_2_s = bool(e_wrd.count('S') >= 2)
+        if duma_ss_se_ce is True and foni_end_s is True and foni_more_or_2_s is False:
+            kj += e_wrd + 'S'
+        elif duma_ss_se_ce is True and foni_end_s is True:
+            szs = e_wrd.split('S', 1)
+            if '/' in e_wrd:
+                spl = e_wrd.split('/')
+                for index, wrd in enumerate(spl, start=1):
+                    adwrd = wrd + 'S'
+                    if index < len(spl):
+                        kj += adwrd + '/'
+                    else:
+                        kj += adwrd
+            elif szs[0] + 'S' in self.recnik_abc[wrd[0]].values():
+                adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
+                fowrd = adwrd.replace("S", "SS", 1)
+                kj += fowrd
+            else:
+                kj += e_wrd + 'S'
+        elif duma_ss_se_ce is True:
+            if '/' in e_wrd:
+                spl = e_wrd.split('/')
+                for index, wrd in enumerate(spl, start=1):
+                    adwrd = wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
+                    if index < len(spl):
+                        kj += adwrd + '/'
+                    else:
+                        kj += adwrd
+            else:
+                adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
+                kj += adwrd
+        elif duma_ss_se_ce is False and foni_end_s is True and foni_more_or_2_s is False or duma_ss_se_ce is False and foni_end_s is False and foni_more_or_2_s is False:
+            kj += e_wrd
+        else:
+            szs = e_wrd.split('S', 1)
+            if szs[0] + 'S' in self.recnik_abc[wrd[0]].values():
+                adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
+                return adwrd
+            else:
+                kj += e_wrd
+        return kj
+
     @zaseci
     def prevod2(self, *args: Tuple):
         print(args)
         try:
-
             from checkboxes import chw
 
             ogtext = self.prevod()
@@ -165,7 +183,6 @@ class PrevodGovor:
             p044 = re.sub('ɒR', chw.ar(), p043)
             p045 = re.sub('IR', chw.eer(), p044)
             p046 = re.sub('ɔR', chw.oor(), p045)
-
             p047 = re.sub(r'([©BDGLMNVÝəIÑ])(Z\b)', fr'\1{chw.sp_esz()}', p046)
 
             p1 = re.sub('ɒ', chw.ch1(), p047)
@@ -181,7 +198,6 @@ class PrevodGovor:
             p10 = re.sub('Ð', chw.ch10(), p9)
             p11 = re.sub('ɛ', chw.ch11(), p10)
             p12 = re.sub('®', chw.ch12(), p11)
-
             p13 = re.sub('É', chw.ch13(), p12)
             p1301 = re.sub('È', chw.ch1301(), p13)
             p14 = re.sub('F', chw.ch14(), p1301)
@@ -207,7 +223,6 @@ class PrevodGovor:
             p33 = re.sub('U', chw.ch33(), p32)
             p34 = re.sub('Ú', chw.ch34(), p33)
             p35 = re.sub('V', chw.ch35(), p34)
-
             p36 = re.sub('W', chw.ch36(), p35)
             p37 = re.sub('Y', chw.ch37(), p36)
             p38 = re.sub('Z', chw.ch38(), p37)
@@ -241,9 +256,9 @@ class PrevodGovor:
 
             nummmm = mw.remove_dash()
             regex = r"(\w+)(/(\w+))(/(\w+)/)((\w+))|(\w+)(/(\w+))(/(\w+))|(\w+)(/(\w+))"
-            if nummmm == 0:
-                ogtext1 = p41005
-            elif nummmm == 3:
+            # if nummmm == 0:
+            #     ogtext1 = p41005
+            if nummmm == 3:
                 ogtext1 = re.sub(regex, r"\1\8\13", p41005)
             elif nummmm == 2:
                 ogtext1 = re.sub(regex, r"\3\10\15", p41005)
@@ -264,8 +279,6 @@ class PrevodGovor:
                 ogtext1 = bsrule5
 
             end_text = re.sub(r"(^|[.\n?!])\s*([a-zA-Z])", lambda p: p.group(0).upper(), ogtext1)
-
-
 
             mw.textbox2.delete(0.0, END)
             mw.textbox2.insert(0.0, end_text)

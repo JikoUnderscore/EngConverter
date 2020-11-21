@@ -869,7 +869,7 @@ class Rule_window(Chechboxes):
         elif x == '1':
             novprozorec.destroy()
 
-    @profile
+    #@profile
     def open_window(self):
         global novprozorec
 
