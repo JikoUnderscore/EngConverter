@@ -33,7 +33,7 @@ class Chechboxes:
                                                                         #DEAD                                            DEAD
     tsp1, tsp2, tsp3, tsp4, tsp5, tsp6, tsp7, tsp8, tsp9, tsp10, tsp11, tsp12, tsp13, tsp14, tsp15, tsp16, tsp17, tsp18, tsp19, tsp20 = \
         (StringVar() for psp in range(20))
-                                                                        #DEAD
+                                                                        #DEAD         DEAD
     nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19, nsp20, nsp21 = \
         (IntVar() for ipsp in range(21))
 
@@ -202,7 +202,7 @@ class Chechboxes:
             c1 = self.t20.get()
             return c1
         else:
-            c2 = "k"
+            c2 = "c"
             return c2
 
     def ch21(self):
@@ -739,12 +739,12 @@ class Chechboxes:
             s = 'yoo'
             return s
 
-    def sp_ka_ko_ku(self):
+    def sp_ki_ke_k(self):
         if self.nsp5.get() == 1:
             s = self.tsp5.get()
             return s
         else:
-            s = 'c'
+            s = 'k'
             return s
 
     def sp_tion(self):
@@ -810,7 +810,7 @@ class Chechboxes:
         else:
             s = 'z'
             return s
-
+    # NOT USED
     def sp_kxs(self):
         if self.nsp14.get() == 1:
             s = self.tsp14.get()
@@ -1219,7 +1219,7 @@ class Rule_window(Chechboxes):
         Entry(row_one, textvar=chw.tsp4, width=e_w).grid(row=2, column=4)
         Checkbutton(row_one, var=chw.nsp4, bg=f_i).grid(row=2, column=5)
 
-        Label(row_one, text='CHAGE "k-" before "a,ə,o,u,ä,r,t,l" to', bg=f_i).grid(row=2, column=6)
+        Label(row_one, text='CHAGE "k-" before "i,e, and end" to', bg=f_i).grid(row=2, column=6)
         Entry(row_one, textvar=chw.tsp5, width=e_w).grid(row=2, column=7)
         Checkbutton(row_one, var=chw.nsp5, bg=f_i).grid(row=2, column=8)
 
@@ -1243,7 +1243,7 @@ class Rule_window(Chechboxes):
         Entry(row_one, textvar=chw.tsp7, width=e_w).grid(row=6, column=4)
         Checkbutton(row_one, var=chw.nsp7, bg=f_i).grid(row=6, column=5)
 
-        Label(row_one, text='CHAGE -x-/ks/ to', bg=f_i).grid(row=4, column=6)
+        Label(row_one, text='......', bg=f_i).grid(row=4, column=6)
         Entry(row_one, textvar=chw.tsp14, width=e_w).grid(row=4, column=7)
         Checkbutton(row_one, var=chw.nsp14, bg=f_i).grid(row=4, column=8)
 
@@ -1259,7 +1259,7 @@ class Rule_window(Chechboxes):
         Entry(row_one, textvar=chw.tsp17, width=e_w).grid(row=7, column=1)
         Checkbutton(row_one, var=chw.nsp17, bg=f_i).grid(row=7, column=2)
 
-        Label(row_one, text='CHAGE -x/ks/ to', bg=f_i).grid(row=5, column=6)
+        Label(row_one, text='CHAGE x/ks/ to', bg=f_i).grid(row=5, column=6)
         Entry(row_one, textvar=chw.tsp18, width=e_w).grid(row=5, column=7)
         Checkbutton(row_one, var=chw.nsp18, bg=f_i).grid(row=5, column=8)
 

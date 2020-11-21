@@ -45,7 +45,7 @@ def profile(fnc):
 # ne nuzen klas
 class PrevodGovor:
     nomera = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-    punctuation = '''"'!@#█$%^&*(){}[]|._-`/?:;\,~ \n'''
+    punctuation = '''"'!@#█$%’''^&*( '){}[]|._-`/?:;—\,“”~ \n'''
 
     with open('data/nester dict.pkl', "rb") as pkfl:
         recnik_abc = pickle.load(pkfl)
@@ -105,7 +105,8 @@ class PrevodGovor:
 
             return kraj
         except Exception as err:
-            mw.textbox2.insert(0.0, err)
+            mw.textbox2.delete(0.0, END)
+            mw.textbox2.insert(0.0, f"{err}\nRAW TEXT:\n{kraj}")
             # kraj += f" \n ERROR: {err}."
             # return kraj
 
@@ -179,7 +180,8 @@ class PrevodGovor:
 
             ogtext = self.prevod()
 
-            p043 = re.sub('ɛR', chw.air(), ogtext)
+            pl8 = re.sub(r'([ɒÆʌɔɛIUəÝ])R([ɒÆʌɔɛIUəÝ])', fr"\1{chw.sp_orro()}\2", ogtext)
+            p043 = re.sub('ɛR', chw.air(), pl8)
             p044 = re.sub('ɒR', chw.ar(), p043)
             p045 = re.sub('IR', chw.eer(), p044)
             p046 = re.sub('ɔR', chw.oor(), p045)
@@ -230,23 +232,26 @@ class PrevodGovor:
             p40 = re.sub('Ý', chw.ch40(), p39)
             p41 = re.sub('©', chw.ch42(), p40)
 
-            pl1 = re.sub('kw', chw.sp_kw(), p41)
-            pl2 = re.sub('ngk', chw.sp_ngk(), pl1)
+            pl1 = re.sub(fr"{chw.ch20()}{chw.ch36()}", chw.sp_kw(), p41)
+            pl2 = re.sub(fr"{chw.ch24()}{chw.ch20()}", chw.sp_ngk(), pl1)
             pl3 = re.sub(r'oa\b', fr"{chw.sp_ago()}", pl2)
             pl4 = re.sub(r'(\w)(yoo)', fr"\1{chw.sp_yoo()}", pl3)
-            pl5 = re.sub(fr"({chw.ch20()})([a|əouärtl])", fr"{chw.sp_ka_ko_ku()}\2", pl4)
-            pl6 = re.sub(fr"{chw.ch30()}ə({chw.ch23()}\b)", fr"{chw.sp_tion()}\1", pl5)
+            
+            pl6 = re.sub(fr"{chw.ch30()}ə({chw.ch23()}\b)", fr"{chw.sp_tion()}\1", pl4)
             pl7 = re.sub(fr"{chw.ch39()}ə({chw.ch23()}\b)", fr"{chw.sp_sion()}\1", pl6)
-            pl8 = re.sub(r'([əouwieya])r([əouwieya])', fr"\1{chw.sp_orro()}\2", pl7)  # TODO: 'rr' after short vowel when vowel sound is retained
-            pl9 = re.sub(r'(gz)(\w)', fr"{chw.sp_egzx()}\2", pl8)
+
+            pl9 = re.sub(r'(gz)(\w)', fr"{chw.sp_egzx()}\2", pl7)
             pl10 = re.sub(r'\bə', fr"{chw.sp_a_bout()}", pl9)
             pl11 = re.sub(r'([a-z][a-z][a-z])(ə\b)', fr"\1{chw.sp_sof_a()}", pl10)
-            pl12 = re.sub(r'ks(\w)', fr'{chw.sp_kxs()}\1', pl11)                # TODO: exsit [exit]
-            pl13 = re.sub(r'ɣ', chw.sp_x_end(), pl12)
+            # pl12 = re.sub(r'ks(\w)', fr'{chw.sp_kxs()}\1', pl11)                # TODO: exsit [exit]
+            pl13 = re.sub(r'ɣ', chw.sp_x_end(), pl11)
 
             p41001 = re.sub('ə', chw.ch41(), pl13)
+
+            pl5 = re.sub(fr"({chw.ch20()})(\b|[eiy])", fr"{chw.sp_ki_ke_k()}\2", p41001)
+
             # p41002 = re.sub(fr"\b{chw.ch3()}{chw.ch35()}\b", fr'{chw.sp_offme()}', p41001)
-            p41003 = re.sub(r"ʔћ", chw.sp_eedd(), p41001)
+            p41003 = re.sub(r"ʔћ", chw.sp_eedd(), pl5)
             p41004 = re.sub(r"ђ", chw.sp_ett(), p41003)
             p41005 = re.sub(r"ћ", chw.sp_edd(), p41004)
 
@@ -295,7 +300,7 @@ class MenuBar:
 
         filemenu = Menu(menubar, tearoff=0)
         filemenu.add_command(label='Save rules', accelerator="Ctrl+S", command=self.seva_now)
-        filemenu.add_command(label='Show in explorer save folder', command=self.seva_folder)
+        filemenu.add_command(label='Show in explorer save folder', command=rodi.seva_folder)
         filemenu.add_separator()
         filemenu.add_command(label='Save rules as...', command=self.save_var)
         filemenu.add_command(label='Load rules as...', command=self.load_var)
@@ -329,7 +334,7 @@ class MenuBar:
         manage.add_command(label='Update dump number !!!', command=rodi.dump_filen_update)
         manage.add_command(label='Open dump file...', command=rodi.otvori_dump_file)
         manage.add_separator()
-        manage.add_checkbutton(label='enable auto converter', var=rodi.ccc, command=self.ssttaartt)
+        manage.add_checkbutton(label='enable auto converter', var=rodi.ccc, command=rodi.ssttaartt)
         manage.add_separator()
         manage.add_checkbutton(label='Synchronize vertical scrolling', command=rodi.sinc_scroll, var=rodi.sinc_gh)
         menubar.add_cascade(label="Options", menu=manage)
@@ -350,15 +355,6 @@ class MenuBar:
         menubar.add_cascade(label="HELP", menu=elp)
 
         root.bind('<Control-s>', self.seva_now)
-
-    def ssttaartt(self):
-        mw.auto_prev()
-        mw.lnta["text"] = 'Welcome to text converter 9000 - AUTOMATIC CONVERTER IS ACTIVE'
-        mw.lnta["bg"] = '#9b3335'
-
-    def seva_folder(self):
-        mjasto = os.path.abspath(os.curdir)
-        os.startfile(f"{mjasto}\\data\\saved")
 
     def seva_now(self, *args: Tuple):
         print(args)
@@ -487,7 +483,7 @@ class MenuBar:
         s.write(str(chw.nsp3.get()) + '\n')
         s.write(str(chw.sp_yoo()) + ' ')
         s.write(str(chw.nsp4.get()) + '\n')
-        s.write(str(chw.sp_ka_ko_ku()) + ' ')
+        s.write(str(chw.sp_ki_ke_k()) + ' ')
         s.write(str(chw.nsp5.get()) + '\n')
         s.write(str(chw.sp_tion()) + ' ')
         s.write(str(chw.nsp6.get()) + '\n')
@@ -519,6 +515,8 @@ class MenuBar:
         s.write(str(chw.nsp19.get()) + '\n')
         s.write(str(','.join(chw.excld())) + ' ')
         s.write(str(chw.nsp20.get()) + '\n')
+
+        s.write(str(chw.nsp21.get()) + '\n')
 
     def load_var(self):
         from checkboxes import chw
@@ -734,6 +732,8 @@ class MenuBar:
                 elif i == 68:
                     chw.tsp20.set(ll[i].split()[0])
                     chw.nsp20.set(ll[i].split()[1])
+                elif i == 69:
+                    chw.nsp21.set(ll[i].split()[0])
 
 
 class MainWindow:
@@ -935,6 +935,16 @@ class MainWindow:
             # self.ent_txt.bind('<MouseWheel>', OnMouseWheel)
 
             print('sinhron raboti')
+
+    def ssttaartt(self):
+        self.auto_prev()
+        self.lnta["text"] = 'Welcome to text converter 9000 - AUTOMATIC CONVERTER IS ACTIVE'
+        self.lnta["bg"] = '#9b3335'
+
+    def seva_folder(self):
+        mjasto = os.path.abspath(os.curdir)
+        os.startfile(f"{mjasto}\\data\\saved")
+
 
 
 if __name__ == "__main__":
