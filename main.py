@@ -85,10 +85,10 @@ class PrevodGovor:
                 elif any(map(word.startswith, self.nomera)):
                     kraj += word
                 elif chw.nsp20.get() == 1 and word in chw.excld():
-                        kraj += word
+                    kraj += word
                 else:
                     each_word = self.recnik_abc[word[0]].get(word)
-                    if chw.nsp19.get() == 0 and each_word is not None:               # chw.nsp19.get() == 0 and mw.ddump.get() == 0 and
+                    if chw.nsp19.get() == 0 and each_word is not None:  # chw.nsp19.get() == 0 and mw.ddump.get() == 0 and
                         kraj += each_word
                     elif mw.ddump.get() == 0 and each_word is None:
                         kraj += '█' + word + '█'
@@ -236,7 +236,7 @@ class PrevodGovor:
             pl2 = re.sub(fr"{chw.ch24()}{chw.ch20()}", chw.sp_ngk(), pl1)
             pl3 = re.sub(r'oa\b', fr"{chw.sp_ago()}", pl2)
             pl4 = re.sub(r'(\w)(yoo)', fr"\1{chw.sp_yoo()}", pl3)
-            
+
             pl6 = re.sub(fr"{chw.ch30()}ə({chw.ch23()}\b)", fr"{chw.sp_tion()}\1", pl4)
             pl7 = re.sub(fr"{chw.ch39()}ə({chw.ch23()}\b)", fr"{chw.sp_sion()}\1", pl6)
 
@@ -365,7 +365,6 @@ class MenuBar:
             self.zapyzi(s)
 
     def save_var(self):
-
         sf = filedialog.asksaveasfilename(
             initialfile="Untitle.dat",
             defaultextension=".dat",
@@ -377,145 +376,75 @@ class MenuBar:
     @staticmethod
     def zapyzi(s: TextIO):
         from checkboxes import chw
-        s.write(str(chw.ch1()) + ' ')
-        s.write(str(chw.n1.get()) + '\n')
-        s.write(str(chw.ch2()) + ' ')
-        s.write(str(chw.n2.get()) + '\n')
-        s.write(str(chw.ch3()) + ' ')
-        s.write(str(chw.n3.get()) + '\n')
-        s.write(str(chw.ch4()) + ' ')
-        s.write(str(chw.n4.get()) + '\n')
-        s.write(str(chw.ch5()) + ' ')
-        s.write(str(chw.n5.get()) + '\n')
-        s.write(str(chw.ch6()) + ' ')
-        s.write(str(chw.n6.get()) + '\n')
-        s.write(str(chw.ch7()) + ' ')
-        s.write(str(chw.n7.get()) + '\n')
-        s.write(str(chw.ch8()) + ' ')
-        s.write(str(chw.n8.get()) + '\n')
-        s.write(str(chw.ch9()) + ' ')
-        s.write(str(chw.n9.get()) + '\n')
-        s.write(str(chw.ch10()) + ' ')
-        s.write(str(chw.n10.get()) + '\n')
-        s.write(str(chw.ch11()) + ' ')
-        s.write(str(chw.n11.get()) + '\n')
-        s.write(str(chw.ch12()) + ' ')
-        s.write(str(chw.n12.get()) + '\n')
-        s.write(str(chw.ch13()) + ' ')
-        s.write(str(chw.n13.get()) + '\n')
-        s.write(str(chw.ch1301()) + ' ')
-        s.write(str(chw.n1301.get()) + '\n')
-        s.write(str(chw.ch14()) + ' ')
-        s.write(str(chw.n14.get()) + '\n')
-        s.write(str(chw.ch15()) + ' ')
-        s.write(str(chw.n15.get()) + '\n')
-        s.write(str(chw.ch16()) + ' ')
-        s.write(str(chw.n16.get()) + '\n')
-        s.write(str(chw.ch17()) + ' ')
-        s.write(str(chw.n17.get()) + '\n')
-        s.write(str(chw.ch18()) + ' ')
-        s.write(str(chw.n18.get()) + '\n')
-        s.write(str(chw.ch19()) + ' ')
-        s.write(str(chw.n19.get()) + '\n')
-        s.write(str(chw.ch20()) + ' ')
-        s.write(str(chw.n20.get()) + '\n')
-        s.write(str(chw.ch21()) + ' ')
-        s.write(str(chw.n21.get()) + '\n')
-        s.write(str(chw.ch22()) + ' ')
-        s.write(str(chw.n22.get()) + '\n')
-        s.write(str(chw.ch23()) + ' ')
-        s.write(str(chw.n23.get()) + '\n')
-        s.write(str(chw.ch24()) + ' ')
-        s.write(str(chw.n24.get()) + '\n')
-        s.write(str(chw.ch25()) + ' ')
-        s.write(str(chw.n25.get()) + '\n')
-        s.write(str(chw.ch26()) + ' ')
-        s.write(str(chw.n26.get()) + '\n')
-        s.write(str(chw.ch2601()) + ' ')
-        s.write(str(chw.n2601.get()) + '\n')
-        s.write(str(chw.ch27()) + ' ')
-        s.write(str(chw.n27.get()) + '\n')
-        s.write(str(chw.ch28()) + ' ')
-        s.write(str(chw.n28.get()) + '\n')
-        s.write(str(chw.ch29()) + ' ')
-        s.write(str(chw.n29.get()) + '\n')
-        s.write(str(chw.ch30()) + ' ')
-        s.write(str(chw.n30.get()) + '\n')
-        s.write(str(chw.ch31()) + ' ')
-        s.write(str(chw.n31.get()) + '\n')
-        s.write(str(chw.ch32()) + ' ')
-        s.write(str(chw.n32.get()) + '\n')
-        s.write(str(chw.ch33()) + ' ')
-        s.write(str(chw.n33.get()) + '\n')
-        s.write(str(chw.ch34()) + ' ')
-        s.write(str(chw.n34.get()) + '\n')
-        s.write(str(chw.ch35()) + ' ')
-        s.write(str(chw.n35.get()) + '\n')
-        s.write(str(chw.ch36()) + ' ')
-        s.write(str(chw.n36.get()) + '\n')
-        s.write(str(chw.ch37()) + ' ')
-        s.write(str(chw.n37.get()) + '\n')
-        s.write(str(chw.ch38()) + ' ')
-        s.write(str(chw.n38.get()) + '\n')
-        s.write(str(chw.ch39()) + ' ')
-        s.write(str(chw.n39.get()) + '\n')
-        s.write(str(chw.ch40()) + ' ')
-        s.write(str(chw.n40.get()) + '\n')
-        s.write(str(chw.ch41()) + ' ')
-        s.write(str(chw.n41.get()) + '\n')
-        s.write(str(chw.ch42()) + ' ')
-        s.write(str(chw.n42.get()) + '\n')
-        s.write(str(chw.air()) + ' ')
-        s.write(str(chw.nr1.get()) + '\n')
-        s.write(str(chw.ar()) + ' ')
-        s.write(str(chw.nr2.get()) + '\n')
-        s.write(str(chw.eer()) + ' ')
-        s.write(str(chw.nr3.get()) + '\n')
-        s.write(str(chw.oor()) + ' ')
-        s.write(str(chw.nr4.get()) + '\n')
-        s.write(str(chw.sp_oundt()) + ' ')
-        s.write(str(chw.nsp0.get()) + '\n')
-        s.write(str(chw.sp_kw()) + ' ')
-        s.write(str(chw.nsp1.get()) + '\n')
-        s.write(str(chw.sp_ngk()) + ' ')
-        s.write(str(chw.nsp2.get()) + '\n')
-        s.write(str(chw.sp_ago()) + ' ')
-        s.write(str(chw.nsp3.get()) + '\n')
-        s.write(str(chw.sp_yoo()) + ' ')
-        s.write(str(chw.nsp4.get()) + '\n')
-        s.write(str(chw.sp_ki_ke_k()) + ' ')
-        s.write(str(chw.nsp5.get()) + '\n')
-        s.write(str(chw.sp_tion()) + ' ')
-        s.write(str(chw.nsp6.get()) + '\n')
-        s.write(str(chw.sp_sion()) + ' ')
-        s.write(str(chw.nsp7.get()) + '\n')
-        s.write(str(chw.sp_orro()) + ' ')
-        s.write(str(chw.nsp8.get()) + '\n')
-        s.write(str(chw.sp_egzx()) + ' ')
-        s.write(str(chw.nsp9.get()) + '\n')
-        s.write(str(chw.sp_a_bout()) + ' ')
-        s.write(str(chw.nsp10.get()) + '\n')
-        s.write(str(chw.sp_sof_a()) + ' ')
-        s.write(str(chw.nsp11.get()) + '\n')
-        s.write(str(chw.sp_offme()) + ' ')
-        s.write(str(chw.nsp12.get()) + '\n')
-        s.write(str(chw.sp_esz()) + ' ')
-        s.write(str(chw.nsp13.get()) + '\n')
-        s.write(str(chw.sp_kxs()) + ' ')
-        s.write(str(chw.nsp14.get()) + '\n')
-        s.write(str(chw.sp_edd()) + ' ')
-        s.write(str(chw.nsp15.get()) + '\n')
-        s.write(str(chw.sp_ett()) + ' ')
-        s.write(str(chw.nsp16.get()) + '\n')
-        s.write(str(chw.sp_eedd()) + ' ')
-        s.write(str(chw.nsp17.get()) + '\n')
-        s.write(str(chw.sp_x_end()) + ' ')
-        s.write(str(chw.nsp18.get()) + '\n')
-
+        s.write(str(chw.ch1()) + ' ' + str(chw.n1.get()) + '\n')
+        s.write(str(chw.ch2()) + ' ' + str(chw.n2.get()) + '\n')
+        s.write(str(chw.ch3()) + ' ' + str(chw.n3.get()) + '\n')
+        s.write(str(chw.ch4()) + ' ' + str(chw.n4.get()) + '\n')
+        s.write(str(chw.ch5()) + ' ' + str(chw.n5.get()) + '\n')
+        s.write(str(chw.ch6()) + ' ' + str(chw.n6.get()) + '\n')
+        s.write(str(chw.ch7()) + ' ' + str(chw.n7.get()) + '\n')
+        s.write(str(chw.ch8()) + ' ' + str(chw.n8.get()) + '\n')
+        s.write(str(chw.ch9()) + ' ' + str(chw.n9.get()) + '\n')
+        s.write(str(chw.ch10()) + ' ' + str(chw.n10.get()) + '\n')
+        s.write(str(chw.ch11()) + ' ' + str(chw.n11.get()) + '\n')
+        s.write(str(chw.ch12()) + ' ' + str(chw.n12.get()) + '\n')
+        s.write(str(chw.ch13()) + ' ' + str(chw.n13.get()) + '\n')
+        s.write(str(chw.ch1301()) + ' '+str(chw.n1301.get()) + '\n')
+        s.write(str(chw.ch14()) + ' ' + str(chw.n14.get()) + '\n')
+        s.write(str(chw.ch15()) + ' ' + str(chw.n15.get()) + '\n')
+        s.write(str(chw.ch16()) + ' ' + str(chw.n16.get()) + '\n')
+        s.write(str(chw.ch17()) + ' ' + str(chw.n17.get()) + '\n')
+        s.write(str(chw.ch18()) + ' ' + str(chw.n18.get()) + '\n')
+        s.write(str(chw.ch19()) + ' ' + str(chw.n19.get()) + '\n')
+        s.write(str(chw.ch20()) + ' ' + str(chw.n20.get()) + '\n')
+        s.write(str(chw.ch21()) + ' ' + str(chw.n21.get()) + '\n')
+        s.write(str(chw.ch22()) + ' ' + str(chw.n22.get()) + '\n')
+        s.write(str(chw.ch23()) + ' ' + str(chw.n23.get()) + '\n')
+        s.write(str(chw.ch24()) + ' ' + str(chw.n24.get()) + '\n')
+        s.write(str(chw.ch25()) + ' ' + str(chw.n25.get()) + '\n')
+        s.write(str(chw.ch26()) + ' ' + str(chw.n26.get()) + '\n')
+        s.write(str(chw.ch2601()) + ' '+str(chw.n2601.get()) + '\n')
+        s.write(str(chw.ch27()) + ' ' + str(chw.n27.get()) + '\n')
+        s.write(str(chw.ch28()) + ' ' + str(chw.n28.get()) + '\n')
+        s.write(str(chw.ch29()) + ' ' + str(chw.n29.get()) + '\n')
+        s.write(str(chw.ch30()) + ' ' + str(chw.n30.get()) + '\n')
+        s.write(str(chw.ch31()) + ' ' + str(chw.n31.get()) + '\n')
+        s.write(str(chw.ch32()) + ' ' + str(chw.n32.get()) + '\n')
+        s.write(str(chw.ch33()) + ' ' + str(chw.n33.get()) + '\n')
+        s.write(str(chw.ch34()) + ' ' + str(chw.n34.get()) + '\n')
+        s.write(str(chw.ch35()) + ' ' + str(chw.n35.get()) + '\n')
+        s.write(str(chw.ch36()) + ' ' + str(chw.n36.get()) + '\n')
+        s.write(str(chw.ch37()) + ' ' + str(chw.n37.get()) + '\n')
+        s.write(str(chw.ch38()) + ' ' + str(chw.n38.get()) + '\n')
+        s.write(str(chw.ch39()) + ' ' + str(chw.n39.get()) + '\n')
+        s.write(str(chw.ch40()) + ' ' + str(chw.n40.get()) + '\n')
+        s.write(str(chw.ch41()) + ' ' + str(chw.n41.get()) + '\n')
+        s.write(str(chw.ch42()) + ' ' + str(chw.n42.get()) + '\n')
+        s.write(str(chw.air()) + ' ' +     str(chw.nr1.get()) + '\n')
+        s.write(str(chw.ar()) + ' ' +      str(chw.nr2.get()) + '\n')
+        s.write(str(chw.eer()) + ' ' +     str(chw.nr3.get()) + '\n')
+        s.write(str(chw.oor()) + ' ' +     str(chw.nr4.get()) + '\n')
+        s.write(str(chw.sp_oundt()) + ' ' +str(chw.nsp0.get()) + '\n')
+        s.write(str(chw.sp_kw()) + ' ' +   str(chw.nsp1.get()) + '\n')
+        s.write(str(chw.sp_ngk()) + ' ' +  str(chw.nsp2.get()) + '\n')
+        s.write(str(chw.sp_ago()) + ' ' +  str(chw.nsp3.get()) + '\n')
+        s.write(str(chw.sp_yoo()) + ' ' +  str(chw.nsp4.get()) + '\n')
+        s.write(str(chw.sp_ki_ke_k()) +' '+str(chw.nsp5.get()) + '\n')
+        s.write(str(chw.sp_tion()) + ' ' + str(chw.nsp6.get()) + '\n')
+        s.write(str(chw.sp_sion()) + ' ' + str(chw.nsp7.get()) + '\n')
+        s.write(str(chw.sp_orro()) + ' ' + str(chw.nsp8.get()) + '\n')
+        s.write(str(chw.sp_egzx()) + ' ' + str(chw.nsp9.get()) + '\n')
+        s.write(str(chw.sp_a_bout()) + ' '+str(chw.nsp10.get()) + '\n')
+        s.write(str(chw.sp_sof_a()) + ' '+ str(chw.nsp11.get()) + '\n')
+        s.write(str(chw.sp_offme()) + ' ' +str(chw.nsp12.get()) + '\n')
+        s.write(str(chw.sp_esz()) + ' ' +  str(chw.nsp13.get()) + '\n')
+        s.write(str(chw.sp_kxs()) + ' ' +  str(chw.nsp14.get()) + '\n')
+        s.write(str(chw.sp_edd()) + ' ' +  str(chw.nsp15.get()) + '\n')
+        s.write(str(chw.sp_ett()) + ' ' +  str(chw.nsp16.get()) + '\n')
+        s.write(str(chw.sp_eedd()) + ' ' + str(chw.nsp17.get()) + '\n')
+        s.write(str(chw.sp_x_end()) + ' ' +str(chw.nsp18.get()) + '\n')
         s.write(str(chw.nsp19.get()) + '\n')
-        s.write(str(','.join(chw.excld())) + ' ')
-        s.write(str(chw.nsp20.get()) + '\n')
-
+        s.write(str(','.join(chw.excld())) + ' ' + str(chw.nsp20.get()) + '\n')
         s.write(str(chw.nsp21.get()) + '\n')
 
     def load_var(self):
@@ -524,216 +453,77 @@ class MenuBar:
             defaultextension=".dat",
             filetypes=[("Data files", "*.dat")])
         with open(lf, "r", encoding='utf-8') as loadf:
-            ll = loadf.readlines()
-            for i in range(0, len(ll)):
-                if i == 0:
-                    chw.t1.set(ll[i].split()[0])
-                    chw.n1.set(ll[i].split()[1])
-                elif i == 1:
-                    chw.t2.set(ll[i].split()[0])
-                    chw.n2.set(ll[i].split()[1])
-                elif i == 2:
-                    chw.t3.set(ll[i].split()[0])
-                    chw.n3.set(ll[i].split()[1])
-                elif i == 3:
-                    chw.t4.set(ll[i].split()[0])
-                    chw.n4.set(ll[i].split()[1])
-                elif i == 4:
-                    chw.t5.set(ll[i].split()[0])
-                    chw.n5.set(ll[i].split()[1])
-                elif i == 5:
-                    chw.t6.set(ll[i].split()[0])
-                    chw.n6.set(ll[i].split()[1])
-                elif i == 6:
-                    chw.t7.set(ll[i].split()[0])
-                    chw.n7.set(ll[i].split()[1])
-                elif i == 7:
-                    chw.t8.set(ll[i].split()[0])
-                    chw.n8.set(ll[i].split()[1])
-                elif i == 8:
-                    chw.t9.set(ll[i].split()[0])
-                    chw.n9.set(ll[i].split()[1])
-                elif i == 9:
-                    chw.t32.set(ll[i].split()[0])
-                    chw.n32.set(ll[i].split()[1])
-                elif i == 10:
-                    chw.t11.set(ll[i].split()[0])
-                    chw.n11.set(ll[i].split()[1])
-                elif i == 11:
-                    chw.t12.set(ll[i].split()[0])
-                    chw.n12.set(ll[i].split()[1])
-                elif i == 12:
-                    chw.t13.set(ll[i].split()[0])
-                    chw.n13.set(ll[i].split()[1])
-                elif i == 13:
-                    chw.t1301.set(ll[i].split()[0])
-                    chw.n1301.set(ll[i].split()[1])
-                elif i == 14:
-                    chw.t14.set(ll[i].split()[0])
-                    chw.n14.set(ll[i].split()[1])
-                elif i == 15:
-                    chw.t15.set(ll[i].split()[0])
-                    chw.n15.set(ll[i].split()[1])
-                elif i == 16:
-                    chw.t16.set(ll[i].split()[0])
-                    chw.n16.set(ll[i].split()[1])
-                elif i == 17:
-                    chw.t17.set(ll[i].split()[0])
-                    chw.n17.set(ll[i].split()[1])
-                elif i == 18:
-                    chw.t18.set(ll[i].split()[0])
-                    chw.n18.set(ll[i].split()[1])
-                elif i == 19:
-                    chw.t19.set(ll[i].split()[0])
-                    chw.n19.set(ll[i].split()[1])
-                elif i == 20:
-                    chw.t20.set(ll[i].split()[0])
-                    chw.n20.set(ll[i].split()[1])
-                elif i == 21:
-                    chw.t21.set(ll[i].split()[0])
-                    chw.n21.set(ll[i].split()[1])
-                elif i == 22:
-                    chw.t22.set(ll[i].split()[0])
-                    chw.n22.set(ll[i].split()[1])
-                elif i == 23:
-                    chw.t23.set(ll[i].split()[0])
-                    chw.n23.set(ll[i].split()[1])
-                elif i == 24:
-                    chw.t24.set(ll[i].split()[0])
-                    chw.n24.set(ll[i].split()[1])
-                elif i == 25:
-                    chw.t25.set(ll[i].split()[0])
-                    chw.n25.set(ll[i].split()[1])
-                elif i == 26:
-                    chw.t26.set(ll[i].split()[0])
-                    chw.n26.set(ll[i].split()[1])
-                elif i == 27:
-                    chw.t2601.set(ll[i].split()[0])
-                    chw.n2601.set(ll[i].split()[1])
-                elif i == 28:
-                    chw.t27.set(ll[i].split()[0])
-                    chw.n27.set(ll[i].split()[1])
-                elif i == 29:
-                    chw.t28.set(ll[i].split()[0])
-                    chw.n28.set(ll[i].split()[1])
-                elif i == 30:
-                    chw.t29.set(ll[i].split()[0])
-                    chw.n29.set(ll[i].split()[1])
-                elif i == 31:
-                    chw.t30.set(ll[i].split()[0])
-                    chw.n30.set(ll[i].split()[1])
-                elif i == 32:
-                    chw.t31.set(ll[i].split()[0])
-                    chw.n31.set(ll[i].split()[1])
-                elif i == 33:
-                    chw.t10.set(ll[i].split()[0])
-                    chw.n10.set(ll[i].split()[1])
-                elif i == 34:
-                    chw.t33.set(ll[i].split()[0])
-                    chw.n33.set(ll[i].split()[1])
-                elif i == 35:
-                    chw.t34.set(ll[i].split()[0])
-                    chw.n34.set(ll[i].split()[1])
-                elif i == 36:
-                    chw.t35.set(ll[i].split()[0])
-                    chw.n35.set(ll[i].split()[1])
-                elif i == 37:
-                    chw.t36.set(ll[i].split()[0])
-                    chw.n36.set(ll[i].split()[1])
-                elif i == 38:
-                    chw.t37.set(ll[i].split()[0])
-                    chw.n37.set(ll[i].split()[1])
-                elif i == 39:
-                    chw.t38.set(ll[i].split()[0])
-                    chw.n38.set(ll[i].split()[1])
-                elif i == 40:
-                    chw.t39.set(ll[i].split()[0])
-                    chw.n39.set(ll[i].split()[1])
-                elif i == 41:
-                    chw.t40.set(ll[i].split()[0])
-                    chw.n40.set(ll[i].split()[1])
-                elif i == 42:
-                    chw.t41.set(ll[i].split()[0])
-                    chw.n41.set(ll[i].split()[1])
-                elif i == 43:
-                    chw.t42.set(ll[i].split()[0])
-                    chw.n42.set(ll[i].split()[1])
-                elif i == 44:
-                    chw.tr1.set(ll[i].split()[0])
-                    chw.nr1.set(ll[i].split()[1])
-                elif i == 45:
-                    chw.tr2.set(ll[i].split()[0])
-                    chw.nr2.set(ll[i].split()[1])
-                elif i == 46:
-                    chw.tr3.set(ll[i].split()[0])
-                    chw.nr3.set(ll[i].split()[1])
-                elif i == 47:
-                    chw.tr4.set(ll[i].split()[0])
-                    chw.nr4.set(ll[i].split()[1])
-                elif i == 48:
-                    chw.tsp0.set(ll[i].split()[0])
-                    chw.nsp0.set(ll[i].split()[1])
-                elif i == 49:
-                    chw.tsp1.set(ll[i].split()[0])
-                    chw.nsp1.set(ll[i].split()[1])
-                elif i == 50:
-                    chw.tsp2.set(ll[i].split()[0])
-                    chw.nsp2.set(ll[i].split()[1])
-                elif i == 51:
-                    chw.tsp3.set(ll[i].split()[0])
-                    chw.nsp3.set(ll[i].split()[1])
-                elif i == 52:
-                    chw.tsp4.set(ll[i].split()[0])
-                    chw.nsp4.set(ll[i].split()[1])
-                elif i == 53:
-                    chw.tsp5.set(ll[i].split()[0])
-                    chw.nsp5.set(ll[i].split()[1])
-                elif i == 54:
-                    chw.tsp6.set(ll[i].split()[0])
-                    chw.nsp6.set(ll[i].split()[1])
-                elif i == 55:
-                    chw.tsp7.set(ll[i].split()[0])
-                    chw.nsp7.set(ll[i].split()[1])
-                elif i == 56:
-                    chw.tsp8.set(ll[i].split()[0])
-                    chw.nsp8.set(ll[i].split()[1])
-                elif i == 57:
-                    chw.tsp9.set(ll[i].split()[0])
-                    chw.nsp9.set(ll[i].split()[1])
-                elif i == 58:
-                    chw.tsp10.set(ll[i].split()[0])
-                    chw.nsp10.set(ll[i].split()[1])
-                elif i == 59:
-                    chw.tsp11.set(ll[i].split()[0])
-                    chw.nsp11.set(ll[i].split()[1])
-                elif i == 60:
-                    chw.tsp12.set(ll[i].split()[0])
-                    chw.nsp12.set(ll[i].split()[1])
-                elif i == 61:
-                    chw.tsp13.set(ll[i].split()[0])
-                    chw.nsp13.set(ll[i].split()[1])
-                elif i == 62:
-                    chw.tsp14.set(ll[i].split()[0])
-                    chw.nsp14.set(ll[i].split()[1])
-                elif i == 63:
-                    chw.tsp15.set(ll[i].split()[0])
-                    chw.nsp15.set(ll[i].split()[1])
-                elif i == 64:
-                    chw.tsp16.set(ll[i].split()[0])
-                    chw.nsp16.set(ll[i].split()[1])
-                elif i == 65:
-                    chw.tsp17.set(ll[i].split()[0])
-                    chw.nsp17.set(ll[i].split()[1])
-                elif i == 66:
-                    chw.tsp18.set(ll[i].split()[0])
-                    chw.nsp18.set(ll[i].split()[1])
-                elif i == 67:
-                    chw.nsp19.set(ll[i].split()[0])
-                elif i == 68:
-                    chw.tsp20.set(ll[i].split()[0])
-                    chw.nsp20.set(ll[i].split()[1])
-                elif i == 69:
-                    chw.nsp21.set(ll[i].split()[0])
+            ll = loadf.read().split()
+            chw.t1.set(ll[0]);      chw.n1.set(ll[1])
+            chw.t2.set(ll[2]);      chw.n2.set(ll[3])
+            chw.t3.set(ll[4]);      chw.n3.set(ll[5])
+            chw.t4.set(ll[6]);      chw.n4.set(ll[7])
+            chw.t5.set(ll[8]);      chw.n5.set(ll[9])
+            chw.t6.set(ll[10]);     chw.n6.set(ll[11])
+            chw.t7.set(ll[12]);     chw.n7.set(ll[13])
+            chw.t8.set(ll[14]);     chw.n8.set(ll[15])
+            chw.t9.set(ll[16]);     chw.n9.set(ll[17])
+            chw.t32.set(ll[18]);    chw.n32.set(ll[19])
+            chw.t11.set(ll[20]);    chw.n11.set(ll[21])
+            chw.t12.set(ll[22]);    chw.n12.set(ll[23])
+            chw.t13.set(ll[24]);    chw.n13.set(ll[25])
+            chw.t1301.set(ll[26]);  chw.n1301.set(ll[27])
+            chw.t14.set(ll[28]);    chw.n14.set(ll[29])
+            chw.t15.set(ll[30]);    chw.n15.set(ll[31])
+            chw.t16.set(ll[32]);    chw.n16.set(ll[33])
+            chw.t17.set(ll[34]);    chw.n17.set(ll[35])
+            chw.t18.set(ll[36]);    chw.n18.set(ll[37])
+            chw.t19.set(ll[38]);    chw.n19.set(ll[39])
+            chw.t20.set(ll[40]);    chw.n20.set(ll[41])
+            chw.t21.set(ll[42]);    chw.n21.set(ll[43])
+            chw.t22.set(ll[44]);    chw.n22.set(ll[45])
+            chw.t23.set(ll[46]);    chw.n23.set(ll[47])
+            chw.t24.set(ll[48]);    chw.n24.set(ll[49])
+            chw.t25.set(ll[50]);    chw.n25.set(ll[51])
+            chw.t26.set(ll[52]);    chw.n26.set(ll[53])
+            chw.t2601.set(ll[54]);  chw.n2601.set(ll[55])
+            chw.t27.set(ll[56]);    chw.n27.set(ll[57])
+            chw.t28.set(ll[58]);    chw.n28.set(ll[59])
+            chw.t29.set(ll[60]);    chw.n29.set(ll[61])
+            chw.t30.set(ll[62]);    chw.n30.set(ll[63])
+            chw.t31.set(ll[64]);    chw.n31.set(ll[65])
+            chw.t10.set(ll[66]);    chw.n10.set(ll[67])
+            chw.t33.set(ll[68]);    chw.n33.set(ll[69])
+            chw.t34.set(ll[70]);    chw.n34.set(ll[71])
+            chw.t35.set(ll[72]);    chw.n35.set(ll[73])
+            chw.t36.set(ll[74]);    chw.n36.set(ll[75])
+            chw.t37.set(ll[76]);    chw.n37.set(ll[77])
+            chw.t38.set(ll[78]);    chw.n38.set(ll[79])
+            chw.t39.set(ll[80]);    chw.n39.set(ll[81])
+            chw.t40.set(ll[82]);    chw.n40.set(ll[83])
+            chw.t41.set(ll[84]);    chw.n41.set(ll[85])
+            chw.t42.set(ll[86]);    chw.n42.set(ll[87])
+            chw.tr1.set(ll[88]);    chw.nr1.set(ll[89])
+            chw.tr2.set(ll[90]);    chw.nr2.set(ll[91])
+            chw.tr3.set(ll[92]);    chw.nr3.set(ll[93])
+            chw.tr4.set(ll[94]);    chw.nr4.set(ll[95])
+            chw.tsp0.set(ll[96]);   chw.nsp0.set(ll[97])
+            chw.tsp1.set(ll[98]);   chw.nsp1.set(ll[99])
+            chw.tsp2.set(ll[100]);  chw.nsp2.set(ll[101])
+            chw.tsp3.set(ll[102]);  chw.nsp3.set(ll[103])
+            chw.tsp4.set(ll[104]);  chw.nsp4.set(ll[105])
+            chw.tsp5.set(ll[106]);  chw.nsp5.set(ll[107])
+            chw.tsp6.set(ll[108]);  chw.nsp6.set(ll[109])
+            chw.tsp7.set(ll[110]);  chw.nsp7.set(ll[111])
+            chw.tsp8.set(ll[112]);  chw.nsp8.set(ll[113])
+            chw.tsp9.set(ll[114]);  chw.nsp9.set(ll[115])
+            chw.tsp10.set(ll[116]); chw.nsp10.set(ll[117])
+            chw.tsp11.set(ll[118]); chw.nsp11.set(ll[119])
+            chw.tsp12.set(ll[120]); chw.nsp12.set(ll[121])
+            chw.tsp13.set(ll[122]); chw.nsp13.set(ll[123])
+            chw.tsp14.set(ll[124]); chw.nsp14.set(ll[125])
+            chw.tsp15.set(ll[126]); chw.nsp15.set(ll[127])
+            chw.tsp16.set(ll[128]); chw.nsp16.set(ll[129])
+            chw.tsp17.set(ll[130]); chw.nsp17.set(ll[131])
+            chw.tsp18.set(ll[132]); chw.nsp18.set(ll[133])
+            chw.nsp19.set(ll[134])
+            chw.tsp20.set(ll[135]); chw.nsp20.set(ll[136])
+            chw.nsp21.set(ll[137])
 
 
 class MainWindow:
@@ -944,7 +734,6 @@ class MainWindow:
     def seva_folder(self):
         mjasto = os.path.abspath(os.curdir)
         os.startfile(f"{mjasto}\\data\\saved")
-
 
 
 if __name__ == "__main__":

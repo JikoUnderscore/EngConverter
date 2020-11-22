@@ -39,387 +39,291 @@ class Chechboxes:
 
     def ch1(self):
         if self.n1.get() == 1:
-            c1 = self.t1.get()
-            return c1
+            return self.t1.get()
         else:
-            c2 = "o"
-            return c2
+            return "o"
 
     def ch2(self):
         if self.n2.get() == 1:
-            c1 = self.t2.get()
-            return c1
+            return self.t2.get()
         else:
-            c2 = "ä"
-            return c2
+            return "ä"
 
     def ch3(self):
         if self.n3.get() == 1:
-            c1 = self.t3.get()
-            return c1
+            return self.t3.get()
         else:
-            c2 = "ü"
-            return c2
+            return "ü"
 
     def ch4(self):
         if self.n4.get() == 1:
-            c1 = self.t4.get()
-            return c1
+            return self.t4.get()
         else:
-            c2 = "aw"
-            return c2
+            return "aw"
 
     def ch5(self):
         if self.n5.get() == 1:
-            c1 = self.t5.get()
-            return c1
+            return self.t5.get()
         else:
-            c2 = "ow"
-            return c2
+            return "ow"
 
     def ch6(self):
         if self.n6.get() == 1:
-            c1 = self.t6.get()
-            return c1
+            return self.t6.get()
         else:
-            c2 = "ie"
-            return c2
+            return "ie"
 
     def ch7(self):
         if self.n7.get() == 1:
-            c1 = self.t7.get()
-            return c1
+            return self.t7.get()
         else:
-            c2 = "b"
-            return c2
+            return "b"
 
     def ch8(self):
         if self.n8.get() == 1:
-            c1 = self.t8.get()
-            return c1
+            return self.t8.get()
         else:
-            c2 = "ch"
-            return c2
+            return "ch"
 
     def ch9(self):
         if self.n9.get() == 1:
-            c1 = self.t9.get()
-            return c1
+            return self.t9.get()
         else:
-            c2 = "d"
-            return c2
+            return "d"
 
     def ch10(self):
         if self.n10.get() == 1:
-            c1 = self.t10.get()
-            return c1
+            return self.t10.get()
         else:
-            c2 = "th"
-            return c2
+            return "th"
 
     def ch11(self):
         if self.n11.get() == 1:
-            c1 = self.t11.get()
-            return c1
+            return self.t11.get()
         else:
-            c2 = "e"
-            return c2
+            return "e"
 
     def ch12(self):
         if self.n12.get() == 1:
-            c1 = self.t12.get()
-            return c1
+            return self.t12.get()
         else:
-            c2 = "ur"
-            return c2
+            return "ur"
 
     def ch13(self):
         if self.n13.get() == 1:
-            c1 = self.t13.get()
-            return c1
+            return self.t13.get()
         else:
-            c2 = "ai"
-            return c2
+            return "ai"
 
     def ch1301(self):
         if self.n1301.get() == 1:
-            c1 = self.t1301.get()
-            return c1
+            return self.t1301.get()
         else:
-            c2 = "ay"
-            return c2
+            return "ay"
 
     def ch14(self):
         if self.n14.get() == 1:
-            c1 = self.t14.get()
-            return c1
+            return self.t14.get()
         else:
-            c2 = "f"
-            return c2
+            return "f"
 
     def ch15(self):
         if self.n15.get() == 1:
-            c1 = self.t15.get()
-            return c1
+            return self.t15.get()
         else:
-            c2 = "g"
-            return c2
+            return "g"
 
     def ch16(self):
         if self.n16.get() == 1:
-            c1 = self.t16.get()
-            return c1
+            return self.t16.get()
         else:
-            c2 = "h"
-            return c2
+            return "h"
 
     def ch17(self):
         if self.n17.get() == 1:
-            c1 = self.t17.get()
-            return c1
+            return self.t17.get()
         else:
-            c2 = "i"
-            return c2
+            return "i"
 
     def ch18(self):
         if self.n18.get() == 1:
-            c1 = self.t18.get()
-            return c1
+            return self.t18.get()
         else:
-            c2 = "ee"
-            return c2
+            return "ee"
 
     def ch19(self):
         if self.n19.get() == 1:
-            c1 = self.t19.get()
-            return c1
+            return self.t19.get()
         else:
-            c2 = "j"
-            return c2
+            return "j"
 
     def ch20(self):
         if self.n20.get() == 1:
-            c1 = self.t20.get()
-            return c1
+            return self.t20.get()
         else:
-            c2 = "c"
-            return c2
+            return "c"
 
     def ch21(self):
         if self.n21.get() == 1:
-            c1 = self.t21.get()
-            return c1
+            return self.t21.get()
         else:
-            c2 = "l"
-            return c2
+            return "l"
 
     def ch22(self):
         if self.n22.get() == 1:
-            c1 = self.t22.get()
-            return c1
+            return self.t22.get()
         else:
-            c2 = "m"
-            return c2
+            return "m"
 
     def ch23(self):
         if self.n23.get() == 1:
-            c1 = self.t23.get()
-            return c1
+            return self.t23.get()
         else:
-            c2 = "n"
-            return c2
+            return "n"
 
     def ch24(self):
         if self.n24.get() == 1:
-            c1 = self.t24.get()
-            return c1
+            return self.t24.get()
         else:
-            c2 = "ng"
-            return c2
+            return "ng"
 
     def ch25(self):
         if self.n25.get() == 1:
-            c1 = self.t25.get()
-            return c1
+            return self.t25.get()
         else:
-            c2 = "oa"
-            return c2
+            return "oa"
 
     def ch26(self):
         if self.n26.get() == 1:
-            c1 = self.t26.get()
-            return c1
+            return self.t26.get()
         else:
-            c2 = "oy"
-            return c2
+            return "oy"
 
     def ch2601(self):
         if self.n2601.get() == 1:
-            c1 = self.t2601.get()
-            return c1
+            return self.t2601.get()
         else:
-            c2 = "oi"
-            return c2
+            return "oi"
 
     def ch27(self):
         if self.n27.get() == 1:
-            c1 = self.t27.get()
-            return c1
+            return self.t27.get()
         else:
-            c2 = "p"
-            return c2
+            return "p"
 
     def ch28(self):
         if self.n28.get() == 1:
-            c1 = self.t28.get()
-            return c1
+            return self.t28.get()
         else:
-            c2 = "r"
-            return c2
+            return "r"
 
     def ch29(self):
         if self.n29.get() == 1:
-            c1 = self.t29.get()
-            return c1
+            return self.t29.get()
         else:
-            c2 = "s"
-            return c2
+            return "s"
 
     def ch30(self):
         if self.n30.get() == 1:
-            c1 = self.t30.get()
-            return c1
+            return self.t30.get()
         else:
-            c2 = "sh"
-            return c2
+            return "sh"
 
     def ch31(self):
         if self.n31.get() == 1:
-            c1 = self.t31.get()
-            return c1
+            return self.t31.get()
         else:
-            c2 = "t"
-            return c2
+            return "t"
 
     def ch32(self):
         if self.n32.get() == 1:
-            c1 = self.t32.get()
-            return c1
+            return self.t32.get()
         else:
-            c2 = "thh"
-            return c2
+            return "thh"
 
     def ch33(self):
         if self.n33.get() == 1:
-            c1 = self.t33.get()
-            return c1
+            return self.t33.get()
         else:
-            c2 = "uu"
-            return c2
+            return "uu"
 
     def ch34(self):
         if self.n34.get() == 1:
-            c1 = self.t34.get()
-            return c1
+            return self.t34.get()
         else:
-            c2 = "oo"
-            return c2
+            return "oo"
 
     def ch35(self):
         if self.n35.get() == 1:
-            c1 = self.t35.get()
-            return c1
+            return self.t35.get()
         else:
-            c2 = "v"
-            return c2
+            return "v"
 
     def ch36(self):
         if self.n36.get() == 1:
-            c1 = self.t36.get()
-            return c1
+            return self.t36.get()
         else:
-            c2 = "w"
-            return c2
+            return "w"
 
     def ch37(self):
         if self.n37.get() == 1:
-            c1 = self.t37.get()
-            return c1
+            return self.t37.get()
         else:
-            c2 = "y"
-            return c2
+            return "y"
 
     def ch38(self):
         if self.n38.get() == 1:
-            c1 = self.t38.get()
-            return c1
+            return self.t38.get()
         else:
-            c2 = "z"
-            return c2
+            return "z"
 
     def ch39(self):
         if self.n39.get() == 1:
-            c1 = self.t39.get()
-            return c1
+            return self.t39.get()
         else:
-            c2 = "zh"
-            return c2
+            return "zh"
 
     def ch40(self):
         if self.n40.get() == 1:
-            c1 = self.t40.get()
-            return c1
+            return self.t40.get()
         else:
-            c2 = "i"
-            return c2
+            return "i"
 
     def ch41(self):
         if self.n41.get() == 1:
-            c1 = self.t41.get()
-            return c1
+            return self.t41.get()
         else:
-            c2 = "ə"
-            return c2
+            return "ə"
 
     def ch42(self):
         if self.n42.get() == 1:
-            c1 = self.t42.get()
-            return c1
+            return self.t42.get()
         else:
-            c2 = "ər"
-            return c2
+            return "ər"
 
     def air(self):
         if self.nr1.get() == 1:
-            c1 = self.tr1.get()
-            return c1
+            return self.tr1.get()
         else:
-            c2 = "er"
-            return c2
+            return "er"
 
     def ar(self):
         if self.nr2.get() == 1:
-            c1 = self.tr2.get()
-            return c1
+            return self.tr2.get()
         else:
-            c2 = "ar"
-            return c2
+            return "ar"
 
     def eer(self):
         if self.nr3.get() == 1:
-            c1 = self.tr3.get()
-            return c1
+            return self.tr3.get()
         else:
-            c2 = "eer"
-            return c2
+            return "eer"
 
     def oor(self):
         if self.nr4.get() == 1:
-            c1 = self.tr4.get()
-            return c1
+            return self.tr4.get()
         else:
-            c2 = "or"
-            return c2
+            return "or"
 
     #   ------------------------- SELECT ------------------------------------------------------
     def select_fillin(self):
@@ -701,161 +605,124 @@ class Chechboxes:
     #   ------------------------- SPESHAL RULS -------------------------------------------------
     def sp_oundt(self):
         if self.nsp0.get() == 1:
-            c1 = self.tsp0.get()
-            return c1
+            return self.tsp0.get()
         else:
-            c2 = "ou"
-            return c2
+            return "ou"
 
     def sp_kw(self):
         if self.nsp1.get() == 1:
-            s = self.tsp1.get()
-            return s
+            return self.tsp1.get()
         else:
-            s = 'qu'
-            return s
+            return 'qu'
 
     def sp_ngk(self):
         if self.nsp2.get() == 1:
-            s = self.tsp2.get()
-            return s
+            return self.tsp2.get()
         else:
-            s = 'nk'
-            return s
+            return 'nk'
 
     def sp_ago(self):
         if self.nsp3.get() == 1:
-            s = self.tsp3.get()
-            return s
+            return self.tsp3.get()
         else:
-            s = 'o'
-            return s
+            return 'o'
 
     def sp_yoo(self):
         if self.nsp4.get() == 1:
-            s = self.tsp4.get()
-            return s
+            return self.tsp4.get()
         else:
-            s = 'yoo'
-            return s
+            return 'yoo'
 
     def sp_ki_ke_k(self):
         if self.nsp5.get() == 1:
-            s = self.tsp5.get()
-            return s
+            return self.tsp5.get()
         else:
-            s = 'k'
-            return s
+            return 'k'
 
     def sp_tion(self):
         if self.nsp6.get() == 1:
-            s = self.tsp6.get()
-            return s
+            return self.tsp6.get()
         else:
-            s = 'shə'
-            return s
+            return 'shə'
 
     def sp_sion(self):
         if self.nsp7.get() == 1:
-            s = self.tsp7.get()
-            return s
+            return self.tsp7.get()
         else:
-            s = 'zhə'
-            return s
+            return 'zhə'
 
     def sp_orro(self):
         if self.nsp8.get() == 1:
-            s = self.tsp8.get()
-            return s
+            return self.tsp8.get()
         else:
-            s = 'rr'
-            return s
+            return 'rr'
 
     def sp_egzx(self):
         if self.nsp9.get() == 1:
-            s = self.tsp9.get()
-            return s
+            return self.tsp9.get()
         else:
-            s = 'gz'
-            return s
+            return 'gz'
 
     def sp_a_bout(self):
         if self.nsp10.get() == 1:
-            s = self.tsp10.get()
-            return s
+            return self.tsp10.get()
         else:
-            s = 'ə'
-            return s
+            return 'ə'
 
     def sp_sof_a(self):
         if self.nsp11.get() == 1:
-            s = self.tsp11.get()
-            return s
+            return self.tsp11.get()
         else:
-            s = 'ə'
-            return s
+            return 'ə'
     # NOT USED
     def sp_offme(self):
         if self.nsp12.get() == 1:
-            s = self.tsp12.get()
-            return s
+            return self.tsp12.get()
         else:
-            s = 'üf'
-            return s
+            return 'üf'
 
     def sp_esz(self):
         if self.nsp13.get() == 1:
-            s = self.tsp13.get()
-            return s
+            return self.tsp13.get()
         else:
-            s = 'z'
-            return s
+            return 'z'
     # NOT USED
     def sp_kxs(self):
         if self.nsp14.get() == 1:
-            s = self.tsp14.get()
-            return s
+            return self.tsp14.get()
         else:
-            s = 'ks'
-            return s
+            return 'ks'
 
     def sp_edd(self):
         if self.nsp15.get() == 1:
-            s = self.tsp15.get()
-            return s
+            return self.tsp15.get()
         else:
-            s = 'éd'
-            return s
+            return 'éd'
 
     def sp_ett(self):
         if self.nsp16.get() == 1:
-            s = self.tsp16.get()
-            return s
+            return self.tsp16.get()
         else:
-            s = 'éd'
-            return s
+            return 'éd'
 
     def sp_eedd(self):
         if self.nsp17.get() == 1:
-            s = self.tsp17.get()
-            return s
+            return self.tsp17.get()
         else:
-            s = 'éd'
-            return s
+            return 'éd'
 
     def sp_x_end(self):
         if self.nsp18.get() == 1:
-            s = self.tsp18.get()
-            return s
+            return self.tsp18.get()
         else:
-            s = 'ks'
-            return s
+            return 'ks'
 
     #   ------------------------- EXCLUDE -------------------------------------------------
     def excld(self):
-
         s = self.tsp20.get().lower()
         ss = s.replace(', ', ' ').replace(',', ' ')
+        if ss == "":
+            return "_ENTER_WORDS_"
         return ss.split()
 
 
