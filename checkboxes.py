@@ -30,10 +30,10 @@ class Chechboxes:
     t21, t22, t23, t24, t25, t26, t27, t28, t29, t30, t31, t32, t33, t34, t35, t36, t37, t38, t39 = \
         (StringVar() for iiI in range(19))
     t40, t41, t42, tr1, tr2, tr3, tr4, t2601, tsp0 = (StringVar() for iiII in range(9))
-                                                                        #DEAD                                            DEAD
+                                                                        #                                                DEAD
     tsp1, tsp2, tsp3, tsp4, tsp5, tsp6, tsp7, tsp8, tsp9, tsp10, tsp11, tsp12, tsp13, tsp14, tsp15, tsp16, tsp17, tsp18, tsp19, tsp20 = \
         (StringVar() for psp in range(20))
-                                                                        #DEAD         DEAD
+                                                                        #              DEAD
     nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19, nsp20, nsp21 = \
         (IntVar() for ipsp in range(21))
 
@@ -326,141 +326,139 @@ class Chechboxes:
             return "or"
 
     #   ------------------------- SELECT ------------------------------------------------------
-    def select_fillin(self):
-        self.deselect_all()
-        for i in range(45):
-            if i == 1:
-                if self.t1.get() != '':
-                    self.n1.set(1)
-            elif i == 2:
-                if self.t2.get() != '':
-                    self.n2.set(1)
-            elif i == 3:
-                if self.t3.get() != '':
-                    self.n3.set(1)
-            elif i == 4:
-                if self.t4.get() != '':
-                    self.n4.set(1)
-            elif i == 5:
-                if self.t5.get() != '':
-                    self.n5.set(1)
-            elif i == 6:
-                if self.t6.get() != '':
-                    self.n6.set(1)
-            elif i == 7:
-                if self.t7.get() != '':
-                    self.n7.set(1)
-            elif i == 8:
-                if self.t8.get() != '':
-                    self.n8.set(1)
-            elif i == 9:
-                if self.t9.get() != '':
-                    self.n9.set(1)
-            elif i == 10:
-                if self.t10.get() != '':
-                    self.n10.set(1)
-            elif i == 11:
-                if self.t11.get() != '':
-                    self.n11.set(1)
-            elif i == 12:
-                if self.t12.get() != '':
-                    self.n12.set(1)
-            elif i == 13:
-                if self.t13.get() != '':
-                    self.n13.set(1)
-            elif i == 14:
-                if self.t1301.get() != '':
-                    self.n1301.set(1)
-            elif i == 15:
-                if self.t14.get() != '':
-                    self.n14.set(1)
-            elif i == 16:
-                if self.t15.get() != '':
-                    self.n15.set(1)
-            elif i == 17:
-                if self.t16.get() != '':
-                    self.n16.set(1)
-            elif i == 18:
-                if self.t17.get() != '':
-                    self.n17.set(1)
-            elif i == 19:
-                if self.t18.get() != '':
-                    self.n18.set(1)
-            elif i == 20:
-                if self.t19.get() != '':
-                    self.n19.set(1)
-            elif i == 21:
-                if self.t20.get() != '':
-                    self.n20.set(1)
-            elif i == 22:
-                if self.t21.get() != '':
-                    self.n21.set(1)
-            elif i == 23:
-                if self.t22.get() != '':
-                    self.n22.set(1)
-            elif i == 24:
-                if self.t23.get() != '':
-                    self.n23.set(1)
-            elif i == 25:
-                if self.t24.get() != '':
-                    self.n24.set(1)
-            elif i == 26:
-                if self.t25.get() != '':
-                    self.n25.set(1)
-            elif i == 27:
-                if self.t26.get() != '':
-                    self.n26.set(1)
-            elif i == 28:
-                if self.t2601.get() != '':
-                    self.n2601.set(1)
-            elif i == 29:
-                if self.t27.get() != '':
-                    self.n27.set(1)
-            elif i == 30:
-                if self.t28.get() != '':
-                    self.n28.set(1)
-            elif i == 31:
-                if self.t29.get() != '':
-                    self.n29.set(1)
-            elif i == 32:
-                if self.t30.get() != '':
-                    self.n30.set(1)
-            elif i == 33:
-                if self.t31.get() != '':
-                    self.n31.set(1)
-            elif i == 34:
-                if self.t32.get() != '':
-                    self.n32.set(1)
-            elif i == 35:
-                if self.t33.get() != '':
-                    self.n33.set(1)
-            elif i == 36:
-                if self.t34.get() != '':
-                    self.n34.set(1)
-            elif i == 37:
-                if self.t35.get() != '':
-                    self.n35.set(1)
-            elif i == 38:
-                if self.t36.get() != '':
-                    self.n36.set(1)
-            elif i == 39:
-                if self.t37.get() != '':
-                    self.n37.set(1)
-            elif i == 40:
-                if self.t38.get() != '':
-                    self.n38.set(1)
-            elif i == 41:
-                if self.t39.get() != '':
-                    self.n39.set(1)
-            elif i == 42:
-                if self.t40.get() != '':
-                    self.n40.set(1)
-            elif i == 43:
-                if self.t41.get() != '':
-                    self.n41.set(1)
-            elif i == 44:
-                if self.t42.get() != '':
-                    self.n42.set(1)
+    def select_fillin(self):    # Chechboxes.select_fillin - F (90)
+        self.deselect_all()     # Chechboxes.select_fillin - F (45)
+        if self.t1.get() != '':
+            self.n1.set(1)
+
+        if self.t2.get() != '':
+            self.n2.set(1)
+
+        if self.t3.get() != '':
+            self.n3.set(1)
+
+        if self.t4.get() != '':
+            self.n4.set(1)
+
+        if self.t5.get() != '':
+            self.n5.set(1)
+
+        if self.t6.get() != '':
+            self.n6.set(1)
+
+        if self.t7.get() != '':
+            self.n7.set(1)
+
+        if self.t8.get() != '':
+            self.n8.set(1)
+
+        if self.t9.get() != '':
+            self.n9.set(1)
+
+        if self.t10.get() != '':
+            self.n10.set(1)
+
+        if self.t11.get() != '':
+            self.n11.set(1)
+
+        if self.t12.get() != '':
+            self.n12.set(1)
+
+        if self.t13.get() != '':
+            self.n13.set(1)
+
+        if self.t1301.get() != '':
+            self.n1301.set(1)
+
+        if self.t14.get() != '':
+            self.n14.set(1)
+
+        if self.t15.get() != '':
+            self.n15.set(1)
+
+        if self.t16.get() != '':
+            self.n16.set(1)
+
+        if self.t17.get() != '':
+            self.n17.set(1)
+
+        if self.t18.get() != '':
+            self.n18.set(1)
+
+        if self.t19.get() != '':
+            self.n19.set(1)
+
+        if self.t20.get() != '':
+            self.n20.set(1)
+
+        if self.t21.get() != '':
+            self.n21.set(1)
+
+        if self.t22.get() != '':
+            self.n22.set(1)
+
+        if self.t23.get() != '':
+            self.n23.set(1)
+
+        if self.t24.get() != '':
+            self.n24.set(1)
+
+        if self.t25.get() != '':
+            self.n25.set(1)
+
+        if self.t26.get() != '':
+            self.n26.set(1)
+
+        if self.t2601.get() != '':
+            self.n2601.set(1)
+
+        if self.t27.get() != '':
+            self.n27.set(1)
+
+        if self.t28.get() != '':
+            self.n28.set(1)
+
+        if self.t29.get() != '':
+            self.n29.set(1)
+
+        if self.t30.get() != '':
+            self.n30.set(1)
+
+        if self.t31.get() != '':
+            self.n31.set(1)
+
+        if self.t32.get() != '':
+            self.n32.set(1)
+
+        if self.t33.get() != '':
+            self.n33.set(1)
+
+        if self.t34.get() != '':
+            self.n34.set(1)
+
+        if self.t35.get() != '':
+            self.n35.set(1)
+
+        if self.t36.get() != '':
+            self.n36.set(1)
+
+        if self.t37.get() != '':
+            self.n37.set(1)
+
+        if self.t38.get() != '':
+            self.n38.set(1)
+
+        if self.t39.get() != '':
+            self.n39.set(1)
+
+        if self.t40.get() != '':
+            self.n40.set(1)
+
+        if self.t41.get() != '':
+            self.n41.set(1)
+
+        if self.t42.get() != '':
+            self.n42.set(1)
 
     def select_all(self):
         self.nr1.set(1)
@@ -674,12 +672,12 @@ class Chechboxes:
             return self.tsp11.get()
         else:
             return 'ə'
-    # NOT USED
-    def sp_offme(self):
+
+    def sp_eezz(self):
         if self.nsp12.get() == 1:
             return self.tsp12.get()
         else:
-            return 'üf'
+            return 'iz'
 
     def sp_esz(self):
         if self.nsp13.get() == 1:
@@ -774,18 +772,17 @@ class Rule_window(Chechboxes):
                                  bd=5, bg=f_i)
             deselec_btn.grid(row=20, column=17, columnspan=10)
 
-            nula = 0
-            edno = 1
-            dve = 2
-            tri = 3
-            cetiri = 4
-            pet = 5
+            mebar = Menu(novprozorec)
+            novprozorec.config(menu=mebar)
+
+            richspell = Menu(mebar, tearoff=0)
+            richspell.add_checkbutton(label="Doble the 's' at the end of words /RichSpell/", var=self.nsp19)
+            richspell.add_checkbutton(label="Long vowel rule /RichSpell/", var=self.nsp21)
+            mebar.add_cascade(label="Rich Spell Long", menu=richspell)
 
             e_w = 3  # entry_width
-
             # ------------------ Vowel sounds - short -----------------------------------------
             Label(novprozorec, text='Short vowels', font=big_font, bg=f_i).grid(row=0, column=10)
-                                                                        # TODO: s 'TAB' da se mesti migastijyt kursor
             Label(novprozorec, text='"a" as in AT', bg=f_i).grid(row=1, column=10)
             Entry(novprozorec, textvariable=self.t2, width=e_w).grid(row=1, column=11)
             Checkbutton(novprozorec, var=self.n2, bg=f_i).grid(row=1, column=12)
@@ -891,33 +888,34 @@ class Rule_window(Chechboxes):
             # ------------------ Consonant sounds -----------------------------------------
 
             Label(novprozorec, text='Consonant', font=big_font, bg=f_i).grid(row=0, column=0)
-            Label(novprozorec, text='"b" as in BE', bg=f_i).grid(row=1, column=nula)
-            Entry(novprozorec, textvariable=self.t7, width=e_w).grid(row=1, column=edno)
-            Checkbutton(novprozorec, var=self.n7, bg=f_i).grid(row=1, column=dve)
+            Label(novprozorec, text='"b" as in BE', bg=f_i).grid(row=1, column=0)
+            Entry(novprozorec, textvariable=self.t7, width=e_w).grid(row=1, column=1)
+            Checkbutton(novprozorec, var=self.n7, bg=f_i).grid(row=1, column=2
+                                                               )
 
-            Label(novprozorec, text='"ch" as in CHEESE', bg=f_i).grid(row=2, column=nula)
-            Entry(novprozorec, textvariable=self.t8, width=e_w).grid(row=2, column=edno)
-            Checkbutton(novprozorec, var=self.n8, bg=f_i).grid(row=2, column=dve)
+            Label(novprozorec, text='"ch" as in CHEESE', bg=f_i).grid(row=2, column=0)
+            Entry(novprozorec, textvariable=self.t8, width=e_w).grid(row=2, column=1)
+            Checkbutton(novprozorec, var=self.n8, bg=f_i).grid(row=2, column=2)
 
-            Label(novprozorec, text='"d" as in DEE', bg=f_i).grid(row=3, column=nula)
-            Entry(novprozorec, textvariable=self.t9, width=e_w).grid(row=3, column=edno)
-            Checkbutton(novprozorec, var=self.n9, bg=f_i).grid(row=3, column=dve)
+            Label(novprozorec, text='"d" as in DEE', bg=f_i).grid(row=3, column=0)
+            Entry(novprozorec, textvariable=self.t9, width=e_w).grid(row=3, column=1)
+            Checkbutton(novprozorec, var=self.n9, bg=f_i).grid(row=3, column=2)
 
-            Label(novprozorec, text='"f" as in FEE', bg=f_i).grid(row=4, column=nula)
-            Entry(novprozorec, textvariable=self.t14, width=e_w).grid(row=4, column=edno)
-            Checkbutton(novprozorec, var=self.n14, bg=f_i).grid(row=4, column=dve)
+            Label(novprozorec, text='"f" as in FEE', bg=f_i).grid(row=4, column=0)
+            Entry(novprozorec, textvariable=self.t14, width=e_w).grid(row=4, column=1)
+            Checkbutton(novprozorec, var=self.n14, bg=f_i).grid(row=4, column=2)
 
-            Label(novprozorec, text='"g" as in GREEN', bg=f_i).grid(row=5, column=nula)
-            Entry(novprozorec, textvariable=self.t15, width=e_w).grid(row=5, column=edno)
-            Checkbutton(novprozorec, var=self.n15, bg=f_i).grid(row=5, column=dve)
+            Label(novprozorec, text='"g" as in GREEN', bg=f_i).grid(row=5, column=0)
+            Entry(novprozorec, textvariable=self.t15, width=e_w).grid(row=5, column=1)
+            Checkbutton(novprozorec, var=self.n15, bg=f_i).grid(row=5, column=2)
 
-            Label(novprozorec, text='"h" as in HE', bg=f_i).grid(row=6, column=nula)
-            Entry(novprozorec, textvariable=self.t16, width=e_w).grid(row=6, column=edno)
-            Checkbutton(novprozorec, var=self.n16, bg=f_i).grid(row=6, column=dve)
+            Label(novprozorec, text='"h" as in HE', bg=f_i).grid(row=6, column=0)
+            Entry(novprozorec, textvariable=self.t16, width=e_w).grid(row=6, column=1)
+            Checkbutton(novprozorec, var=self.n16, bg=f_i).grid(row=6, column=2)
 
-            Label(novprozorec, text='"j" as in JAM', bg=f_i).grid(row=7, column=nula)
-            Entry(novprozorec, textvariable=self.t19, width=e_w).grid(row=7, column=edno)
-            Checkbutton(novprozorec, var=self.n19, bg=f_i).grid(row=7, column=dve)
+            Label(novprozorec, text='"j" as in JAM', bg=f_i).grid(row=7, column=0)
+            Entry(novprozorec, textvariable=self.t19, width=e_w).grid(row=7, column=1)
+            Checkbutton(novprozorec, var=self.n19, bg=f_i).grid(row=7, column=2)
 
             Label(novprozorec, text='"k" as in KEY', bg=f_i).grid(row=8, column=0)
             Entry(novprozorec, textvariable=self.t20, width=e_w).grid(row=8, column=1)
@@ -951,41 +949,41 @@ class Rule_window(Chechboxes):
             Entry(novprozorec, textvariable=self.t29, width=e_w).grid(row=15, column=1)
             Checkbutton(novprozorec, var=self.n29, bg=f_i).grid(row=15, column=2)
 
-            Label(novprozorec, text='"sh" as in SHE', bg=f_i).grid(row=1, column=tri)
-            Entry(novprozorec, textvariable=self.t30, width=e_w).grid(row=1, column=cetiri)
-            Checkbutton(novprozorec, var=self.n30, bg=f_i).grid(row=1, column=pet)
+            Label(novprozorec, text='"sh" as in SHE', bg=f_i).grid(row=1, column=3)
+            Entry(novprozorec, textvariable=self.t30, width=e_w).grid(row=1, column=4)
+            Checkbutton(novprozorec, var=self.n30, bg=f_i).grid(row=1, column=5)
 
-            Label(novprozorec, text='"t" as in TEA', bg=f_i).grid(row=2, column=tri)
-            Entry(novprozorec, textvariable=self.t31, width=e_w).grid(row=2, column=cetiri)
-            Checkbutton(novprozorec, var=self.n31, bg=f_i).grid(row=2, column=pet)
+            Label(novprozorec, text='"t" as in TEA', bg=f_i).grid(row=2, column=3)
+            Entry(novprozorec, textvariable=self.t31, width=e_w).grid(row=2, column=4)
+            Checkbutton(novprozorec, var=self.n31, bg=f_i).grid(row=2, column=5)
 
-            Label(novprozorec, text='"th" as in THAT', bg=f_i).grid(row=3, column=tri)
-            Entry(novprozorec, textvariable=self.t32, width=e_w).grid(row=3, column=cetiri)
-            Checkbutton(novprozorec, var=self.n32, bg=f_i).grid(row=3, column=pet)
+            Label(novprozorec, text='"th" as in THAT', bg=f_i).grid(row=3, column=3)
+            Entry(novprozorec, textvariable=self.t32, width=e_w).grid(row=3, column=4)
+            Checkbutton(novprozorec, var=self.n32, bg=f_i).grid(row=3, column=5)
 
-            Label(novprozorec, text='"th" as in THIN', bg=f_i).grid(row=4, column=tri)
-            Entry(novprozorec, textvariable=self.t10, width=e_w).grid(row=4, column=cetiri)
-            Checkbutton(novprozorec, var=self.n10, bg=f_i).grid(row=4, column=pet)
+            Label(novprozorec, text='"th" as in THIN', bg=f_i).grid(row=4, column=3)
+            Entry(novprozorec, textvariable=self.t10, width=e_w).grid(row=4, column=4)
+            Checkbutton(novprozorec, var=self.n10, bg=f_i).grid(row=4, column=5)
 
-            Label(novprozorec, text='"v" as in VEE', bg=f_i).grid(row=5, column=tri)
-            Entry(novprozorec, textvariable=self.t35, width=e_w).grid(row=5, column=cetiri)
-            Checkbutton(novprozorec, var=self.n35, bg=f_i).grid(row=5, column=pet)
+            Label(novprozorec, text='"v" as in VEE', bg=f_i).grid(row=5, column=3)
+            Entry(novprozorec, textvariable=self.t35, width=e_w).grid(row=5, column=4)
+            Checkbutton(novprozorec, var=self.n35, bg=f_i).grid(row=5, column=5)
 
-            Label(novprozorec, text='"w" as in WE', bg=f_i).grid(row=6, column=tri)
-            Entry(novprozorec, textvariable=self.t36, width=e_w).grid(row=6, column=cetiri)
-            Checkbutton(novprozorec, var=self.n36, bg=f_i).grid(row=6, column=pet)
+            Label(novprozorec, text='"w" as in WE', bg=f_i).grid(row=6, column=3)
+            Entry(novprozorec, textvariable=self.t36, width=e_w).grid(row=6, column=4)
+            Checkbutton(novprozorec, var=self.n36, bg=f_i).grid(row=6, column=5)
 
-            Label(novprozorec, text='"y" as in YIELD', bg=f_i).grid(row=7, column=tri)
-            Entry(novprozorec, textvariable=self.t37, width=e_w).grid(row=7, column=cetiri)
-            Checkbutton(novprozorec, var=self.n37, bg=f_i).grid(row=7, column=pet)
+            Label(novprozorec, text='"y" as in YIELD', bg=f_i).grid(row=7, column=3)
+            Entry(novprozorec, textvariable=self.t37, width=e_w).grid(row=7, column=4)
+            Checkbutton(novprozorec, var=self.n37, bg=f_i).grid(row=7, column=5)
 
-            Label(novprozorec, text='"z" as in ZEE', bg=f_i).grid(row=8, column=tri)
-            Entry(novprozorec, textvariable=self.t38, width=e_w).grid(row=8, column=cetiri)
-            Checkbutton(novprozorec, var=self.n38, bg=f_i).grid(row=8, column=pet)
+            Label(novprozorec, text='"z" as in ZEE', bg=f_i).grid(row=8, column=3)
+            Entry(novprozorec, textvariable=self.t38, width=e_w).grid(row=8, column=4)
+            Checkbutton(novprozorec, var=self.n38, bg=f_i).grid(row=8, column=5)
 
-            Label(novprozorec, text='"z" as in SEIZURE', bg=f_i).grid(row=9, column=tri)
-            Entry(novprozorec, textvariable=self.t39, width=e_w).grid(row=9, column=cetiri)
-            Checkbutton(novprozorec, var=self.n39, bg=f_i).grid(row=9, column=pet)
+            Label(novprozorec, text='"z" as in SEIZURE', bg=f_i).grid(row=9, column=3)
+            Entry(novprozorec, textvariable=self.t39, width=e_w).grid(row=9, column=4)
+            Checkbutton(novprozorec, var=self.n39, bg=f_i).grid(row=9, column=5)
 
             # Label(novprozorec).grid(row=19, column=0)
             novprozorec.resizable(height=0, width=0)
@@ -1130,7 +1128,7 @@ class Rule_window(Chechboxes):
         Entry(row_one, textvar=chw.tsp18, width=e_w).grid(row=5, column=7)
         Checkbutton(row_one, var=chw.nsp18, bg=f_i).grid(row=5, column=8)
 
-        Label(row_one, text='......', bg=f_i).grid(row=6, column=6)
+        Label(row_one, text="plural 'es'", bg=f_i).grid(row=6, column=6)
         Entry(row_one, textvar=chw.tsp12, width=e_w).grid(row=6, column=7)
         Checkbutton(row_one, var=chw.nsp12, bg=f_i).grid(row=6, column=8)
 
@@ -1138,8 +1136,7 @@ class Rule_window(Chechboxes):
         Entry(row_one, textvar=chw.tsp20, width=35).grid(row=9, column=0, columnspan=3)
         Checkbutton(row_one, var=chw.nsp20, bg=f_i).grid(row=8, column=1)
 
-        Checkbutton(row_one, var=chw.nsp19, text="doble the 's' at the end of words/RichSpell/", bg=f_i).grid(row=10, column=0, columnspan=3)
-        Checkbutton(row_one, var=chw.nsp21, text="Long vowel rule/RichSpell/", bg=f_i).grid(row=11, column=0, columnspan=3)
+
 
 
 chw = Chechboxes()

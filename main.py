@@ -47,7 +47,7 @@ class PrevodGovor:
     nomera = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
     punctuation = '''"'!@#█$%’''^&*( '){}[]|._-`/?:;—\,“”~ \n'''
 
-    with open('data/nester dict.pkl', "rb") as pkfl:
+    with open('data/NastedDict.pkl', "rb") as pkfl:
         recnik_abc = pickle.load(pkfl)
 
     @profile
@@ -75,7 +75,7 @@ class PrevodGovor:
             #
             # recnik = dict(zip(spisyk_v, spisyk_vyn))
 
-            spisyk_ot_dumi = re.findall(r"[\w']+|\W", str(pyrvicen_tekst))
+            spisyk_ot_dumi = re.findall(r"\w+\b'\w+|[\w]+|\W", str(pyrvicen_tekst))
             broj_dumi = int(len(spisyk_ot_dumi))
             for x in range(broj_dumi):
                 word = spisyk_ot_dumi[x]
@@ -129,6 +129,7 @@ class PrevodGovor:
         duma_ss_se_ce = bool(re.compile(
             r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(
             wrd))
+        duma_is_ = "'" in wrd
         foni_end_s = bool(e_wrd.endswith('S'))
         foni_more_or_2_s = bool(e_wrd.count('S') >= 2)
         if duma_ss_se_ce is True and foni_end_s is True and foni_more_or_2_s is False:
@@ -161,13 +162,16 @@ class PrevodGovor:
             else:
                 adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                 kj += adwrd
+        elif duma_is_ is True:
+            adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
+            kj += adwrd
         elif duma_ss_se_ce is False and foni_end_s is True and foni_more_or_2_s is False or duma_ss_se_ce is False and foni_end_s is False and foni_more_or_2_s is False:
             kj += e_wrd
         else:
             szs = e_wrd.split('S', 1)
             if szs[0] + 'S' in self.recnik_abc[wrd[0]].values():
                 adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
-                return adwrd
+                kj += adwrd
             else:
                 kj += e_wrd
         return kj
@@ -186,8 +190,9 @@ class PrevodGovor:
             p045 = re.sub('IR', chw.eer(), p044)
             p046 = re.sub('ɔR', chw.oor(), p045)
             p047 = re.sub(r'([©BDGLMNVÝəIÑ])(Z\b)', fr'\1{chw.sp_esz()}', p046)
+            p41002 = re.sub(fr'[ÝəI]{chw.sp_esz()}\b', chw.sp_eezz(), p047)
 
-            p1 = re.sub('ɒ', chw.ch1(), p047)
+            p1 = re.sub('ɒ', chw.ch1(), p41002)
             p2 = re.sub('Æ', chw.ch2(), p1)
             p3 = re.sub('ʌ', chw.ch3(), p2)
             p4 = re.sub('ɔ', chw.ch4(), p3)
@@ -243,14 +248,14 @@ class PrevodGovor:
             pl9 = re.sub(r'(gz)(\w)', fr"{chw.sp_egzx()}\2", pl7)
             pl10 = re.sub(r'\bə', fr"{chw.sp_a_bout()}", pl9)
             pl11 = re.sub(r'([a-z][a-z][a-z])(ə\b)', fr"\1{chw.sp_sof_a()}", pl10)
-            # pl12 = re.sub(r'ks(\w)', fr'{chw.sp_kxs()}\1', pl11)                # TODO: exsit [exit]
+            # pl12 = re.sub(r'ks(\w)', fr'{chw.sp_kxs()}\1', pl11)
             pl13 = re.sub(r'ɣ', chw.sp_x_end(), pl11)
 
             p41001 = re.sub('ə', chw.ch41(), pl13)
 
             pl5 = re.sub(fr"({chw.ch20()})(\b|[eiy])", fr"{chw.sp_ki_ke_k()}\2", p41001)
 
-            # p41002 = re.sub(fr"\b{chw.ch3()}{chw.ch35()}\b", fr'{chw.sp_offme()}', p41001)
+
             p41003 = re.sub(r"ʔћ", chw.sp_eedd(), pl5)
             p41004 = re.sub(r"ђ", chw.sp_ett(), p41003)
             p41005 = re.sub(r"ћ", chw.sp_edd(), p41004)
@@ -436,7 +441,7 @@ class MenuBar:
         s.write(str(chw.sp_egzx()) + ' ' + str(chw.nsp9.get()) + '\n')
         s.write(str(chw.sp_a_bout()) + ' '+str(chw.nsp10.get()) + '\n')
         s.write(str(chw.sp_sof_a()) + ' '+ str(chw.nsp11.get()) + '\n')
-        s.write(str(chw.sp_offme()) + ' ' +str(chw.nsp12.get()) + '\n')
+        s.write(str(chw.sp_eezz()) + ' ' + str(chw.nsp12.get()) + '\n')
         s.write(str(chw.sp_esz()) + ' ' +  str(chw.nsp13.get()) + '\n')
         s.write(str(chw.sp_kxs()) + ' ' +  str(chw.nsp14.get()) + '\n')
         s.write(str(chw.sp_edd()) + ' ' +  str(chw.nsp15.get()) + '\n')
@@ -620,6 +625,7 @@ class MainWindow:
         self.ent_txt.bind('<Shift-Return>', lambda x: print(x))
         self.ent_txt.bind('<Return>', prg.prevod2)
 
+
         self.lnta = Label(window, text='Welcome to text converter 9000', relief=SUNKEN, anchor=W, bg=self.f_i)
         self.lnta.place(anchor=S, relx=0.50, rely=1, relwidth=1)
         self.menubar = MenuBar(self)
@@ -713,9 +719,13 @@ class MainWindow:
         if self.sinc_gh.get() == 0:
             print('sinhron ne raboti')
         else:
+
+
+            # self.ent_txt.bind('<MouseWheel>', self.scr_br)
+            # self.textbox2.bind('<MouseWheel>', self.scr_br)
+            self.scr_br.config(command=lambda *args: [self.ent_txt.yview(*args), self.textbox2.yview(*args)])
             self.ent_txt.config(yscrollcommand=self.scr_br.set)
             self.textbox2.config(yscrollcommand=self.scr_br.set)
-            self.scr_br.config(command=lambda *args: [self.ent_txt.yview(*args), self.textbox2.yview(*args)])
             # self.ent_txt.unbind("<MouseWheel>", lambda e: print(e))
             # self.textbox2.unbind("<MouseWheel>", lambda e: print(e))
 
