@@ -239,30 +239,29 @@ class PrevodGovor:
 
             pl1 = re.sub(fr"{chw.ch20()}{chw.ch36()}", chw.sp_kw(), p41)
             pl2 = re.sub(fr"{chw.ch24()}{chw.ch20()}", chw.sp_ngk(), pl1)
-            pl3 = re.sub(r'oa\b', fr"{chw.sp_ago()}", pl2)
-            pl4 = re.sub(r'(\w)(yoo)', fr"\1{chw.sp_yoo()}", pl3)
+            pl3 = re.sub(fr'{chw.ch25()}\b', chw.sp_ago(), pl2)
+            pl4 = re.sub(fr'(\w)({chw.ch37()}({chw.ch34()}|{chw.ch33()}))', fr"\1{chw.sp_yoo()}", pl3)
 
             pl6 = re.sub(fr"{chw.ch30()}ə({chw.ch23()}\b)", fr"{chw.sp_tion()}\1", pl4)
             pl7 = re.sub(fr"{chw.ch39()}ə({chw.ch23()}\b)", fr"{chw.sp_sion()}\1", pl6)
 
-            pl9 = re.sub(r'(gz)(\w)', fr"{chw.sp_egzx()}\2", pl7)
+            pl9 = re.sub(fr'({chw.ch15()}{chw.ch38()})(\w)', fr"{chw.sp_egzx()}\2", pl7)
             pl10 = re.sub(r'\bə', fr"{chw.sp_a_bout()}", pl9)
             pl11 = re.sub(r'([a-z][a-z][a-z])(ə\b)', fr"\1{chw.sp_sof_a()}", pl10)
-            # pl12 = re.sub(r'ks(\w)', fr'{chw.sp_kxs()}\1', pl11)
+
             pl13 = re.sub(r'ɣ', chw.sp_x_end(), pl11)
 
             p41001 = re.sub('ə', chw.ch41(), pl13)
 
             pl5 = re.sub(fr"({chw.ch20()})(\b|[eiy])", fr"{chw.sp_ki_ke_k()}\2", p41001)
+            pl12 = re.sub(fr'{chw.ch29()}(e|i|y|{chw.ch11()}|{chw.ch17()}|{chw.ch40()}|{chw.ch37()})', fr'{chw.sp_s_e_i_y()}\1', pl5)
 
-
-            p41003 = re.sub(r"ʔћ", chw.sp_eedd(), pl5)
+            p41003 = re.sub(r"ʔћ", chw.sp_eedd(), pl12)
             p41004 = re.sub(r"ђ", chw.sp_ett(), p41003)
             p41005 = re.sub(r"ћ", chw.sp_edd(), p41004)
 
             # TODO: " 's " da se izpisva v prevoda, i da moze da se promenja. Zamestvane v fajla ili nov kod
 
-            #  "ss,se,ce," v kraja da dumata da se oromenjat v "ss"
 
             nummmm = mw.remove_dash()
             regex = r"(\w+)(/(\w+))(/(\w+)/)((\w+))|(\w+)(/(\w+))(/(\w+))|(\w+)(/(\w+))"
@@ -443,7 +442,7 @@ class MenuBar:
         s.write(str(chw.sp_sof_a()) + ' '+ str(chw.nsp11.get()) + '\n')
         s.write(str(chw.sp_eezz()) + ' ' + str(chw.nsp12.get()) + '\n')
         s.write(str(chw.sp_esz()) + ' ' +  str(chw.nsp13.get()) + '\n')
-        s.write(str(chw.sp_kxs()) + ' ' +  str(chw.nsp14.get()) + '\n')
+        s.write(str(chw.sp_s_e_i_y()) + ' ' + str(chw.nsp14.get()) + '\n')
         s.write(str(chw.sp_edd()) + ' ' +  str(chw.nsp15.get()) + '\n')
         s.write(str(chw.sp_ett()) + ' ' +  str(chw.nsp16.get()) + '\n')
         s.write(str(chw.sp_eedd()) + ' ' + str(chw.nsp17.get()) + '\n')

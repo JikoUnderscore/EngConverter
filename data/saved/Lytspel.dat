@@ -1,13 +1,13 @@
 o 0
-ä 0
-ü 0
-aw 0
+a 1
+u 1
+au 1
 ow 0
-ie 0
+y 1
 b 0
 ch 0
 d 0
-th 0
+th 1
 e 0
 ur 0
 ai 0
@@ -31,7 +31,7 @@ r 0
 s 0
 sh 0
 t 0
-thh 0
+dh 1
 uu 0
 oo 0
 v 0
@@ -40,7 +40,7 @@ y 0
 z 0
 zh 0
 i 0
-ə 0
+e 1
 ər 0
 er 0
 ar 0
@@ -49,22 +49,22 @@ or 0
 ou 0
 qu 0
 nk 0
-o 0
-yoo 0
+oa 0
+iu 1
 k 0
-shə 0
+tio 1
 zhə 0
 rr 0
 gz 0
 ə 0
-ə 0
-üf 0
+a 1
+iz 0
 z 0
-ks 0
+c 1
 éd 0
 éd 0
 éd 0
 ks 0
 0
-_,E,N,T,E,R,_,W,O,R,D,S,_ 0
+_ 0
 0

@@ -33,7 +33,7 @@ class Chechboxes:
                                                                         #                                                DEAD
     tsp1, tsp2, tsp3, tsp4, tsp5, tsp6, tsp7, tsp8, tsp9, tsp10, tsp11, tsp12, tsp13, tsp14, tsp15, tsp16, tsp17, tsp18, tsp19, tsp20 = \
         (StringVar() for psp in range(20))
-                                                                        #              DEAD
+
     nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19, nsp20, nsp21 = \
         (IntVar() for ipsp in range(21))
 
@@ -623,7 +623,7 @@ class Chechboxes:
         if self.nsp3.get() == 1:
             return self.tsp3.get()
         else:
-            return 'o'
+            return 'oa'
 
     def sp_yoo(self):
         if self.nsp4.get() == 1:
@@ -684,12 +684,12 @@ class Chechboxes:
             return self.tsp13.get()
         else:
             return 'z'
-    # NOT USED
-    def sp_kxs(self):
+
+    def sp_s_e_i_y(self):
         if self.nsp14.get() == 1:
             return self.tsp14.get()
         else:
-            return 'ks'
+            return 's'
 
     def sp_edd(self):
         if self.nsp15.get() == 1:
@@ -1108,7 +1108,7 @@ class Rule_window(Chechboxes):
         Entry(row_one, textvar=chw.tsp7, width=e_w).grid(row=6, column=4)
         Checkbutton(row_one, var=chw.nsp7, bg=f_i).grid(row=6, column=5)
 
-        Label(row_one, text='......', bg=f_i).grid(row=4, column=6)
+        Label(row_one, text="/s/ in front of -e,y,i", bg=f_i).grid(row=4, column=6)
         Entry(row_one, textvar=chw.tsp14, width=e_w).grid(row=4, column=7)
         Checkbutton(row_one, var=chw.nsp14, bg=f_i).grid(row=4, column=8)
 
