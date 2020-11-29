@@ -34,8 +34,8 @@ class Chechboxes:
     tsp1, tsp2, tsp3, tsp4, tsp5, tsp6, tsp7, tsp8, tsp9, tsp10, tsp11, tsp12, tsp13, tsp14, tsp15, tsp16, tsp17, tsp18, tsp19, tsp20 = \
         (StringVar() for psp in range(20))
 
-    nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19, nsp20, nsp21 = \
-        (IntVar() for ipsp in range(21))
+    nsp1, nsp2, nsp3, nsp4, nsp5, nsp6, nsp7, nsp8, nsp9, nsp10, nsp11, nsp12, nsp13, nsp14, nsp15, nsp16, nsp17, nsp18, nsp19, nsp20, nsp21, nsp22 = \
+        (IntVar() for ipsp in range(22))
 
     def ch1(self):
         if self.n1.get() == 1:
@@ -772,8 +772,13 @@ class Rule_window(Chechboxes):
                                  bd=5, bg=f_i)
             deselec_btn.grid(row=20, column=17, columnspan=10)
 
+            # ------------------ MENU BAR -----------------------------------------
             mebar = Menu(novprozorec)
             novprozorec.config(menu=mebar)
+
+            Lytspel = Menu(mebar, tearoff=0)
+            Lytspel.add_checkbutton(label="Doble the 's' at the end of words /LytSpel/", var=self.nsp22)
+            mebar.add_cascade(label="LytSpel", menu=Lytspel)
 
             richspell = Menu(mebar, tearoff=0)
             richspell.add_checkbutton(label="Doble the 's' at the end of words /RichSpell/", var=self.nsp19)
@@ -1024,7 +1029,7 @@ class Rule_window(Chechboxes):
     def close_popout_window(self):
         if specialni_pravila.state() == 'normal':
             specialni_pravila.destroy()
-            ruw.sysht.config(text='0')
+            self.sysht.config(text='0')
 
     def runmerun(self):
         if self.sysht.cget("text") == '0':

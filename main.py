@@ -45,7 +45,7 @@ def profile(fnc):
 # ne nuzen klas
 class PrevodGovor:
     nomera = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-    punctuation = '''"'!@#█$%’''^&*( '){}[]|._-`/?:;—\,“”~ \n'''
+    punctuation = '''"'!@#█½-$%’''^&*( '){}[]¿|._-`/?:;«»‹›—\,“”~ \n'''
 
     with open('data/NastedDict.pkl', "rb") as pkfl:
         recnik_abc = pickle.load(pkfl)
@@ -168,11 +168,11 @@ class PrevodGovor:
         elif duma_ss_se_ce is False and foni_end_s is True and foni_more_or_2_s is False or duma_ss_se_ce is False and foni_end_s is False and foni_more_or_2_s is False:
             kj += e_wrd
         else:
-            szs = e_wrd.split('S', 1)
-            if szs[0] + 'S' in self.recnik_abc[wrd[0]].values():
-                adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
-                kj += adwrd
-            else:
+            # szs = e_wrd.split('S', 1)
+            # if szs[0] + 'S' in self.recnik_abc[wrd[0]].values():
+            #     adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
+            #     kj += adwrd
+            # else:
                 kj += e_wrd
         return kj
 
@@ -286,6 +286,10 @@ class PrevodGovor:
                 bsrule4 = re.sub(r"(oa([aouei]))", r"o-\2", bsrule3)
                 bsrule5 = re.sub(r"(ue([aouei]))", r"u\2", bsrule4)
                 ogtext1 = bsrule5
+
+            if chw.nsp22.get() == 1:
+                rss = re.sub(r"(\w)s([aou])", r'\1ss\2', ogtext1)
+                ogtext1 = rss
 
             end_text = re.sub(r"(^|[.\n?!])\s*([a-zA-Z])", lambda p: p.group(0).upper(), ogtext1)
 
@@ -450,6 +454,7 @@ class MenuBar:
         s.write(str(chw.nsp19.get()) + '\n')
         s.write(str(','.join(chw.excld())) + ' ' + str(chw.nsp20.get()) + '\n')
         s.write(str(chw.nsp21.get()) + '\n')
+        s.write(str(chw.nsp22.get()) + '\n')
 
     def load_var(self):
         from checkboxes import chw
@@ -528,6 +533,7 @@ class MenuBar:
             chw.nsp19.set(ll[134])
             chw.tsp20.set(ll[135]); chw.nsp20.set(ll[136])
             chw.nsp21.set(ll[137])
+            chw.nsp22.set(ll[138])
 
 
 class MainWindow:
