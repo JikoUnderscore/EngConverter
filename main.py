@@ -47,7 +47,7 @@ class PrevodGovor:
     nomera = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
     punctuation = '''"'!@#█½-$%’''^&*( '){}[]¿|._-`/?:;«»‹›—\,“”~ \n'''
 
-    with open('data/NastedDict.pkl', "rb") as pkfl:
+    with open('data/NastedDict_apostrof.pkl', "rb") as pkfl:
         recnik_abc = pickle.load(pkfl)
 
     @profile
@@ -127,11 +127,13 @@ class PrevodGovor:
         #    return e_wrd
         kj = ""
         duma_ss_se_ce = bool(re.compile(
-            r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$))").findall(
+            r"(s(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$|eship$|e's$|ible$|ibility$))|(ss($|1$|2$|3$|4$|es$|es1$|es2$|es3$|es4$|d$|ing$|ly$|ship$|'s$|ible$|ibility$))|(c(e$|e1$|e2$|e3$|e4$|es$|es1$|es2$|es3$|es4$|ed$|ing$|ely$|eship$|e's$|ible$|ibility$))").findall(
             wrd))
+        foni_end_fkptth = bool(re.compile(r"FS$|KS$|PS$|TS$|θS$").findall(e_wrd))
         duma_is_ = "'" in wrd
         foni_end_s = bool(e_wrd.endswith('S'))
         foni_more_or_2_s = bool(e_wrd.count('S') >= 2)
+
         if duma_ss_se_ce is True and foni_end_s is True and foni_more_or_2_s is False:
             kj += e_wrd + 'S'
         elif duma_ss_se_ce is True and foni_end_s is True:
@@ -146,8 +148,8 @@ class PrevodGovor:
                         kj += adwrd
             elif szs[0] + 'S' in self.recnik_abc[wrd[0]].values():
                 adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
-                fowrd = adwrd.replace("S", "SS", 1)
-                kj += fowrd
+                # fowrd = adwrd.replace("S", "SS", 1)
+                kj += adwrd
             else:
                 kj += e_wrd + 'S'
         elif duma_ss_se_ce is True:
@@ -162,10 +164,11 @@ class PrevodGovor:
             else:
                 adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
                 kj += adwrd
-        elif duma_is_ is True:
+        elif duma_is_ is True and foni_more_or_2_s is True and foni_end_fkptth is not True:
             adwrd = e_wrd[::-1].replace("S"[::-1], "SS"[::-1], 1)[::-1]
             kj += adwrd
-        elif duma_ss_se_ce is False and foni_end_s is True and foni_more_or_2_s is False or duma_ss_se_ce is False and foni_end_s is False and foni_more_or_2_s is False:
+        elif duma_ss_se_ce is False and foni_end_s is True and foni_more_or_2_s is False or \
+                duma_ss_se_ce is False and foni_end_s is False and foni_more_or_2_s is False:
             kj += e_wrd
         else:
             # szs = e_wrd.split('S', 1)
