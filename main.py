@@ -263,7 +263,6 @@ class PrevodGovor:
             p41004 = re.sub(r"ђ", chw.sp_ett(), p41003)
             p41005 = re.sub(r"ћ", chw.sp_edd(), p41004)
 
-            # TODO: " 's " da se izpisva v prevoda, i da moze da se promenja. Zamestvane v fajla ili nov kod
 
 
             nummmm = mw.remove_dash()
